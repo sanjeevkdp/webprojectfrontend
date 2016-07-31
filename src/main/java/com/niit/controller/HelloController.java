@@ -6,8 +6,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.niit.dao.CategoryDao;
@@ -46,26 +48,69 @@ public class HelloController {
 	  mv.addObject("active", "Home");
 		return mv;
 	}
+	 @RequestMapping("/Admin")
+	public String Admin(){
+		 return "Admin";
+	 }
 	 
+//	      Admin   category mapping
+	 
+	 
+		@RequestMapping("/AdminAddCategory")
+		public ModelAndView AdminAddCategory(Model model){
+			ModelAndView mv=new ModelAndView("index");
+			List<Category> listCategory=categoryDao.list();
+			model.addAttribute("categories", listCategory);
+			mv.addObject("isAdminAddCategoryClicked", true);
+			mv.addObject("active", "AdminAddCategory");
+			
+			return mv;
+		}
+	  
+		@RequestMapping("/AddCategory")
+		public ModelAndView AddCategory(Model model){
+			ModelAndView mv=new ModelAndView("index");
+			Category category=new Category();
+			model.addAttribute("category", category);
+			
+			mv.addObject("isAddCategoryClicked", true);
+			mv.addObject("active", "AddCategory");
+			
+			return mv;
+		}
+		@RequestMapping(value="/AdminAddCategory",method=RequestMethod.POST)
+		public ModelAndView AdminAddCategoryPost(@ModelAttribute("category") Category category,Model model){
+			ModelAndView mv=new ModelAndView("index");
+			category.setCategory_id("45");
+			categoryDao.saveOrUpdate(category);
+			mv.addObject("isAdminAddCategoryClicked", true);
+			mv.addObject("active", "AdminAddCategory");
+	        return mv;
+		}
+	
+	
 	
 	
 //	============AdminMapping===================//
 	@RequestMapping("/AddProduct")
-	public ModelAndView AddProduct(){
+	public ModelAndView AddProduct(Model model){
 		ModelAndView mv=new ModelAndView("index");
+		Product product=new Product();
+		product.setCategory_id("WoodCraft");
+		product.setQuantity(1);
+		product.setOut_of_stock(false);
+       model.addAttribute("product", product);		
+		
+		
 		mv.addObject("isAddProductClicked", true);
 		mv.addObject("active", "AddProduct");
 		
 		return mv;
 	}
-	@RequestMapping("/AddCategory")
-	public ModelAndView AddCategory(){
-		ModelAndView mv=new ModelAndView("index");
-		mv.addObject("isAddCategoryClicked", true);
-		mv.addObject("active", "AddCategory");
-		
-		return mv;
-	}
+	
+	
+	
+
 	
 	@RequestMapping("/AddSupplier")
 	public ModelAndView AddSupplier(){
@@ -76,6 +121,20 @@ public class HelloController {
 		return mv;
 	}
 		
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

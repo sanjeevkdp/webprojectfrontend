@@ -7,7 +7,7 @@
 				int i = 1;
 			%>
 			<h1>All the product</h1>
-			<p>thats the very interesting items</p>
+			<p class="lead">thats the very interesting items</p>
 			<table class="table table-striped table-hover">
 				<thead>
 					<tr class="bg-success">
@@ -48,8 +48,7 @@
                      </c:forEach>
 
 			</table>
-
-
+         
 
 		</div>
 	</div>

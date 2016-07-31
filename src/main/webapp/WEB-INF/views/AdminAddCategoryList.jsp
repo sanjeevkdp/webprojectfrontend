@@ -1,0 +1,57 @@
+<div id="content" class="bottom-border-shadow">
+	<div class="container background-white bottom-border">
+		<div class="row margin-vert-30">
+
+<%
+				int i = 1;
+			%>
+
+<h1>Edit the Category</h1>
+			<p>Edit by administrator</p>
+			<table class="table table-striped table-hover">
+				<thead>
+					<tr class="bg-success">
+
+						<th>serial</th>
+						<th>Image</th>
+						<th>Name</th>
+						<th>Description</th>
+						<th> </th>
+					</tr>
+                 </thead>
+				<c:forEach items="${categories}" var="category">
+
+					<tr>
+						<td>
+							<%
+								out.println(i);
+							%>
+
+						</td>
+						<td><img src="${img}/portfolio/${category.imageUrl}" alt="" style="height:85px;width:85px"/></td>
+						<td>${category.category_name}</td>
+						<td>${category.description}</td>
+							<td>
+<%-- 							<a href="${contextPath}/CategoryShow/${category.category_id}"> --%>
+<!-- 							<span -->
+<!-- 								class="fa fa-info-circle"> </span></a> -->
+<!-- 								</td> -->
+                                   <span class="fa fa-info-circle"> </span>
+                                    <span class="fa fa-pencil-square"> </span>
+                                    <span class="fa fa-trash-o"> </span>
+                                   
+                                   </td>
+
+					</tr>
+					<%
+						i++;
+					%>
+                     </c:forEach>
+
+			</table>
+			<br><br>
+			<a href="${contextPath}/AddCategory"    class="btn btn-primary">Add Category</a>
+		</div>
+		</div>
+		</div>
+		

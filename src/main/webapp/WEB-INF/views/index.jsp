@@ -10,11 +10,15 @@
       <c:if test="${isAddProductClicked==true }">
            <%@include file="AddProduct.jsp" %>
            </c:if>
-           <c:if test="${isAddCategoryClicked==true }">
-           <%@include file="AddProduct.jsp" %>
+           <c:if test="${isAdminAddCategoryClicked==true }">
+           <%@include file="AdminAddCategoryList.jsp" %>
+           </c:if>
+           
+            <c:if test="${isAddCategoryClicked==true }">
+           <%@include file="AddCategory.jsp" %>
            </c:if>
            <c:if test="${isAddSupplierClicked==true }">
-           <%@include file="AddProduct.jsp" %>
+           <%@include file="AddSupplier.jsp" %>
            </c:if>
      
      

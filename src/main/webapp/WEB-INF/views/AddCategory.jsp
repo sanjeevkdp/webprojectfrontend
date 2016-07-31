@@ -1,12 +1,23 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
-
-</body>
-</html>
+  <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+   <div id="content" class="bottom-border-shadow">
+	<div class="container background-white bottom-border">
+		<div class="row margin-vert-30">
+   
+   <form:form action="${contextPath}/AdminAddCategory" method="post" commandName="category">
+   <div class="form-group">
+   <label for="name" >Name</label>
+   <form:input path="category_name" id="name" class="form-control"/>
+   </div>
+   <div class="form-group">
+   <label for="description" >Description</label>
+   <form:textarea path="description" id="description" class="form-control"/>
+   </div>
+   <br>
+   <input type="submit" value="submit" class="btn btn-default"/>
+   <a href="${contextPath}/AdminAddCategory" class="btn btn-default">Cancel</a>
+   
+   </form:form>
+  </div>
+  </div>
+  </div>
+  
