@@ -19,7 +19,7 @@
     <!--<![endif]-->
     <head>
         <!-- Title -->
-        <title>Habitat - A Professional Bootstrap Template</title>
+        <title>HandiCraft-for the sale</title>
         <!-- Meta -->
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />
         <meta name="description" content="">

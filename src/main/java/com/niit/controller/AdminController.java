@@ -25,14 +25,14 @@ public class AdminController {
 	private Category category;
 	
 	@Autowired
-	private SupplierDao supplierDAO;
+	private SupplierDao supplierDao;
 	
 	@Autowired
-	private CategoryDao categoryDAO;
+	private CategoryDao categoryDao;
 	
 	
 	@Autowired
-	private ProductDao productDAO;
+	private ProductDao productDao;
 
 	
 	@RequestMapping("/home")
@@ -48,7 +48,7 @@ public class AdminController {
 		ModelAndView mv = new ModelAndView("/home");
 		mv.addObject("product", product);
 		mv.addObject("isAdminClickedProducts", "true");
-		mv.addObject("productList", productDAO.list());
+		mv.addObject("productList", productDao.list());
 		return mv;
 	}
 
@@ -57,7 +57,7 @@ public class AdminController {
 		ModelAndView mv = new ModelAndView("/home");
 		mv.addObject("supplier", supplier);
 		mv.addObject("isAdminClickedSuppliers", "true");
-		mv.addObject("supplierList", supplierDAO.list());
+		mv.addObject("supplierList", supplierDao.list());
 		return mv;
 	}
 

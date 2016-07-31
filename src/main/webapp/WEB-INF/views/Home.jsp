@@ -32,10 +32,10 @@
                             <!-- End Carousel Images -->
                             <!-- Carousel Controls -->
                             <a class="left carousel-control" href="#carousel-example" data-slide="prev">
-                                <span class="glyphicon glyphicon-chevron-left"></span>
+                                <span class="fa fa-chevron-left"></span>
                             </a>
                             <a class="right carousel-control" href="#carousel-example" data-slide="next">
-                                <span class="glyphicon glyphicon-chevron-right"></span>
+                                <span class="fa fa-chevron-right"></span>
                             </a>
                             <!-- End Carousel Controls -->
                         </div>

@@ -1,21 +1,44 @@
 package com.niit.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.niit.dao.CategoryDao;
+import com.niit.dao.ProductDao;
+import com.niit.dao.SupplierDao;
+import com.niit.model.Category;
 import com.niit.model.Product;
+import com.niit.model.Supplier;
+import com.niit.viewModel.ProductModel;
 
 
 
 @Controller
 public class HelloController {
 	@Autowired
-	private Product productDao;
-public void setProductDao(Product productDao) {
-		this.productDao = productDao;
-	}
+	private ProductDao productDao;
+	@Autowired
+	private Product product;
+	@Autowired
+	private Category category;
+	@Autowired
+	private CategoryDao categoryDao;
+	@Autowired
+	private Supplier supplier;
+	@Autowired
+	private SupplierDao supplierDao;
+
+	
+	
+	
+	
 	@RequestMapping({"/","/index"})
 	public ModelAndView index(){
 	  ModelAndView mv= new ModelAndView("index");
@@ -23,6 +46,41 @@ public void setProductDao(Product productDao) {
 	  mv.addObject("active", "Home");
 		return mv;
 	}
+	 
+	
+	
+//	============AdminMapping===================//
+	@RequestMapping("/AddProduct")
+	public ModelAndView AddProduct(){
+		ModelAndView mv=new ModelAndView("index");
+		mv.addObject("isAddProductClicked", true);
+		mv.addObject("active", "AddProduct");
+		
+		return mv;
+	}
+	@RequestMapping("/AddCategory")
+	public ModelAndView AddCategory(){
+		ModelAndView mv=new ModelAndView("index");
+		mv.addObject("isAddCategoryClicked", true);
+		mv.addObject("active", "AddCategory");
+		
+		return mv;
+	}
+	
+	@RequestMapping("/AddSupplier")
+	public ModelAndView AddSupplier(){
+		ModelAndView mv=new ModelAndView("index");
+		mv.addObject("isAddSupplierClicked", true);
+		mv.addObject("active", "AddSupplier");
+		
+		return mv;
+	}
+		
+	
+	
+	
+	
+	
 	@RequestMapping({"/Home"})
 	public ModelAndView home(){
 	  ModelAndView mv= new ModelAndView("index");
@@ -33,15 +91,68 @@ public void setProductDao(Product productDao) {
 	
 	
 	@RequestMapping("/Product")
-	public ModelAndView productPage(){
+	public ModelAndView productPage(Model model){
 		ModelAndView mv = new ModelAndView("index");
+		List<Product> listProduct=productDao.list();
+		model.addAttribute("products",listProduct);
+//		list the name of supplier and category into the product row
+		
+		
+		List<ProductModel> products =new ArrayList<>();
+		ProductModel productModel=null;
+		for(Product p: listProduct){
+			productModel=new ProductModel();
+			productModel.setProduct(p);
+			category=categoryDao.get(p.getCategory_id());
+			supplier=supplierDao.get(p.getSupplier_id());
+			productModel.setCategoryName(category.getCategory_name());
+			productModel.setSupplierName(supplier.getSupplier_name());
+			products.add(productModel);
+			
+		}
+		model.addAttribute("products", products);
 		mv.addObject("isProductClicked","true");
 		mv.addObject("active","Product");
+		
+		return mv;
+
+		
+	}
+	
+	@RequestMapping("/Category")
+	public ModelAndView productcPage(Model model){
+		ModelAndView mv = new ModelAndView("index");
+		List<Category> listCategory=categoryDao.list();
+		model.addAttribute("categories", listCategory);
+		
+		
+		mv.addObject("isCategoryClicked","true");
+		mv.addObject("active","Category");
 		return mv;
 		
 
 
 	}
+	
+	@RequestMapping("/ProductShow/{product_id}")
+	public ModelAndView productShow(@PathVariable("product_id") String id,Model model){
+		ModelAndView mv = new ModelAndView("index");
+		
+		 product=productDao.get(id);
+		model.addAttribute("product",product);
+		category=categoryDao.get(product.getCategory_id());
+		String categoryName=category.getCategory_name();
+		mv.addObject("categoryName", categoryName);
+		supplier=supplierDao.get(product.getSupplier_id());
+		String supplierName=supplier.getSupplier_name();
+		mv.addObject("supplierName", supplierName);
+		
+		mv.addObject("isProductShowClicked","true");
+		mv.addObject("active","ProductShow");
+		return mv;
+	}
+	
+	
 	@RequestMapping("/ProductItem")
 	public ModelAndView productSingleItem(){
 		ModelAndView mv = new ModelAndView("index");
@@ -53,16 +164,7 @@ public void setProductDao(Product productDao) {
 
 	}
 	
-	@RequestMapping("/Category")
-	public ModelAndView productcPage(){
-		ModelAndView mv = new ModelAndView("index");
-		mv.addObject("isCategoryClicked","true");
-		mv.addObject("active","Category");
-		return mv;
-		
-
-
-	}
+	
 	
 	
 //	pages including
@@ -117,5 +219,11 @@ public void setProductDao(Product productDao) {
 		mv.addObject("active","Error");
 		return mv;
 	}
-	
+	@RequestMapping("/Contact")
+	public ModelAndView Contactr(){
+		ModelAndView mv = new ModelAndView("index");
+		mv.addObject("isContactClicked","true");
+		mv.addObject("active","Contact");
+		return mv;
+	}
 }
