@@ -9,8 +9,8 @@
 				int i = 1;
 			%>
 
-<h1>Edit the Category</h1>
-			<p>Edit by administrator</p>
+<h1>ADD SUPPLIER</h1>
+			<p>Added by administrator</p>
 			<table class="table table-striped table-hover">
 				<thead>
 					<tr class="bg-success">
@@ -18,11 +18,11 @@
 						<th>serial</th>
 						<th>Image</th>
 						<th>Name</th>
-						<th>Description</th>
+						<th>Email</th>
 						<th> </th>
 					</tr>
                  </thead>
-				<c:forEach items="${categories}" var="category">
+				<c:forEach items="${suppliers}" var="supplier">
 
 					<tr>
 						<td>
@@ -31,18 +31,16 @@
 							%>
 
 						</td>
-						<td><img src="${img}/${category.category_id}.png" alt="" style="height:85px;width:85px"/></td>
-						<td>${category.category_name}</td>
-						<td>${category.description}</td>
+						<td><img src="${img}/${supplier.supplier_id}.png" alt="" style="height:85px;width:85px"/></td>
+						<td>${supplier.supplier_name}</td>
+						<td>${supplier.supplier_email}</td>
 							<td>
-<%-- 							<a href="${contextPath}/CategoryShow/${category.category_id}"> --%>
-<!-- 							<span -->
-<!-- 								class="fa fa-info-circle"> </span></a> -->
-<!-- 								</td> -->
-                                   <span class="fa fa-info-circle"> </span>
-                                  <a href="${contextPath}/adminAddCategory/${category.category_id}">
+
+                                  <a href="${contextPath}/profile/${supplier.supplier_id}">
+                                  <span class="fa fa-info-circle"> </span></a>
+                                  <a href="${contextPath}/adminAddSupplier/${supplier.supplier_id}">
                                     <span class="fa fa-trash-o"> </span></a>
-                                     <a href="${contextPath}/editCategory/${category.category_id}">
+                                     <a href="${contextPath}/editSupplier/${supplier.supplier_id}">
                                      <span class="fa fa-pencil-square"> </span></a>
                                    
                                    </td>
@@ -55,7 +53,7 @@
 
 			</table>
 			<br><br>
-			<a href="${contextPath}/addCategory"    class="btn btn-primary">Add Category</a>
+			<a href="${contextPath}/addSupplier"    class="btn btn-primary">Add Supplier</a>
 		</div>
 		</div>
 		</div>

@@ -34,8 +34,9 @@
         <link rel="stylesheet" href="${mainCss}/font-awesome.css" rel="stylesheet">
         <link rel="stylesheet" href="${mainCss}/nexus.css" rel="stylesheet">
         <link rel="stylesheet" href="${mainCss}/responsive.css" rel="stylesheet">
-        <link rel="stylesheet" href="${mainCss}/custom.css" rel="stylesheet">
+      
         <!-- Google Fonts-->
         <link href="http://fonts.googleapis.com/css?family=Roboto+Condensed:400,300" rel="stylesheet" type="text/css">
+          <link rel="stylesheet" href="${mainCss}/custom.css">
     </head>
     <body>

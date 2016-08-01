@@ -65,14 +65,14 @@
 
 							<li><span id="Pages" class="fa-copy ">Pages</span>
 								<ul>
-									<li><a href="${contextPath}/About">About Us</a></li>
-									<li><a href="${contextPath}/Service">Services</a></li>
-									<li><a href="${contextPath}/FAQ">F.A.Q.</a></li>
-									<li><a href="${contextPath}/AboutMe">About Me</a></li>
+									<li><a href="${contextPath}/about">About Us</a></li>
+									<li><a href="${contextPath}/service">Services</a></li>
+									<li><a href="${contextPath}/fAQ">F.A.Q.</a></li>
+									<li><a href="${contextPath}/aboutMe">About Me</a></li>
 
-									<li><a href="${contextPath}/Login">Login</a></li>
-									<li><a href="${contextPath}/Register">Sign-Up</a></li>
-									<li><a href="${contextPath}/Error">404 Error Page</a></li>
+									<li><a href="${contextPath}/login">Login</a></li>
+									<li><a href="${contextPath}/register">Sign-Up</a></li>
+									<li><a href="${contextPath}/error">404 Error Page</a></li>
 								</ul></li>
 							<li><span id="Category" class="fa-th ">Category</span>
 								<ul>
@@ -80,17 +80,19 @@
 									<li><a href="#">Woodworks</a></li>
 									<li><a href="#">Clay</a></li>
 									<li><a href="#">Stone</a></li>
-									<li><a href="${contextPath}/Category">View</a></li>
+									<li><a href="${contextPath}/category">View</a></li>
 								</ul></li>
 							 <li><span id="Product" class="fa-font ">product</span>
 								<ul>
-									<li><a href="${contextPath}/Product">product</a></li>
-									<li><a href="${contextPath}/ProductItem">product
+									<li><a href="${contextPath}/product">product</a></li>
+									<li><a href="${contextPath}/productItem">product
 											Single Item</a></li>
 								</ul></li>
-							  <li><a id="Contact" href="${contextPath}/Contact" class="fa-comment ">Contact</a></li>
+							  <li><a id="Contact" href="${contextPath}/contact" class="fa-comment ">Contact</a></li>
 				
-									<li class="col-float-right"><a id="Login" href="${contextPath}/Login" class="fa-sign-in">Login</a></li>
+<%-- 									<li class="col-float-right"><a id="Login" href="${contextPath}/login" class="fa-sign-in">Login</a></li> --%>
+							<li class="col-float-right"><a id="Admin" href="${contextPath}/admin" class="fa-sign-in">Admin</a></li>
+							
 							
 					       </ul>
 					</div>

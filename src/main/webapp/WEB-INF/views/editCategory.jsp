@@ -4,8 +4,8 @@
    <div id="content" class="bottom-border-shadow">
 	<div class="container background-white bottom-border">
 		<div class="row margin-vert-30">
-   <h3>Add Category</h3>
-   <p>You can add category</p>
+   <h3>Edit Category</h3>
+   <p>You can edit category</p>
    <form:form action="${contextPath}/adminAddCategory" method="post" commandName="category" enctype="multipart/form-data">
    <div class="form-group">
    <label for="name" >Name</label>

@@ -1,4 +1,5 @@
-<%@ include file="./shared/header.jsp"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 
 <div id="content" class="bottom-border-shadow">
 	<div class="container background-white bottom-border">
@@ -39,7 +40,7 @@
 						<td>${p.product.description}</td>
 						<td>${p.product.unit_price}</td>
 						<td><a
-							href="${contextPath}/ProductShow/${p.product.product_id}"><span
+							href="${contextPath}/productShow/${p.product.product_id}"><span
 								class="fa fa-info-circle"> </span></a></td>
 					</tr>
 					<%

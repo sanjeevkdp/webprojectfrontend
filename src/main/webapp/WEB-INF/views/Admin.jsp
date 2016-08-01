@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <%@ include file="./shared/header.jsp"%>
 
 
@@ -11,7 +13,7 @@
 		
 		
 		
-        <button type="button" class="btn btn-outline-secondary btn-lg btn-block" ><a  href="${contextPath}/AddProduct">ADD PRODUCT</a></button>
-        <button type="button" class="btn btn-outline-secondary btn-lg btn-block" ><a  href="${contextPath}/AdminAddCategory">ADD CATEGORY</a></button>
-        <button type="button" class="btn btn-outline-secondary btn-lg btn-block" ><a href="${contextPath}/AddSupplier" >ADD SUPPLIER</a></button>
+        <button type="button" class="btn btn-outline-secondary btn-lg btn-block" ><a  href="${contextPath}/addProduct">ADD PRODUCT</a></button>
+        <button type="button" class="btn btn-outline-secondary btn-lg btn-block" ><a  href="${contextPath}/adminAddCategory">ADD CATEGORY</a></button>
+        <button type="button" class="btn btn-outline-secondary btn-lg btn-block" ><a href="${contextPath}/adminAddSupplier" >ADD SUPPLIER</a></button>
       

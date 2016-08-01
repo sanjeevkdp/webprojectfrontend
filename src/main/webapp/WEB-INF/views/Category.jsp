@@ -1,3 +1,6 @@
+
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <div id="content" class="bottom-border-shadow">
 	<div class="container background-white bottom-border">
 		<div class="row margin-vert-30">
@@ -27,7 +30,7 @@
 							%>
 
 						</td>
-						<td><img src="${img}/portfolio/${category.imageUrl}" alt="" style="height:85px;width:85px"/></td>
+						<td><img src="${img}/${category.category_id}.png" alt="" style="height:85px;width:85px"/></td>
 						<td>${category.category_name}</td>
 						<td>${category.description}</td>
 							

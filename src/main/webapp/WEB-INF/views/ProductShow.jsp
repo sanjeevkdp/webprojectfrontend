@@ -1,4 +1,5 @@
-
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <div id="content" class="bottom-border-shadow">
 	<div class="container background-white bottom-border">
 		<div class="row margin-vert-30">
