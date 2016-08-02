@@ -63,9 +63,10 @@ public class HelloController {
 		ModelAndView mv = new ModelAndView("index");
 		List<Category> listCategory = categoryDao.list();
 		model.addAttribute("categories", listCategory);
-
+		mv.addObject("category", category);
 		mv.addObject("isCategoryClicked", "true");
 		mv.addObject("active", "category");
+		
 		return mv;
 
 	}
@@ -77,6 +78,7 @@ public class HelloController {
 		ModelAndView mv = new ModelAndView("index");
 		List<Product> listProduct = productDao.list();
 		model.addAttribute("products", listProduct);
+		
 		// list the name of supplier and category into the product row
 
 		List<ProductModel> products = new ArrayList<>();
@@ -117,7 +119,7 @@ public class HelloController {
 	@RequestMapping("/addCategory")
 	public ModelAndView AddCategory(Model model) {
 		ModelAndView mv = new ModelAndView("index");
-		Category category = new Category();
+		//Category category = new Category();
 		model.addAttribute("category", category);
 
 		mv.addObject("isAddCategoryClicked", true);
@@ -173,15 +175,17 @@ public class HelloController {
 	}
 
 	// ======EditCategory
+	
+	
 
 	@RequestMapping("/editCategory/{category_id}")
-	public String editcategory(@PathVariable("category_id") String id, Model model) {
-		// ModelAndView mv = new ModelAndView("index");
+	public ModelAndView editcategory(@PathVariable("category_id") String id, Model model) {
+		 ModelAndView mv = new ModelAndView("index");
 		Category category = categoryDao.get(id);
 		model.addAttribute(category);
-		// mv.addObject("isEditCategoryClicked", "true");
-		// mv.addObject("active", "editCategory");
-		return "editCategory";
+		 mv.addObject("isEditCategoryClicked", "true");
+		 mv.addObject("active", "editCategory");
+		return mv;
 	}
 
 	@RequestMapping(value = "/editCategory", method = RequestMethod.POST)

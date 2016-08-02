@@ -9,11 +9,11 @@
    <form:form action="${contextPath}/adminAddCategory" method="post" commandName="category" enctype="multipart/form-data">
    <div class="form-group">
    <label for="name" >Name</label>
-   <form:input path="category_name" id="name" class="form-control"/>
+   <form:input path="category_name" id="name" class="form-control" value="${category.category_name}"/>
    </div>
    <div class="form-group">
    <label for="description" >Description</label>
-   <form:textarea path="description" id="description" class="form-control"/>
+   <form:textarea path="description" id="description" class="form-control" value="${category.description}"/>
    </div>
    
    

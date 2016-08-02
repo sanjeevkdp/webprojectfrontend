@@ -60,7 +60,7 @@
 				<div class="no-padding">
 					<div class="visible-lg">
 						<ul id="hornavmenu" class="nav navbar-nav">
-							<li><a id="Home" href="${contextPath}/Home" class="fa-home">home</a>
+							<li><a id="Home" href="${contextPath}/home" class="fa-home">home</a>
 							</li>
 
 							<li><span id="Pages" class="fa-copy ">Pages</span>
