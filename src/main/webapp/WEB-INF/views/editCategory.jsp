@@ -7,6 +7,7 @@
    <h3>Edit Category</h3>
    <p>You can edit category</p>
    <form:form action="${contextPath}/adminAddCategory" method="post" commandName="category" enctype="multipart/form-data">
+  <form:hidden path="category_id" value="${category.category_id}"/>
    <div class="form-group">
    <label for="name" >Name</label>
    <form:input path="category_name" id="name" class="form-control" value="${category.category_name}"/>

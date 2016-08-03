@@ -34,14 +34,19 @@
 							%>
 
 						</td>
-						<td><img src="${img}/portfolio/${p.product.imageUrl}" alt="" style="height:85px;width:85px"/></td>
+						<td><img src="${img}/${p.product.product_id}.png" alt="" style="height:85px;width:85px"/></td>
 						<td>${p.product.product_name}</td>
 						<td>${p.categoryName}</td>
 						<td>${p.product.description}</td>
 						<td>${p.product.unit_price}</td>
 						<td><a
 							href="${contextPath}/productShow/${p.product.product_id}"><span
-								class="fa fa-info-circle"> </span></a></td>
+								class="fa fa-info-circle"> </span></a>
+								 <a href="${contextPath}/adminAddProduct/${p.product.product_id}">
+                                    <span class="fa fa-trash-o" title="Delete"> </span></a>
+								<a
+							href="${contextPath}/editProduct/${p.product.product_id}">
+							 <span class="fa fa-pencil-square" title="Edit"></span></a></td>
 					</tr>
 					<%
 						i++;
@@ -49,7 +54,9 @@
                      </c:forEach>
 
 			</table>
-         
+         		<br><br>
+			<a href="${contextPath}/addProduct" class="btn btn-primary">Add Product</a>
+	
 
 		</div>
 	</div>

@@ -18,7 +18,7 @@
                             <!-- Carousel Images -->
                             <div class="carousel-inner">
                                 <div class="item active">
-                                    <img src="${img}/slideshow/slide1.jpg">
+                                    <img src="${img}/slideshow/slide4.jpg">
                                 </div>
                                 <div class="item">
                                     <img src="${img}/slideshow/slide2.jpg">
@@ -27,7 +27,7 @@
                                     <img src="${img}/slideshow/slide3.jpg">
                                 </div>
                                 <div class="item">
-                                    <img src="${img}/slideshow/slide4.jpg">
+                                    <img src="${img}/slideshow/slide1.jpg">
                                 </div>
                             </div>
                             <!-- End Carousel Images -->
@@ -50,7 +50,7 @@
                     <div class="row margin-vert-30">
                         <!-- Main Text -->
                         <div class="col-md-6">
-                            <h2>Welcome to Habitat</h2>
+                            <h2>Welcome to HandiCarft</h2>
                             <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit
                                 lobortis nisl ut aliquip ex ea commodo consequat.</p>
                             <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit

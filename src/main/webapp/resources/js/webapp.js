@@ -10,6 +10,12 @@ $(function() {
  	case 'Login':
  		$('#Pages').addClass('active')
  		break;
+ 	case 'Login':
+ 		$('#Pages').addClass('active')
+ 		break;
+ 	case 'Login':
+ 		$('#Pages').addClass('active')
+ 		break;
  		
  		
  		

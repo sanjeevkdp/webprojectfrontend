@@ -13,7 +13,7 @@
 		
 		
 		
-        <button type="button" class="btn btn-outline-secondary btn-lg btn-block" ><a  href="${contextPath}/addProduct">ADD PRODUCT</a></button>
+        <button type="button" class="btn btn-outline-secondary btn-lg btn-block" ><a  href="${contextPath}/adminAddProduct">ADD PRODUCT</a></button>
         <button type="button" class="btn btn-outline-secondary btn-lg btn-block" ><a  href="${contextPath}/adminAddCategory">ADD CATEGORY</a></button>
         <button type="button" class="btn btn-outline-secondary btn-lg btn-block" ><a href="${contextPath}/adminAddSupplier" >ADD SUPPLIER</a></button>
       

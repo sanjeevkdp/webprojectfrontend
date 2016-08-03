@@ -41,9 +41,9 @@
 <!-- 								</td> -->
                                    <span class="fa fa-info-circle"> </span>
                                   <a href="${contextPath}/adminAddCategory/${category.category_id}">
-                                    <span class="fa fa-trash-o"> </span></a>
+                                    <span class="fa fa-trash-o" title="Delete"> </span></a>
                                      <a href="${contextPath}/editCategory/${category.category_id}">
-                                     <span class="fa fa-pencil-square"> </span></a>
+                                     <span class="fa fa-pencil-square" title="Edit"> </span></a>
                                    
                                    </td>
 

@@ -34,7 +34,7 @@
 							%>
 
 						</td>
-						<td><img src="${img}/portfolio/${p.product.imageUrl}" alt="" style="height:85px;width:85px"/></td>
+						<td><img src="${img}/${p.product.product_id}.png" alt="" style="height:85px;width:85px"/></td>
 						<td>${p.product.product_name}</td>
 						<td>${p.categoryName}</td>
 						<td>${p.product.description}</td>
