@@ -49,6 +49,9 @@
 <c:if test="${isAddProductClicked==true }">
 	<%@include file="addProduct.jsp"%>
 </c:if>
+<c:if test="${isProductShowClicked==true }">
+	<%@include file="productShow.jsp"%>
+</c:if>
 
 <!--   =================        supplier========================== -->
 <c:if test="${isAdminAddSupplierClicked==true }">
@@ -60,7 +63,9 @@
 <c:if test="${isProfileClicked==true }">
 	<%@include file="supplierProfile.jsp"%>
 </c:if>
-
+<c:if test="${isEditSupplierClicked==true }">
+	<%@include file="editSupplier.jsp"%>
+</c:if>
 
 
 
