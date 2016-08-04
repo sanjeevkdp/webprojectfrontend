@@ -6,7 +6,7 @@
 	<div class="container background-white bottom-border">
 		<div class="row margin-vert-30">
    
-   <form:form action="${contextPath}/adminAddSupplier" method="post" commandName="supplier" enctype="multipart/form-data">
+   <form:form action="${contextPath}/admin/adminAddSupplier" method="post" commandName="supplier" enctype="multipart/form-data">
   <form:hidden path="supplier_id" value="${supplier.supplier_id}"/>
    <div class="form-group">
    <label for="name" >Name</label>
@@ -30,7 +30,7 @@
    </div>
    <br>
    <input type="submit" value="submit" class="btn btn-default"/>
-   <a href="${contextPath}/adminAddSupplier" class="btn btn-default">Cancel</a>
+   <a href="${contextPath}/admin/adminAddSupplier" class="btn btn-default">Cancel</a>
    
    
    </form:form>

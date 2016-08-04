@@ -92,9 +92,7 @@
 
 
 
-<c:if test="${isProductShowClicked==true }">
-	<%@include file="productShow.jsp"%>
-</c:if>
+
 <c:if test="${isProductItemClicked==true }">
 	<%@include file="productItem.jsp"%>
 </c:if>

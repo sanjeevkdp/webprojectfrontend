@@ -40,9 +40,9 @@
 <!-- 								class="fa fa-info-circle"> </span></a> -->
 <!-- 								</td> -->
                                    <span class="fa fa-info-circle"> </span>
-                                  <a href="${contextPath}/adminAddCategory/${category.category_id}">
+                                  <a href="${contextPath}/admin/adminAddCategory/${category.category_id}">
                                     <span class="fa fa-trash-o" title="Delete"> </span></a>
-                                     <a href="${contextPath}/editCategory/${category.category_id}">
+                                     <a href="${contextPath}/admin/adminAddCategory/editCategory/${category.category_id}">
                                      <span class="fa fa-pencil-square" title="Edit"> </span></a>
                                    
                                    </td>
@@ -55,7 +55,7 @@
 
 			</table>
 			<br><br>
-			<a href="${contextPath}/addCategory"    class="btn btn-primary">Add Category</a>
+			<a href="${contextPath}/admin/adminAddCategory/addCategory"    class="btn btn-primary">Add Category</a>
 		</div>
 		</div>
 		</div>

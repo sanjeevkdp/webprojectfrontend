@@ -61,7 +61,7 @@ public class CategoryController {
 
 	// Admin category mapping
 
-	@RequestMapping("/adminAddCategory")
+	@RequestMapping("/admin/adminAddCategory")
 	public ModelAndView AdminAddCategory(Model model) {
 		ModelAndView mv = new ModelAndView("index");
 		List<Category> listCategory = categoryDao.list();
@@ -71,8 +71,9 @@ public class CategoryController {
 
 		return mv;
 	}
+	// AddCategory=================================//
 
-	@RequestMapping("/addCategory")
+	@RequestMapping("/admin/adminAddCategory/addCategory")
 	public ModelAndView AddCategory(Model model) {
 		ModelAndView mv = new ModelAndView("index");
 		//Category category = new Category();
@@ -84,12 +85,13 @@ public class CategoryController {
 		return mv;
 	}
 
-	// AddCategory
+	
 
-	@RequestMapping(value = "/adminAddCategory", method = RequestMethod.POST)
-	public String AdminAddCategoryPost(@ModelAttribute("category") Category category, Model model,
+	@RequestMapping(value = "/admin/adminAddCategory", method = RequestMethod.POST)
+	public ModelAndView AdminAddCategoryPost(@ModelAttribute("category") Category category, Model model,
 			HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView("index");
+		
 
 		MultipartFile imgUrl = category.getImgUrl();
 		String rootDirectory = request.getSession().getServletContext().getRealPath("/");
@@ -104,16 +106,21 @@ public class CategoryController {
 			}
 		}
 		categoryDao.saveOrUpdate(category);
+		List<Category> listCategory = categoryDao.list();
+		model.addAttribute("categories", listCategory);
+		mv.addObject("category", category);
+		
 
-		// mv.addObject("isAdminAddCategoryClicked", true);
-		// mv.addObject("active", "redirect:/AdminAddCategory");
-		return "redirect:/adminAddCategory";
+		mv.addObject("isAdminAddCategoryClicked", true);
+		mv.addObject("active", "AdminAddCategory");
+		return mv;
 	}
 
 	// Delete Category==============//
 
-	@RequestMapping("/adminAddCategory/{category_id}")
-	public String Categorydelete(@PathVariable("category_id") String id, Model model, HttpServletRequest request) {
+	@RequestMapping("/admin/adminAddCategory/{category_id}")
+	public ModelAndView Categorydelete(@PathVariable("category_id") String id, Model model, HttpServletRequest request) {
+		ModelAndView mv = new ModelAndView("index");
 
 		String rootDirectory = request.getSession().getServletContext().getRealPath("/");
 		path = Paths.get(rootDirectory + "\\resources\\img\\" + id + ".png");
@@ -127,14 +134,21 @@ public class CategoryController {
 
 		}
 		categoryDao.delete(id);
-		return "redirect:/adminAddCategory";
+		List<Category> listCategory = categoryDao.list();
+		model.addAttribute("categories", listCategory);
+		mv.addObject("category", category);
+		
+		mv.addObject("isAdminAddCategoryClicked", true);
+		mv.addObject("active", "AdminAddCategory");
+		return mv;
+		//return "redirect:/adminAddCategory";
 	}
 
 	// ======EditCategory
 	
 	
 
-	@RequestMapping("/editCategory/{category_id}")
+	@RequestMapping("/admin/adminAddCategory/editCategory/{category_id}")
 	public ModelAndView editcategory(@PathVariable("category_id") String id, Model model) {
 		 ModelAndView mv = new ModelAndView("index");
 		Category category = categoryDao.get(id);
@@ -144,10 +158,10 @@ public class CategoryController {
 		return mv;
 	}
 
-	@RequestMapping(value = "/editCategory", method = RequestMethod.POST)
-	public String EditCategoryPost(@ModelAttribute("category") Category category, Model model,
+	@RequestMapping(value = "/admin/adminAddCategory/editCategory", method = RequestMethod.POST)
+	public ModelAndView EditCategoryPost(@ModelAttribute("category") Category category, Model model,
 			HttpServletRequest request) {
-		// ModelAndView mv = new ModelAndView("index");
+		 ModelAndView mv = new ModelAndView("index");
 
 		MultipartFile imgUrl = category.getImgUrl();
 		String rootDirectory = request.getSession().getServletContext().getRealPath("/");
@@ -162,10 +176,15 @@ public class CategoryController {
 			}
 		}
 		categoryDao.editCategory(category);
+		List<Category> listCategory = categoryDao.list();
+		model.addAttribute("categories", listCategory);
+		mv.addObject("category", category);
+		
 
-		// mv.addObject("isAdminAddCategoryClicked", true);
-		// mv.addObject("active", "redirect:/AdminAddCategory");
-		return "redirect:/editCategory";
+		 mv.addObject("isEditCategoryClicked", true);
+		 mv.addObject("active", "editCategory");
+	return mv;
+		 //	return "redirect:/editCategory";
 	}
 
 

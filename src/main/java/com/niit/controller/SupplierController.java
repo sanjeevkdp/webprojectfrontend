@@ -49,7 +49,7 @@ public class SupplierController {
 
 	// ======================= show the tale First Step=======================//
 
-	@RequestMapping("/adminAddSupplier")
+	@RequestMapping("/admin/adminAddSupplier")
 	public ModelAndView AdminAddSupplier(Model model) {
 		ModelAndView mv = new ModelAndView("index");
 		List<Supplier> listSupplier = supplierDao.list();
@@ -62,7 +62,7 @@ public class SupplierController {
 
 	//================== ADDINGForm for SUPPLIER second Step================//
 
-	@RequestMapping("/addSupplier")
+	@RequestMapping("/admin/adminAddSupplier/addSupplier")
 	public ModelAndView AddSupplier(Model model) {
 		ModelAndView mv = new ModelAndView("index");
         Supplier supplier = new Supplier();
@@ -79,8 +79,8 @@ public class SupplierController {
 	
 	
 	
-	@RequestMapping(value = "/adminAddSupplier", method = RequestMethod.POST)
-	public String AdminAddSupplierPost(@ModelAttribute("supplier") Supplier supplier, Model model,
+	@RequestMapping(value = "/admin/adminAddSupplier", method = RequestMethod.POST)
+	public ModelAndView AdminAddSupplierPost(@ModelAttribute("supplier") Supplier supplier, Model model,
 			HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView("index");
 
@@ -97,15 +97,17 @@ public class SupplierController {
 			}
 		}
 		supplierDao.saveOrUpdate(supplier);
-
-		// mv.addObject("isAdminAddCategoryClicked", true);
-		// mv.addObject("active", "redirect:/AdminAddCategory");
-		return "redirect:/adminAddSupplier";
+		List<Supplier> listSupplier = supplierDao.list();
+		model.addAttribute("suppliers", listSupplier);
+		 mv.addObject("isAdminAddSupplierClicked", true);
+		 mv.addObject("active", "adminAddSupplier");
+		return mv;
+		 //return "redirect:/adminAddSupplier";
 	}
 //================================show the profile forth step=============================//
 	
 	
-	@RequestMapping("/profile/{supplier_id}")
+	@RequestMapping("/admin/adminAddSupplier/profile/{supplier_id}")
 	public ModelAndView SupplierProfile(@PathVariable("supplier_id") String id, Model model) {
 		ModelAndView mv = new ModelAndView("index");
 
@@ -123,9 +125,9 @@ public class SupplierController {
 	
 //================================ Delete supplier fifth step=============================//
 	
-	@RequestMapping("/adminAddSupplier/{supplier_id}")
-	public String DeleteSupplier(@PathVariable("supplier_id") String id, Model model, HttpServletRequest request) {
-
+	@RequestMapping("/admin/adminAddSupplier/{supplier_id}")
+	public ModelAndView DeleteSupplier(@PathVariable("supplier_id") String id, Model model, HttpServletRequest request) {
+          ModelAndView mv=new ModelAndView("index");
 		String rootDirectory = request.getSession().getServletContext().getRealPath("/");
 		path = Paths.get(rootDirectory + "\\resources\\img\\" + id + ".png");
 		if (Files.exists(path)) {
@@ -138,7 +140,13 @@ public class SupplierController {
 
 		}
 		supplierDao.delete(id);
-		return "redirect:/adminAddSupplier";
+		List<Supplier> listSupplier = supplierDao.list();
+		model.addAttribute("suppliers", listSupplier);
+		mv.addObject("supplier",supplier);
+		 mv.addObject("isAdminAddSupplierClicked", true);
+		 mv.addObject("active", "adminAddSupplier");
+		return mv;
+	//return "redirect:/adminAddSupplier";
 	}
    
 	
@@ -146,7 +154,7 @@ public class SupplierController {
 	
 	
 
-	@RequestMapping("/editSupplier/{supplier_id}")
+	@RequestMapping("/admin/adminAddSupplier/editSupplier/{supplier_id}")
 	public ModelAndView editSupplier(@PathVariable("supplier_id") String id, Model model) {
 		 ModelAndView mv = new ModelAndView("index");
 		 Supplier supplier = supplierDao.get(id);
@@ -156,10 +164,10 @@ public class SupplierController {
 		return mv;
 	}
 
-	@RequestMapping(value = "/editSupplier", method = RequestMethod.POST)
-	public String EditSupplierPost(@ModelAttribute("supplier") Supplier supplier, Model model,
+	@RequestMapping(value = "/admin/adminAddSupplier/editSupplier", method = RequestMethod.POST)
+	public ModelAndView EditSupplierPost(@ModelAttribute("supplier") Supplier supplier, Model model,
 			HttpServletRequest request) {
-		// ModelAndView mv = new ModelAndView("index");
+		 ModelAndView mv = new ModelAndView("index");
 
 		MultipartFile imgUrl = supplier.getImgUrl();
 		String rootDirectory = request.getSession().getServletContext().getRealPath("/");
@@ -174,10 +182,13 @@ public class SupplierController {
 			}
 		}
 		supplierDao.editSupplier(supplier);
+		List<Supplier> listSupplier = supplierDao.list();
+		model.addAttribute("suppliers", listSupplier);
 
-		// mv.addObject("isEditSupplierClicked", true);
-		// mv.addObject("active", "redirect:/editSupplier");
-		return "redirect:/editSupplier";
+		 mv.addObject("isEditSupplierClicked", true);
+		 mv.addObject("active", "editSupplier");
+		return mv;
+		// "redirect:/editSupplier";
 	}
 	
 	

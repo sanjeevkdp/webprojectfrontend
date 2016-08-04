@@ -36,11 +36,11 @@
 						<td>${supplier.supplier_email}</td>
 							<td>
 
-                                  <a href="${contextPath}/profile/${supplier.supplier_id}">
+                                  <a href="${contextPath}/admin/adminAddSupplier/profile/${supplier.supplier_id}">
                                   <span class="fa fa-info-circle"> </span></a>
-                                  <a href="${contextPath}/adminAddSupplier/${supplier.supplier_id}">
+                                  <a href="${contextPath}/admin/adminAddSupplier/${supplier.supplier_id}">
                                     <span class="fa fa-trash-o"> </span></a>
-                                     <a href="${contextPath}/editSupplier/${supplier.supplier_id}">
+                                     <a href="${contextPath}/admin/adminAddSupplier/editSupplier/${supplier.supplier_id}">
                                      <span class="fa fa-pencil-square"> </span></a>
                                    
                                    </td>
@@ -53,7 +53,7 @@
 
 			</table>
 			<br><br>
-			<a href="${contextPath}/addSupplier"    class="btn btn-primary">Add Supplier</a>
+			<a href="${contextPath}/admin/adminAddSupplier/addSupplier"    class="btn btn-primary">Add Supplier</a>
 		</div>
 		</div>
 		</div>

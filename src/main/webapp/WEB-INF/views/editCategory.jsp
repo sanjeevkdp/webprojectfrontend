@@ -6,7 +6,7 @@
 		<div class="row margin-vert-30">
    <h3>Edit Category</h3>
    <p>You can edit category</p>
-   <form:form action="${contextPath}/adminAddCategory" method="post" commandName="category" enctype="multipart/form-data">
+   <form:form action="${contextPath}/admin/adminAddCategory" method="post" commandName="category" enctype="multipart/form-data">
   <form:hidden path="category_id" value="${category.category_id}"/>
    <div class="form-group">
    <label for="name" >Name</label>
@@ -24,7 +24,7 @@
    </div>
    <br>
    <input type="submit" value="submit" class="btn btn-default"/>
-   <a href="${contextPath}/adminAddCategory" class="btn btn-default">Cancel</a>
+   <a href="${contextPath}/admin/adminAddCategory" class="btn btn-default">Cancel</a>
    
    </form:form>
   </div>

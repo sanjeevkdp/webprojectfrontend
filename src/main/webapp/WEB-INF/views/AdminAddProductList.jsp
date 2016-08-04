@@ -40,12 +40,12 @@
 						<td>${p.product.description}</td>
 						<td>${p.product.unit_price}</td>
 						<td><a
-							href="${contextPath}/productShow/${p.product.product_id}"><span
+							href="${contextPath}/admin/adminAddProduct/adminProductView/${p.product.product_id}"><span
 								class="fa fa-info-circle"> </span></a>
-								 <a href="${contextPath}/adminAddProduct/${p.product.product_id}">
+								 <a href="${contextPath}/admin/adminAddProduct/${p.product.product_id}">
                                     <span class="fa fa-trash-o" title="Delete"> </span></a>
 								<a
-							href="${contextPath}/editProduct/${p.product.product_id}">
+							href="${contextPath}/admin/adminAddProduct/editProduct/${p.product.product_id}">
 							 <span class="fa fa-pencil-square" title="Edit"></span></a></td>
 					</tr>
 					<%
@@ -55,7 +55,7 @@
 
 			</table>
          		<br><br>
-			<a href="${contextPath}/addProduct" class="btn btn-primary">Add Product</a>
+			<a href="${contextPath}/admin/adminAddProduct/addProduct" class="btn btn-primary">Add Product</a>
 	
 
 		</div>

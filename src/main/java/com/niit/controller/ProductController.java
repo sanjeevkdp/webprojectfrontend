@@ -84,7 +84,7 @@ public class ProductController {
 //	==========================================//
 //	     Admin Add Product
 	//===================================================//
-	@RequestMapping("/adminAddProduct")
+	@RequestMapping("/admin/adminAddProduct")
 	public ModelAndView adminAddProduct(Model model) {
 		ModelAndView mv = new ModelAndView("index");
 		List<Product> listProduct = productDao.list();
@@ -116,7 +116,7 @@ public class ProductController {
 	//    add product
 	//=====================================================================//
 
-	@RequestMapping("/addProduct")
+	@RequestMapping("/admin/adminAddProduct/addProduct")
 	public ModelAndView AddProduct(Model model) {
 		ModelAndView mv = new ModelAndView("index");
 		Product product = new Product();
@@ -141,14 +141,14 @@ public class ProductController {
 	//=====================================================================//
 	//====================adding Product step third========================
 	
-	@RequestMapping(value ="/adminAddProduct", method = RequestMethod.POST)
-	public ModelAndView AdminAddProductPost(@Valid @ModelAttribute("product") Product product, Model model,BindingResult result,
+	@RequestMapping(value ="/admin/adminAddProduct", method = RequestMethod.POST)
+	public ModelAndView AdminAddProductPost(@Valid @ModelAttribute("product") Product product, BindingResult result,Model model,
 			HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView("index");
 
 		if(result.hasErrors()){
 			mv.addObject("isAddProductClicked", true);
-			mv.addObject("active", "eeeaddProduct");
+			mv.addObject("active", "addProduct");
 
 			return mv;
 			
@@ -203,7 +203,7 @@ public class ProductController {
 	//===============================edit Product forth======================//
 	
 	
-	@RequestMapping("/editProduct/{product_id}")
+	@RequestMapping("/admin/adminAddProduct/editProduct/{product_id}")
 	public ModelAndView editProduct(@PathVariable("product_id") String id, Model model) {
 		 ModelAndView mv = new ModelAndView("index");
 		 Product product = productDao.get(id);
@@ -217,7 +217,7 @@ public class ProductController {
 		return mv;
 	}
 
-	@RequestMapping(value = "/editProduct", method = RequestMethod.POST)
+	@RequestMapping(value = "/admin/adminAddProduct/editProduct", method = RequestMethod.POST)
 	public ModelAndView EditProductPost(@ModelAttribute("product") Product product, Model model,
 			HttpServletRequest request) {
 		   ModelAndView mv = new ModelAndView("index");
@@ -267,7 +267,7 @@ public class ProductController {
 
 	
 	//========================delete product fifth===============//
-	@RequestMapping("/adminAddProduct/{product_id}")
+	@RequestMapping("/admin/adminAddProduct/{product_id}")
 	public ModelAndView Productdelete(@PathVariable("product_id") String id, Model model, HttpServletRequest request) {
                 ModelAndView mv=new ModelAndView("index");
 		String rootDirectory = request.getSession().getServletContext().getRealPath("/");
