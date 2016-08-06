@@ -8,21 +8,23 @@
 	<name>WebProject Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 
-<properties>
-<spring-version>4.3.1.RELEASE</spring-version>
-</properties>
-
-
-
+	<properties>
+		<spring-version>4.3.1.RELEASE</spring-version>
+	</properties>
 	<dependencies>
-<dependency>
-		<groupId>com.niit</groupId>
-  <artifactId>WebBackEnd</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-</dependency>
+	<dependency>
+			<groupId>com.niit</groupId>
+			<artifactId>WebBackEnd</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			
+		</dependency>
+<!-- https://mvnrepository.com/artifact/org.springframework/spring-beans -->
+<!-- <dependency> -->
+<!--     <groupId>org.springframework</groupId> -->
+<!--     <artifactId>spring-beans</artifactId> -->
+<!--     <version>4.3.2.RELEASE</version> -->
+<!-- </dependency> -->
 
-
-		<!-- https://mvnrepository.com/artifact/javax/javaee-api -->
 		<!-- javaApi -->
 		<dependency>
 			<groupId>javax</groupId>
@@ -30,71 +32,90 @@
 			<version>7.0</version>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/jstl/jstl -->
-
 		<!-- jstl -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
 		</dependency>
+		<!-- spring web -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>4.3.1.RELEASE</version>
+		</dependency>
+
 
 		<!-- webmvc -->
 
-
-
-
-		<!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
 			<version>4.3.1.RELEASE</version>
 		</dependency>
-<!-- common file upload -->
 
-<!-- https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload -->
-<dependency>
-    <groupId>commons-fileupload</groupId>
-    <artifactId>commons-fileupload</artifactId>
-    <version>1.3.2</version>
-</dependency>
-<!--    common io -->
+		<!-- hibernate validator -->
 
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>5.3.0.Alpha1</version>
+		</dependency>
 
-<!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
-<dependency>
-    <groupId>commons-io</groupId>
-    <artifactId>commons-io</artifactId>
-    <version>2.5</version>
-</dependency>
+		<dependency>
+			<groupId>javax.validation</groupId>
+			<artifactId>validation-api</artifactId>
+			<version>1.1.0.Final</version>
+		</dependency>
+		<!-- common file upload -->
 
-   
-<!--    servlet-API -->
-<!-- https://mvnrepository.com/artifact/javax.servlet/servlet-api -->
-<dependency>
-    <groupId>javax.servlet</groupId>
-    <artifactId>servlet-api</artifactId>
-    <version>3.0-alpha-1</version>
-    <scope>provided</scope>
-</dependency>
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>1.3.2</version>
+		</dependency>
+		<!-- common io -->
 
 
-<!-- hibernate  validator-->
-<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-validator -->
-<dependency>
-    <groupId>org.hibernate</groupId>
-    <artifactId>hibernate-validator</artifactId>
-    <version>5.3.0.Alpha1</version>
-</dependency>
-
-<!-- https://mvnrepository.com/artifact/javax.validation/validation-api -->
-<dependency>
-    <groupId>javax.validation</groupId>
-    <artifactId>validation-api</artifactId>
-    <version>1.1.0.Final</version>
-</dependency>
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.5</version>
+		</dependency>
 
 
+		<!-- servlet-API -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>3.0-alpha-1</version>
+			<scope>provided</scope>
+		</dependency>
+
+
+
+		<!-- ============================================================================== -->
+		<!-- security start -->
+		<!-- ===================================================================================== -->
+		<dependency>
+		<groupId>org.springframework.security</groupId>
+		<artifactId>spring-security-core</artifactId>
+		<version>4.1.1.RELEASE</version>
+		</dependency>
+
+		<dependency>
+		<groupId>org.springframework.security</groupId>
+		<artifactId>spring-security-web</artifactId>
+		<version>4.1.1.RELEASE</version>
+		</dependency>
+
+		<dependency>
+		<groupId>org.springframework.security</groupId>
+		<artifactId>spring-security-config</artifactId>
+		<version>4.1.1.RELEASE</version>
+		</dependency>
+
+		<!-- ===============================security end========================================= -->
 
 		<dependency>
 			<groupId>junit</groupId>
@@ -102,6 +123,11 @@
 			<version>3.8.1</version>
 			<scope>test</scope>
 		</dependency>
+		<!-- ================================================================================== -->
+		<!-- backend connection -->
+		<!-- ================================================================================== -->
+		
+
 	</dependencies>
 	<build>
 

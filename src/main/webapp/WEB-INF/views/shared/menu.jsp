@@ -91,7 +91,7 @@
 							  <li><a id="Contact" href="${contextPath}/contact" class="fa-comment ">Contact</a></li>
 				
 <%-- 									<li class="col-float-right"><a id="Login" href="${contextPath}/login" class="fa-sign-in">Login</a></li> --%>
-							<li class="col-float-right"><a id="Admin" href="${contextPath}/admin" class="fa-sign-in">Admin</a></li>
+							<li class="col-float-right"><a id="Admin" href="${contextPath}/login" class="fa-sign-in">Admin</a></li>
 							
 							
 					       </ul>
