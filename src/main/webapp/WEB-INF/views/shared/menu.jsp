@@ -63,15 +63,24 @@
 							<li><a id="Home" href="${contextPath}/home" class="fa-home">home</a>
 							</li>
 
-							<li><span id="Pages" class="fa-copy ">Pages</span>
+							<li><span id="Pages" class="fa-copy ">Setting</span>
 								<ul>
 									<li><a href="${contextPath}/about">About Us</a></li>
 									<li><a href="${contextPath}/service">Services</a></li>
 									<li><a href="${contextPath}/fAQ">F.A.Q.</a></li>
 									<li><a href="${contextPath}/aboutMe">About Me</a></li>
-
-									<li><a href="${contextPath}/login">Login</a></li>
-									<li><a href="${contextPath}/register">Sign-Up</a></li>
+					<c:if test="${pageContext.request.userPrincipal.name == null }">
+				<li id="login"><a href="${contextPath}/login"> Login</a></li>
+			</c:if>				
+						<c:if test="${pageContext.request.userPrincipal.name != null }">
+				<c:url value="/logout" var="logoutUrl" />
+     <form id="logout" action="${logoutUrl}" method="post" >
+  <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+     </form>
+     <c:if test="${pageContext.request.userPrincipal.name != null}">
+	<a href="javascript:document.getElementById('logout').submit()">Logout</a>
+    </c:if>
+				</c:if>	<li><a href="${contextPath}/register">Sign-Up</a></li>
 									<li><a href="${contextPath}/error">404 Error Page</a></li>
 								</ul></li>
 							<li><span id="Category" class="fa-th ">Category</span>
@@ -90,8 +99,12 @@
 								</ul></li>
 							  <li><a id="Contact" href="${contextPath}/contact" class="fa-comment ">Contact</a></li>
 				
-<%-- 									<li class="col-float-right"><a id="Login" href="${contextPath}/login" class="fa-sign-in">Login</a></li> --%>
-							<li class="col-float-right"><a id="Admin" href="${contextPath}/login" class="fa-sign-in">Admin</a></li>
+			
+			
+<%-- 									li class="col-float-right"><a id="Login" href="${contextPath}/login" class="fa-sign-in">Login</a></li> --%>
+						
+						
+							<li class="pull-right"><a id="Admin" href="${contextPath}/admin" class="fa-user">Admin</a></li>
 							
 							
 					       </ul>

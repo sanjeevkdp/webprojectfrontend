@@ -9,6 +9,7 @@
 	<div class="container background-white bottom-border">
 		<div class="row margin-vert-30">
 		<h1>Administrator</h1>
+		
 			<p class="lead">Administrator can do these task</p>
 		
 		<c:url value="/logout" var="logoutUrl" />

@@ -6,7 +6,7 @@
 	<div class="container background-white bottom-border">
 		<div class="row margin-vert-30">
 
-			<form:form action="${contextPath}/admin/adminAddProduct" method="post" commandName="product" enctype="multipart/form-data" >
+			<form:form action="${contextPath}/admin/adminAddProduct?${_csrf.parameterName}=${_csrf.token}" method="post" commandName="product" enctype="multipart/form-data" >
 				<form:hidden path="product_id" value="${product.product_id}"/>
 				<div class="form-group">
 					<label for="name">Name</label>

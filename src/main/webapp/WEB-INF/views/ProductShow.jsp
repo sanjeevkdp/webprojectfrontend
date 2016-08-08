@@ -4,7 +4,7 @@
 	<div class="container background-white bottom-border">
 		<div class="row margin-vert-30">
 
-			<div class="container">
+			<div class="container" ng-app="cartApp ">
 				<div class="row">
 					<div class="col-md-5">
 						<img src="${img}/${product.product_id}.png" alt="image"
@@ -31,10 +31,17 @@
 						<p>
 							<strong>Supplier</strong>:${supplierName}
 						</p>
-
-						<button type="button" class="btn btn-red active">Add to
-							Cart</button>
-						<button type="button" class="btn btn-bronze active">Continue>></button>
+						<br>
+						<c:set var="role" scope="page" value="${param.role }" />
+						<c:set var="url" scope="page" value="${contextPath}/product" />
+						<%--                          <c:if test="${role="admin"}">				 --%>
+						<%--                                   <c:set var="url" scope="page" value="${contextPath}/admin/adminAddProduct/addProduct"/> --%>
+						<p ng-controller="cartCtrl">
+							<a href="${contextPath}/product" class="btn btn-default">Back</a>
+							<a href="#" class="btn btn-warnning"
+								ng-click="addToCart(${product.product_id})">Order Now</a> <a
+								href="${contextPath}/cart" class="btn btn-default">View Cart</a>
+						</p>
 
 					</div>
 				</div>
@@ -42,3 +49,4 @@
 		</div>
 	</div>
 </div>
+<script type="text/javascript" src="${jqueryJs}/angular.js" charset="utf-8"></script>

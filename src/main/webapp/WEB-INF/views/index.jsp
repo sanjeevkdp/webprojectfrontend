@@ -76,9 +76,6 @@
 <!-- Pages  Mapping -->
 
 
-<c:if test="${isFAQClicked==true }">
-	<%@include file="admin.jsp"%>
-</c:if>
 <c:if test="${isAdminClicked==true }">
 	<%@include file="admin.jsp"%>
 </c:if>

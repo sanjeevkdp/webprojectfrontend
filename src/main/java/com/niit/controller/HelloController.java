@@ -19,29 +19,29 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-//import com.niit.dao.CategoryDao;
-//import com.niit.dao.ProductDao;
-//import com.niit.dao.SupplierDao;
-//import com.niit.model.Category;
-//import com.niit.model.Product;
-//import com.niit.model.Supplier;
+import com.niit.dao.CategoryDao;
+import com.niit.dao.ProductDao;
+import com.niit.dao.SupplierDao;
+import com.niit.model.Category;
+import com.niit.model.Product;
+import com.niit.model.Supplier;
 
 
 @Controller
 public class HelloController {
 	private Path path;
-//	@Autowired
-//	private ProductDao productDao;
-//	@Autowired
-//	private Product product;
-//	@Autowired
-//	private Category category;
-//	@Autowired
-//	private CategoryDao categoryDao;
-//	@Autowired
-//	private Supplier supplier;
-//	@Autowired
-//	private SupplierDao supplierDao;
+	@Autowired
+	private ProductDao productDao;
+	@Autowired
+	private Product product;
+	@Autowired
+	private Category category;
+	@Autowired
+	private CategoryDao categoryDao;
+	@Autowired
+	private Supplier supplier;
+	@Autowired
+	private SupplierDao supplierDao;
 
 
 	@RequestMapping({ "/", "/index" })
@@ -101,13 +101,13 @@ public class HelloController {
 		return mv;
 	}
 
-//	 @RequestMapping("/Admin")
-//	 public ModelAndView AdminByIndex(){
-//	 ModelAndView mv = new ModelAndView("index");
-//	 mv.addObject("isAdminClicked","true");
-//	 mv.addObject("active","Admin");
-//	 return mv;
-//	 }
+	// @RequestMapping("/Admin")
+	 //public ModelAndView AdminByIndex(){
+	 //ModelAndView mv = new ModelAndView("index");
+	 //mv.addObject("isAdminClicked","true");
+	 //mv.addObject("active","Admin");
+	 //return mv;
+	 //}
 	@RequestMapping("/aboutMe")
 	public ModelAndView AboutMe() {
 		ModelAndView mv = new ModelAndView("index");

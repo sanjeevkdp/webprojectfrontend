@@ -29,7 +29,10 @@
             <script type="text/javascript" src="${jqueryJs}/jquery.min.js" type="text/javascript"></script>
             <script type="text/javascript" src="${jqueryJs}/bootstrap.min.js" type="text/javascript"></script>
             <script type="text/javascript" src="${jqueryJs}/scripts.js"></script>
+                <!--             angularjs -->
+            <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
             <!-- Isotope - Portfolio Sorting -->
+            
             <script type="text/javascript" src="${jqueryJs}/jquery.isotope.js" type="text/javascript"></script>
             <!-- Mobile Menu - Slicknav -->
             <script type="text/javascript" src="${jqueryJs}/jquery.slicknav.js" type="text/javascript"></script>
@@ -42,6 +45,7 @@
             <!-- Modernizr -->
             <script src="${jqueryJs}/modernizr.custom.js" type="text/javascript"></script>
             <script src="${jqueryJs}/webapp.js" type="text/javascript"></script>
+             <script type="text/javascript" src="${jqueryJs}/angular.js" charset="utf-8"></script>
             <!-- End JS -->
     </body>
 </html>
