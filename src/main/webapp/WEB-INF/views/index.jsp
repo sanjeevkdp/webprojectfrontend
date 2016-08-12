@@ -98,6 +98,9 @@
 	<%@include file="contact.jsp"%>
 </c:if>
 
+<c:if test="${isCartClicked==true }">
+	<%@include file="cart.jsp"%>
+</c:if>
 
 
 

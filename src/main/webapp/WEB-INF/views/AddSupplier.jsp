@@ -10,18 +10,26 @@
    <div class="form-group">
    <label for="name" >Name</label>
    <form:input path="supplier_name" id="name" class="form-control"/>
+      <form:errors path="supplier_name" cssStyle="color:#ff0000;"/>
+  
    </div>
    <div class="form-group">
    <label for="email" >Email</label>
    <form:input path="supplier_email" id="email" class="form-control"/>
+      <form:errors path="supplier_email" cssStyle="color:#ff0000;"/>
+  
    </div>
    <div class="form-group">
    <label for="contact" >Cantact</label>
    <form:input path="supplier_contact" id="contact" class="form-control"/>
+      <form:errors path="supplier_contact" cssStyle="color:#ff0000;"/>
+  
    </div>
    <div class="form-group">
    <label for="address" >Address</label>
    <form:textarea path="Supplier_address" id="address" class="form-control"/>
+      <form:errors path="Supplier_address" cssStyle="color:#ff0000;"/>
+  
    </div>
    <div class="form-group">
    <label class="control-label" for="image">Upload</label>

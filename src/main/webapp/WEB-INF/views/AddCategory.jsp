@@ -10,10 +10,12 @@
    <div class="form-group">
    <label for="name" >Name</label>
    <form:input path="category_name" id="name" class="form-control"/>
+   <form:errors path="category_name" cssStyle="color:#ff0000;"/>
    </div>
    <div class="form-group">
    <label for="description" >Description</label>
    <form:textarea path="description" id="description" class="form-control"/>
+   <form:errors path="description" cssStyle="color:#ff0000;"/>
    </div>
    
    

@@ -6,10 +6,12 @@ import java.nio.file.Paths;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -80,10 +82,15 @@ public class SupplierController {
 	
 	
 	@RequestMapping(value = "/admin/adminAddSupplier", method = RequestMethod.POST)
-	public ModelAndView AdminAddSupplierPost(@ModelAttribute("supplier") Supplier supplier, Model model,
+	public ModelAndView AdminAddSupplierPost(@Valid @ModelAttribute("supplier") Supplier supplier,BindingResult  result, Model model,
 			HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView("index");
+               if(result.hasErrors()){
+            	   mv.addObject("isAddSupplierClicked", true);
+           		mv.addObject("active", "addSupplier");
 
+           		return mv;  
+               }
 		MultipartFile imgUrl = supplier.getImgUrl();
 		String rootDirectory = request.getSession().getServletContext().getRealPath("/");
 		path = Paths.get(rootDirectory + "\\resources\\img\\" + supplier.getSupplier_id() + ".png");
@@ -165,9 +172,15 @@ public class SupplierController {
 	}
 
 	@RequestMapping(value = "/admin/adminAddSupplier/editSupplier", method = RequestMethod.POST)
-	public ModelAndView EditSupplierPost(@ModelAttribute("supplier") Supplier supplier, Model model,
+	public ModelAndView EditSupplierPost(@Valid @ModelAttribute("supplier") Supplier supplier,BindingResult result, Model model,
 			HttpServletRequest request) {
 		 ModelAndView mv = new ModelAndView("index");
+		 if(result.hasErrors()){
+			 mv.addObject("isEditSupplierClicked", "true");
+			 mv.addObject("active", "editSupplier");
+			return mv;
+			 
+		 }
 
 		MultipartFile imgUrl = supplier.getImgUrl();
 		String rootDirectory = request.getSession().getServletContext().getRealPath("/");

@@ -6,10 +6,12 @@ import java.nio.file.Paths;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -40,9 +42,6 @@ public class CategoryController {
 	private Supplier supplier;
 	@Autowired
 	private SupplierDao supplierDao;
-	
-	
-	
 
 	// ============category first Step==================//
 
@@ -54,7 +53,7 @@ public class CategoryController {
 		mv.addObject("category", category);
 		mv.addObject("isCategoryClicked", "true");
 		mv.addObject("active", "category");
-		
+
 		return mv;
 
 	}
@@ -76,7 +75,7 @@ public class CategoryController {
 	@RequestMapping("/admin/adminAddCategory/addCategory")
 	public ModelAndView AddCategory(Model model) {
 		ModelAndView mv = new ModelAndView("index");
-		//Category category = new Category();
+		// Category category = new Category();
 		model.addAttribute("category", category);
 
 		mv.addObject("isAddCategoryClicked", true);
@@ -85,13 +84,15 @@ public class CategoryController {
 		return mv;
 	}
 
-	
-
 	@RequestMapping(value = "/admin/adminAddCategory", method = RequestMethod.POST)
-	public ModelAndView AdminAddCategoryPost(@ModelAttribute("category") Category category, Model model,
-			HttpServletRequest request) {
+	public ModelAndView AdminAddCategoryPost(@Valid @ModelAttribute("category") Category category, BindingResult result,
+			Model model, HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView("index");
-		
+		if (result.hasErrors()) {
+			mv.addObject("isAddCategoryClicked", true);
+			mv.addObject("active", "addCategory");
+			return mv;
+		}
 
 		MultipartFile imgUrl = category.getImgUrl();
 		String rootDirectory = request.getSession().getServletContext().getRealPath("/");
@@ -109,7 +110,6 @@ public class CategoryController {
 		List<Category> listCategory = categoryDao.list();
 		model.addAttribute("categories", listCategory);
 		mv.addObject("category", category);
-		
 
 		mv.addObject("isAdminAddCategoryClicked", true);
 		mv.addObject("active", "AdminAddCategory");
@@ -119,7 +119,8 @@ public class CategoryController {
 	// Delete Category==============//
 
 	@RequestMapping("/admin/adminAddCategory/{category_id}")
-	public ModelAndView Categorydelete(@PathVariable("category_id") String id, Model model, HttpServletRequest request) {
+	public ModelAndView Categorydelete(@PathVariable("category_id") String id, Model model,
+			HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView("index");
 
 		String rootDirectory = request.getSession().getServletContext().getRealPath("/");
@@ -137,32 +138,35 @@ public class CategoryController {
 		List<Category> listCategory = categoryDao.list();
 		model.addAttribute("categories", listCategory);
 		mv.addObject("category", category);
-		
+
 		mv.addObject("isAdminAddCategoryClicked", true);
 		mv.addObject("active", "AdminAddCategory");
 		return mv;
-		//return "redirect:/adminAddCategory";
+		// return "redirect:/adminAddCategory";
 	}
 
 	// ======EditCategory
-	
-	
 
 	@RequestMapping("/admin/adminAddCategory/editCategory/{category_id}")
 	public ModelAndView editcategory(@PathVariable("category_id") String id, Model model) {
-		 ModelAndView mv = new ModelAndView("index");
+		ModelAndView mv = new ModelAndView("index");
 		Category category = categoryDao.get(id);
 		model.addAttribute(category);
-		 mv.addObject("isEditCategoryClicked", "true");
-		 mv.addObject("active", "editCategory");
+		mv.addObject("isEditCategoryClicked", "true");
+		mv.addObject("active", "editCategory");
 		return mv;
 	}
 
 	@RequestMapping(value = "/admin/adminAddCategory/editCategory", method = RequestMethod.POST)
-	public ModelAndView EditCategoryPost(@ModelAttribute("category") Category category, Model model,
-			HttpServletRequest request) {
-		 ModelAndView mv = new ModelAndView("index");
+	public ModelAndView EditCategoryPost(@Valid @ModelAttribute("category") Category category, BindingResult result,
+			Model model, HttpServletRequest request) {
+		ModelAndView mv = new ModelAndView("index");
+		if (result.hasErrors()) {
+			mv.addObject("isEditCategoryClicked", "true");
+			mv.addObject("active", "editCategory");
+			return mv;
 
+		}
 		MultipartFile imgUrl = category.getImgUrl();
 		String rootDirectory = request.getSession().getServletContext().getRealPath("/");
 		path = Paths.get(rootDirectory + "\\resources\\img\\" + category.getCategory_id() + ".png");
@@ -179,14 +183,11 @@ public class CategoryController {
 		List<Category> listCategory = categoryDao.list();
 		model.addAttribute("categories", listCategory);
 		mv.addObject("category", category);
-		
 
-		 mv.addObject("isEditCategoryClicked", true);
-		 mv.addObject("active", "editCategory");
-	return mv;
-		 //	return "redirect:/editCategory";
+		mv.addObject("isEditCategoryClicked", true);
+		mv.addObject("active", "editCategory");
+		return mv;
+		// return "redirect:/editCategory";
 	}
-
-
 
 }

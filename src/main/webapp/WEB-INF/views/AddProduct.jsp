@@ -10,6 +10,7 @@
 				<div class="form-group">
 					<label for="name">Name</label>
 					<form:input path="product_name" id="name" class="form-control" />
+					<form:errors path="product_name" cssStyle="color:#ff0000;"/>
 				</div>
 				<div class="form-group">
 					<label for="category_id">Category</label> <form:select
@@ -34,6 +35,7 @@
 				<div class="form-group">
 					<label for="price">Price</label>
 					<form:input path="unit_price" id="price" class="form-control" />
+					<form:errors path="unit_price" cssStyle="color:#ff0000;"/>
 				</div>
 				<div class="form-group">
 					<label for="outOfStock">Out Of Stock</label>
@@ -44,6 +46,7 @@
 					<label for="description">Description</label>
 					<form:textarea path="description" id="description"
 						class="form-control" />
+						<form:errors path="description" cssStyle="color:#ff0000;"/>
 				</div>
 				<div class="form-group">
 					<label class="control-label" for="image">Upload</label>

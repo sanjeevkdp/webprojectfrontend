@@ -1,10 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-	<%@ include file="./shared/header.jsp"%>
-
-
-<%@ include file="./shared/menu.jsp"%>
-
+	
 	
 <div id="content" class="bottom-border-shadow">
 	<div class="container background-white bottom-border">
@@ -21,10 +17,10 @@
 						</div>
 
 					</section>
-					<section class="container" ng-app="cartApp">
-						<div ng-controller="cartCtrl" ng-init="initCartId(${cart_id})">
+					<section class="container" >
+						<div>
 							<div>
-								<a class="btn btn-danger pull-left" ng-click="clearCart()"><span
+								<a class="btn btn-danger pull-left" ><span
 									class="fa fa-remove-sign"></span>Clear Cart</a>
 
 							</div>
@@ -36,13 +32,12 @@
 									<td>Price</td>
 									<td>Action</td>
 								</tr>
-								<tr ng-repeat="item in cart.cartItem">
-									<td>{{item.product.product_name}}</td>
-									<td>{{item.product.unit_price}}</td>
-									<td>{{item.quantity}}</td>
-									<td>{{item.totalPrice}}</td>
-									<td><a href="#" class="labe label-label-danger"
-										ng-click="removeFromCart(item.product.product_id)"><span
+								<tr>
+									<td>${product.product_id}</td>
+									<td>${product.unit_price}</td>
+									<td></td>
+									<td></td>
+									<td><a href="#" class="labe label-label-danger"><span
 											class="fa fa-remove-o"></span>Remove</a></td>
 
 
@@ -51,7 +46,7 @@
 									<th></th>
 									<th></th>
 									<th>Grand Total</th>
-									<th>{{cart.grandTotal}}</th>
+									<th></th>
 									<th></th>
 								</tr>
 
@@ -72,5 +67,4 @@
 		</div>
 	</div>
 </div>
-<script type="text/javascript" src="${jqueryJs}/angular.js" charset="utf-8"></script>
-<%@ include file="./shared/footer.jsp"%>
+

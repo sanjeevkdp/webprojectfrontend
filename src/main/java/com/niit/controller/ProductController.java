@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.jsp.jstl.sql.Result;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -67,7 +68,7 @@ public class ProductController {
 			productModel.setCategoryName(category.getCategory_name());
 			productModel.setSupplierName(supplier.getSupplier_name());
 			products.add(productModel);
-           
+
 		}
 		model.addAttribute("products", products);
 		mv.addObject("isProductClicked", "true");
@@ -76,20 +77,18 @@ public class ProductController {
 		return mv;
 
 	}
-	
-//=============== Admin part==========================//
-	
-	
 
-//	==========================================//
-//	     Admin Add Product
-	//===================================================//
+	// =============== Admin part==========================//
+
+	// ==========================================//
+	// Admin Add Product
+	// ===================================================//
 	@RequestMapping("/admin/adminAddProduct")
 	public ModelAndView adminAddProduct(Model model) {
 		ModelAndView mv = new ModelAndView("index");
 		List<Product> listProduct = productDao.list();
 		model.addAttribute("products", listProduct);
-		
+
 		// list the name of supplier and category into the product row
 
 		List<ProductModel> products = new ArrayList<>();
@@ -111,10 +110,10 @@ public class ProductController {
 		return mv;
 
 	}
-	
-	//=====================================second step =====================//
-	//    add product
-	//=====================================================================//
+
+	// =====================================second step =====================//
+	// add product
+	// =====================================================================//
 
 	@RequestMapping("/admin/adminAddProduct/addProduct")
 	public ModelAndView AddProduct(Model model) {
@@ -122,7 +121,7 @@ public class ProductController {
 		Product product = new Product();
 		List<Category> categoryList = categoryDao.list();
 		mv.addObject("categories", categoryList);
-		List<Supplier> supplierList =supplierDao.list();
+		List<Supplier> supplierList = supplierDao.list();
 		mv.addObject("suppliers", supplierList);
 		product.setQuantity(1);
 		product.setOut_of_stock(false);
@@ -133,34 +132,36 @@ public class ProductController {
 
 		return mv;
 	}
-	
-	
-	
-	
-	                    
-	//=====================================================================//
-	//====================adding Product step third========================
-	
-	@RequestMapping(value ="/admin/adminAddProduct", method = RequestMethod.POST)
-	public ModelAndView AdminAddProductPost(@Valid @ModelAttribute("product") Product product, BindingResult result,Model model,
-			HttpServletRequest request) {
+
+	// =====================================================================//
+	// ====================adding Product step third========================
+
+	@RequestMapping(value = "/admin/adminAddProduct", method = RequestMethod.POST)
+	public ModelAndView AdminAddProductPost(@Valid @ModelAttribute("product") Product product, BindingResult result,
+			Model model, HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView("index");
 
-		if(result.hasErrors()){
+		if (result.hasErrors()) {
+			List<Category> categoryList = categoryDao.list();
+			mv.addObject("categories", categoryList);
+			List<Supplier> supplierList = supplierDao.list();
+			mv.addObject("suppliers", supplierList);
+			// product.setQuantity(1);
+			// product.setOut_of_stock(false);
+			// model.addAttribute("product", product);
 			mv.addObject("isAddProductClicked", true);
 			mv.addObject("active", "addProduct");
 
 			return mv;
-			
+
 		}
-	
-		
+
 		MultipartFile imgUrl = product.getImgUrl();
-		
+
 		String rootDirectory = request.getSession().getServletContext().getRealPath("/");
-		
-		Path path = Paths.get(rootDirectory +"\\resources\\img\\"+product.getProduct_id()+".png");
-		
+
+		Path path = Paths.get(rootDirectory + "\\resources\\img\\" + product.getProduct_id() + ".png");
+
 		if (imgUrl != null && !imgUrl.isEmpty()) {
 			try {
 				imgUrl.transferTo(new java.io.File(path.toString()));
@@ -174,7 +175,7 @@ public class ProductController {
 
 		List<Product> listProduct = productDao.list();
 		model.addAttribute("products", listProduct);
-		
+
 		// list the name of supplier and category into the product row
 
 		List<ProductModel> products = new ArrayList<>();
@@ -191,37 +192,49 @@ public class ProductController {
 		}
 		model.addAttribute("products", products);
 
-		
-		 mv.addObject("isAdminAddProductClicked", true);
-		 mv.addObject("active", "adminAddProduct");
+		mv.addObject("isAdminAddProductClicked", true);
+		mv.addObject("active", "adminAddProduct");
 		return mv;
-		//return "redirect:/adminAddProduct";
+		// return "redirect:/adminAddProduct";
 	}
-	
-	
-	//========================================================================//
-	//===============================edit Product forth======================//
-	
-	
+
+	// ========================================================================//
+	// ===============================edit Product forth======================//
+
 	@RequestMapping("/admin/adminAddProduct/editProduct/{product_id}")
 	public ModelAndView editProduct(@PathVariable("product_id") String id, Model model) {
-		 ModelAndView mv = new ModelAndView("index");
-		 Product product = productDao.get(id);
-		 List<Category> categoryList = categoryDao.list();
-			mv.addObject("categories", categoryList);
-			List<Supplier> supplierList =supplierDao.list();
-			mv.addObject("suppliers", supplierList);
+		ModelAndView mv = new ModelAndView("index");
+		Product product = productDao.get(id);
+		List<Category> categoryList = categoryDao.list();
+		mv.addObject("categories", categoryList);
+		List<Supplier> supplierList = supplierDao.list();
+		mv.addObject("suppliers", supplierList);
 		model.addAttribute(product);
-		 mv.addObject("isEditProductClicked", "true");
-		 mv.addObject("active", "editProduct");
+		mv.addObject("isEditProductClicked", "true");
+		mv.addObject("active", "editProduct");
 		return mv;
 	}
 
-	@RequestMapping(value = "/admin/adminAddProduct/editProduct", method = RequestMethod.POST)
-	public ModelAndView EditProductPost(@ModelAttribute("product") Product product, Model model,
-			HttpServletRequest request) {
-		   ModelAndView mv = new ModelAndView("index");
+	// admin can Edit Product//
 
+	@RequestMapping(value = "/admin/adminAddProduct/editProduct/", method = RequestMethod.POST)
+	public ModelAndView EditProductPost(@Valid @ModelAttribute("product") Product product, BindingResult result,
+			Model model, HttpServletRequest request) {
+		ModelAndView mv = new ModelAndView("index");
+		if (result.hasErrors()) {
+			List<Category> categoryList = categoryDao.list();
+			mv.addObject("categories", categoryList);
+			List<Supplier> supplierList = supplierDao.list();
+			mv.addObject("suppliers", supplierList);
+			// product.setQuantity(1);
+			// product.setOut_of_stock(false);
+			// model.addAttribute("product", product);
+			mv.addObject("isEditProductClicked", "true");
+			mv.addObject("active", "editProduct");
+
+			return mv;
+
+		}
 		MultipartFile imgUrl = product.getImgUrl();
 		String rootDirectory = request.getSession().getServletContext().getRealPath("/");
 		path = Paths.get(rootDirectory + "\\resources\\img\\" + product.getProduct_id() + ".png");
@@ -234,12 +247,11 @@ public class ProductController {
 				// TODO: handle exception
 			}
 		}
-		
 
 		productDao.editProduct(product);
 		List<Product> listProduct = productDao.list();
 		model.addAttribute("products", listProduct);
-		
+
 		// list the name of supplier and category into the product row
 
 		List<ProductModel> products = new ArrayList<>();
@@ -254,22 +266,20 @@ public class ProductController {
 			products.add(productModel);
 
 		}
-		
-		
+
 		model.addAttribute("products", products);
-		
-		 mv.addObject("isEditProductClicked", "true");
-		 mv.addObject("active", "editProduct");
-	
-	return mv;
-		//return "redirect:/editProduct";
+
+		mv.addObject("isEditProductClicked", "true");
+		mv.addObject("active", "editProduct");
+
+		return mv;
+		// return "redirect:/editProduct";
 	}
 
-	
-	//========================delete product fifth===============//
+	// ========================delete product fifth===============//
 	@RequestMapping("/admin/adminAddProduct/{product_id}")
 	public ModelAndView Productdelete(@PathVariable("product_id") String id, Model model, HttpServletRequest request) {
-                ModelAndView mv=new ModelAndView("index");
+		ModelAndView mv = new ModelAndView("index");
 		String rootDirectory = request.getSession().getServletContext().getRealPath("/");
 		path = Paths.get(rootDirectory + "\\resources\\img\\" + id + ".png");
 		if (Files.exists(path)) {
@@ -284,7 +294,7 @@ public class ProductController {
 		productDao.delete(id);
 		List<Product> listProduct = productDao.list();
 		model.addAttribute("products", listProduct);
-		
+
 		List<ProductModel> products = new ArrayList<>();
 		ProductModel productModel = null;
 		for (Product p : listProduct) {
@@ -298,14 +308,12 @@ public class ProductController {
 
 		}
 		model.addAttribute("products", products);
-		
-		
-		//return "redirect:/adminAddProduct";
-		 mv.addObject("isAdminAddProductClicked", true);
-		 mv.addObject("active", "AdminAddProduct");
+
+		// return "redirect:/adminAddProduct";
+		mv.addObject("isAdminAddProductClicked", true);
+		mv.addObject("active", "AdminAddProduct");
 		return mv;
 	}
-	
 
 	// showing the description
 
@@ -315,11 +323,24 @@ public class ProductController {
 
 		product = productDao.get(id);
 		model.addAttribute("product", product);
-		category = categoryDao.get(product.getCategory_id());
-		String categoryName = category.getCategory_name();
+		
+		String categoryName;
+		if (product.getCategory_id() != null && !product.getCategory_id().isEmpty()) {
+			category = categoryDao.get(product.getCategory_id());
+			categoryName = category.getCategory_name();
+		} else {
+			category.setCategory_name("'Not Available'");
+			categoryName = category.getCategory_name();
+		}
 		mv.addObject("categoryName", categoryName);
-		supplier = supplierDao.get(product.getSupplier_id());
-		String supplierName = supplier.getSupplier_name();
+		String supplierName;
+		if (product.getSupplier_id() != null && !product.getSupplier_id().isEmpty()) {
+			supplier = supplierDao.get(product.getSupplier_id());
+			supplierName = supplier.getSupplier_name();
+		} else {
+			supplier.setSupplier_name("'Not Available'");
+			supplierName = supplier.getSupplier_name();
+		}
 		mv.addObject("supplierName", supplierName);
 
 		mv.addObject("isProductShowClicked", "true");
