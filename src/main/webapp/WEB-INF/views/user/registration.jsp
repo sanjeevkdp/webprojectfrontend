@@ -7,7 +7,7 @@
 		<div class="row margin-vert-30">
                  <h1>Customer Detals</h1>
                  <p>fill in the detail</p>
-			<form:form action="${contextPath}/registration" method="post" commandName="customer" >
+                 <form:form action="${contextPath}/registration" method="post" commandName="customer" >
 				<div class="form-group">
 					<label for="name">Name</label>
 					<form:input path="customer_name" id="name" class="form-control" />
@@ -24,8 +24,6 @@
 					<label for="gender">Gender</label>
 					<label class="checkbox-inline"><form:radiobutton path="gender" id="gender" value="male" />Male</label>
 				<label class="checkbox-inline"><form:radiobutton path="gender" id="gender" value="female" />Female</label>
-						
-					
 							</div>
 				 <div class="form-group">
 					<label for="username">Username</label>
@@ -39,11 +37,10 @@
 				<input type="submit" value="submit" class="btn btn-default" />
 				<a href="${contextPath}/admin/adminAddProduct" class="btn btn-default">Cancel</a>
 
-
 			</form:form>
 		</div>
 	</div>
-</div>
-
-
-    
+</div>		
+			
+			
+			

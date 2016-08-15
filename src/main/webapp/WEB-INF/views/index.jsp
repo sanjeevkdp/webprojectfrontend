@@ -23,14 +23,14 @@
 	<%@include file="category.jsp"%>
 </c:if>
 <c:if test="${isEditCategoryClicked==true }">
-	<%@include file="editCategory.jsp"%>
+	<%@include file="./admin/editCategory.jsp"%>
 </c:if>
 <c:if test="${isAdminAddCategoryClicked==true }">
-	<%@include file="adminAddCategoryList.jsp"%>
+	<%@include file="./admin/adminAddCategoryList.jsp"%>
 </c:if>
 
 <c:if test="${isAddCategoryClicked==true }">
-	<%@include file="addCategory.jsp"%>
+	<%@include file="./admin/addCategory.jsp"%>
 </c:if>
 
 <!-- product -->
@@ -41,13 +41,13 @@
 </c:if>
 
 <c:if test="${isAdminAddProductClicked==true }">
-	<%@include file="adminAddProductList.jsp"%>
+	<%@include file="./admin/adminAddProductList.jsp"%>
 </c:if>
 <c:if test="${isEditProductClicked==true }">
-	<%@include file="editProduct.jsp"%>
+	<%@include file="./admin/editProduct.jsp"%>
 </c:if>
 <c:if test="${isAddProductClicked==true }">
-	<%@include file="addProduct.jsp"%>
+	<%@include file="./admin/addProduct.jsp"%>
 </c:if>
 <c:if test="${isProductShowClicked==true }">
 	<%@include file="productShow.jsp"%>
@@ -55,16 +55,16 @@
 
 <!--   =================        supplier========================== -->
 <c:if test="${isAdminAddSupplierClicked==true }">
-	<%@include file="adminAddSupplierList.jsp"%>
+	<%@include file="./admin/adminAddSupplierList.jsp"%>
 </c:if>
 <c:if test="${isAddSupplierClicked==true }">
-	<%@include file="addSupplier.jsp"%>
+	<%@include file="./admin/addSupplier.jsp"%>
 </c:if>
 <c:if test="${isProfileClicked==true }">
 	<%@include file="supplierProfile.jsp"%>
 </c:if>
 <c:if test="${isEditSupplierClicked==true }">
-	<%@include file="editSupplier.jsp"%>
+	<%@include file="./admin/editSupplier.jsp"%>
 </c:if>
 
 
@@ -105,7 +105,9 @@
 <c:if test="${isRegistrationClicked==true }">
 	<%@include file="./user/registration.jsp"%>
 </c:if>
-
+<c:if test="${isRegistrationSuccessClicked==true }">
+	<%@include file="./customer/registrationSuccess.jsp"%>
+</c:if>
 
 
 
