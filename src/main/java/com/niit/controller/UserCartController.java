@@ -1,13 +1,18 @@
 package com.niit.controller;
 
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.niit.dao.CartDao;
@@ -22,6 +27,7 @@ import com.niit.model.Category;
 import com.niit.model.Customer;
 import com.niit.model.Product;
 import com.niit.model.Supplier;
+import com.niit.viewModel.CartItemModel;
 
 @Controller
 public class UserCartController {
@@ -52,104 +58,182 @@ public class UserCartController {
 	private CustomerDao customerDao;
 
 	@RequestMapping("/cart/addToCart/{product_id}")
-	public ModelAndView addToCart(@PathVariable("product_id") String product_id, Model model, Principal userName)
-			throws Exception {
-		ModelAndView mv = new ModelAndView("index");
+	public String addToCart(@PathVariable("product_id") String product_id, Model model, Principal userName) {
 
+		// System.out.println(name);
+
+		// 1.Get the customer id by its user name
 		String customerName = userName.getName();
 		customer = customerDao.getCustomerByUserName(customerName);
 		String customerId = customer.getCustomerId();
+
+		// 2.Check whether his cart is present in the cart table
+		// If cart is not present then make a cart for him
+
 		if (cartDao.getCartByCustomerId(customerId) == null) {
+			cart = new Cart();
 			cart.setCustomerId(customerId);
 			cartDao.saveOrUpdate(cart);
 
+			// cartItem.setCartId(cart.getCartId());
 		}
 
-		product = productDao.get(product_id);
+		// This statement changes the cart if cart is present and due to
+		// unpresence of this there where errors
+		else {
+			cart = cartDao.getCartByCustomerId(customerId);
+		}
 
-		if (addCartItem(customerId, product_id, cart.getCart_id()) == null) {
+		String cart_id = cart.getCart_id();
+
+		// 3.get the product price
+
+		product = productDao.get(product_id);
+		
+		
+		if (addCartItem(customerId, product_id,cart_id, model) == null) {
 			cartItem = new CartItem();
-			cartItem.setCart_id(cart.getCart_id());
+			cartItem.setCart_id(cart_id);
 			cartItem.setCustomerId(customerId);
 			cartItem.setProduct_id(product.getProduct_id());
 			cartItem.setQuantity(1);
 			cartItem.setTotalPrice(product.getUnit_price());
 			cartItemDao.saveOrUpdate(cartItem);
-
 			System.out.println("Insertion of cartItem");
+			int noOfProducts = updateCartAgain(cart_id, customerId);
+			model.addAttribute("noOfProducts", noOfProducts);
 		}
+		// Now navigate to the same page
+		return "redirect:/productShow/{product_id}?addToCartSuccessMessage";
+	}
+
+	// This function will update the cart
+	public int updateCartAgain(String cart_id, String customerId) {
+
 		List<CartItem> listOfSelectedCartItems;
+		// Now after getting the cartItem change grandTotal and No of Products
 		listOfSelectedCartItems = cartItemDao.getCartItemsByCustomerId(customerId);
 		double grandTotal = 0;
 		for (CartItem item : listOfSelectedCartItems) {
 			grandTotal = grandTotal + item.getTotalPrice();
 		}
 		cart.setGrandTotal(grandTotal);
+		
+		int noOfProducts = listOfSelectedCartItems.size();
 
-		int noOfProduct = listOfSelectedCartItems.size();
-		cart.setCart_id(cart.getCart_id());
-		cart.setNoOfproduct(noOfProduct);
-		cartDao.saveOrUpdate(cart);
+		cart.setCart_id(cart_id);
+		cart.setCustomerId(customerId);
+		cart.setNoOfproduct(noOfProducts);
+		cartDao.saveOrUpdate(cart); // This method updates the cart
 
-		mv.addObject("cartItems", noOfProduct);
-		mv.addObject("addToCartSuccessMessage", true);
-
+		return noOfProducts;
 		// =========== Completed Adding the item to cart =====
 
-		// Now navigate to the same page
+	}
 
-		product = productDao.get(product_id);
-		model.addAttribute("product", product);
+	// This is the method which perform all the operations related to addition
+	// of product cartItem
+	public String addCartItem(String customerId, String product_id, String cart_id, Model model) {
+		List<CartItem> listOfSelectedCartItems = cartItemDao.getCartItemsByCustomerId(customerId);
+		Product product = productDao.get(product_id);
+		for (CartItem item : listOfSelectedCartItems) {
+			String itemProductId = item.getProduct_id();
+			//System.out.println(itemProductId);
+			if (itemProductId.equals(product.getProduct_id())) {
+				//System.out.println(item.getCart_id());
+				item.setCart_id(item.getCart_id());
 
-		String categoryName;
-		if (product.getCategory_id() != null && !product.getCategory_id().isEmpty()) {
-			category = categoryDao.get(product.getCategory_id());
-			categoryName = category.getCategory_name();
-		} else {
-			category.setCategory_name("'Not Available'");
-			categoryName = category.getCategory_name();
+			//	System.out.println(item.getQuantity());
+				item.setQuantity(item.getQuantity() + 1);
+
+
+			//	System.out.println(item.getTotalPrice());
+				item.setTotalPrice(item.getTotalPrice() + product.getUnit_price());
+
+			//	System.out.println(item.toString());
+				cartItemDao.saveOrUpdate(item);
+				int noOfProducts = updateCartAgain(cart_id, customerId);
+				model.addAttribute("noOfProducts", noOfProducts);
+				return "redirect:/productShow/{product_id}?addToCartSuccessMessage";
+
+			}
+
 		}
-		mv.addObject("categoryName", categoryName);
 
-		// gets supplier name
-		String supplierName;
-		if (product.getSupplier_id() != null && !product.getSupplier_id().isEmpty()) {
-			supplier = supplierDao.get(product.getSupplier_id());
-			supplierName = supplier.getSupplier_name();
-		} else {
-			supplier.setSupplier_name("'Not Available'");
-			supplierName = supplier.getSupplier_name();
+		return null;
+
+	}
+	
+	@RequestMapping("/cart")
+	public ModelAndView Cart(Model model, Principal userName,
+			@RequestParam(value = "cartItemRemoved", required = false) String cartItemRemoved)
+
+	{
+		ModelAndView mv = new ModelAndView("index");
+		String customerName = userName.getName();
+		if (cartItemRemoved != null) {
+			model.addAttribute("cartItemRemoved", "Cart item removed successfully");
 		}
-		mv.addObject("supplierName", supplierName);
 
-		mv.addObject("isProductShowClicked", "true");
-		mv.addObject("active", "login");
+		customer = customerDao.getCustomerByUserName(customerName);
+		String customerId = customer.getCustomerId();
+
+		List<CartItemModel> cartItems = null;
+
+		// When there are products in cart
+		if (returnProductName(customerId) != null && !returnProductName(customerId).isEmpty()) {
+			cartItems = returnProductName(customerId);
+
+			mv.addObject("cartItems", cartItems);
+			double grandTotal = cartDao.getCartByCustomerId(customerId).getGrandTotal();
+			mv.addObject("grandTotal", grandTotal);
+
+			mv.addObject("noOfProducts", cartItems.size());
+
+		}
+		// When there are no products in cart
+		else {
+			model.addAttribute("cartEmpty", "No items present in the cart");
+
+			mv.addObject("noOfProducts", 0);
+		}
+		//mv.addObject("isCartClicked", true);
+		mv.addObject("isCartClicked", "true");
+		mv.addObject("active", "cart");
 
 		return mv;
 	}
 
-	public String addCartItem(String customerId, String product_id, String cart_id) {
-		List<CartItem> listOfSelectedCartItems = cartItemDao.getCartItemsByCustomerId(customerId);
+	// Method to get name of product
+	public List<CartItemModel> returnProductName(String customerId) {
 
-		Product product = productDao.get(product_id);
+		List<CartItem> cartItems = cartItemDao.getCartItemsByCustomerId(customerId);
 
-		for (CartItem item : listOfSelectedCartItems) {
-			String itemProduct_id = item.getProduct_id();
+		List<CartItemModel> cartItemModelList = new ArrayList<>();
 
-			if (itemProduct_id.equals(product.getProduct_id())) {
+		CartItemModel cartItemModel = null;
 
-				item.setCartItem_id(item.getCartItem_id());
-
-				item.setQuantity(item.getQuantity() + 1);
-
-				item.setTotalPrice(item.getTotalPrice() + product.getUnit_price());
-
-				cartItemDao.saveOrUpdate(item);
-				
-				return "Updation Successful";
+		for (CartItem item : cartItems) {
+			cartItemModel = new CartItemModel();
+			cartItemModel.setCartItem(item);
+			if (item.getProduct_id() != null && !item.getProduct_id().isEmpty()) {
+				product = productDao.get(item.getProduct_id());
+				cartItemModel.setProductName(product.getProduct_name());
+			} else {
+				cartItemModel.setProductName("Currently not avilable");
 			}
+			cartItemModelList.add(cartItemModel);
 		}
-
-		return null;
+		return cartItemModelList;
+	}
+	@RequestMapping("/cart/remove/{cartItem_id}")
+	public String removeCarItems(@PathVariable("cartItem_id") String cartItem_id, Model model) {
+		cartItem = cartItemDao.get(cartItem_id);
+		String customerId = cartItem.getCustomerId();
+		String cart_id = cartItem.getCart_id();
+		cartItemDao.delete(cartItem_id);
+		int noOfProducts = updateCartAgain(cart_id, customerId);
+		model.addAttribute("noOfProducts", noOfProducts);
+		return "redirect:/cart/?cartItemRemoved";
 	}
 }

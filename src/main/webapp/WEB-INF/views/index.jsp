@@ -101,7 +101,10 @@
 <c:if test="${isCartClicked==true }">
 	<%@include file="cart.jsp"%>
 </c:if>
-
+<!--    userRegitration -->
+<c:if test="${isRegistrationClicked==true }">
+	<%@include file="./user/registration.jsp"%>
+</c:if>
 
 
 

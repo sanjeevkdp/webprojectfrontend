@@ -159,11 +159,11 @@ p.site-slogan {
 }
 /* Footer Menu */
 #footer {
-	background: rgba(0, 0, 0, 0.85);
-	color: #bbb;
-	color: rgba(255, 255, 255, 0.5);
-	padding-top: 25px;
-	padding-bottom: 25px;
+	background: rgba(0, 0, 0, 2);
+	color: #000000;
+	color: rgba(255, 255, 255, 2);
+	padding-top: 60px;
+	padding-bottom: 0px;
 	height: 100px;
 }
 

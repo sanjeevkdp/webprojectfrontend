@@ -325,6 +325,7 @@ public class ProductController {
 		model.addAttribute("product", product);
 		
 		String categoryName;
+		
 		if (product.getCategory_id() != null && !product.getCategory_id().isEmpty()) {
 			category = categoryDao.get(product.getCategory_id());
 			categoryName = category.getCategory_name();

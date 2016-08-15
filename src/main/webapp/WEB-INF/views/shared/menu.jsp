@@ -85,7 +85,7 @@
 												href="javascript:document.getElementById('logout').submit()"> Logout</a></li>
 										</c:if>
 									</c:if>
-									<li><a href="${contextPath}/register">Sign-Up</a></li>
+									<li><a href="${contextPath}/registration">Sign-Up</a></li>
 									<li><a href="${contextPath}/error">404 Error Page</a></li>
 								</ul></li>
 							<li><span id="category" class="fa-th ">Category</span>
@@ -98,9 +98,8 @@
 								</ul></li>
 							<li><span id="product" class="fa-font ">product</span>
 								<ul>
-									<li><a id="product" href="${contextPath}/product">product</a></li>
-									<li><a id="product" href="${contextPath}/productItem">product
-											Single Item</a></li>
+									<li><a id="product" href="${contextPath}/product">PRODUCTS</a></li>
+									<li><a id="product" href="${contextPath}/productItem">PRODUCT ITEM</a></li>
 								</ul></li>
 							<li><a id="contact" href="${contextPath}/contact"
 								class="fa-comment ">Contact</a></li>
@@ -112,16 +111,26 @@
 										
 							<sec:authorize access="hasRole('ROLE_ADMIN')">			
 							<li class="pull-right"><a id="admin"
-								href="${contextPath}/admin" class="fa-user">Admin</a></li>
+								href="${contextPath}/admin" class="fa-user">Admin</a>
+								<ul>
+									<li><a  href="${contextPath}/admin/adminAddProduct">ADD PRODUCT</a></li>
+									<li><a  href="${contextPath}/admin/adminAddCategory">ADD CATEGORY</a></li>
+									<li><a href="${contextPath}/admin/adminAddSupplier" >ADD SUPPLIER</a></li>
+									
+								</ul></li>
                            </sec:authorize>
                               <sec:authorize access="hasRole('ROLE_USER')">			
-							<li class="pull-right"><a id="admin"
+							<li class="pull-right"><a id="user"
+								href="${contextPath}/cart" class="fa-shopping-cart">Cart</a></li>
+								<li class="pull-right"><a id="user"
 								href="${contextPath}/product" class="fa-user">Sanjeev</a></li>
+                         
                            </sec:authorize>
 
 						</ul>
 					</div>
 				</div>
+				
 			</div>
 		</div>
 	</div>

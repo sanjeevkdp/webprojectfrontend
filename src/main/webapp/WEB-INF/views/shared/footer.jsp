@@ -1,6 +1,6 @@
 
             <!-- Footer -->
-            <div id="footer" class="background-grey">
+            <div id="footer" class="background-gray">
                 <div class="container">
                     <div class="row">
                         <!-- Footer Menu -->

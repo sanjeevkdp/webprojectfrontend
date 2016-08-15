@@ -19,6 +19,12 @@
 					</section>
 					<section class="container" >
 						<div>
+						<c:choose>
+	     	<c:when test="${not empty cartEmpty}">
+			<h2 style="margin: auto;text-align:center;">No products in cart</h2>
+	       	</c:when>
+	            	<c:otherwise>
+	
 							<div>
 								<a class="btn btn-danger pull-left" ><span
 									class="fa fa-remove-sign"></span>Clear Cart</a>
@@ -26,19 +32,22 @@
 							</div>
 							<table class="table table-hover">
 								<tr>
+									<td>Image</td>
 									<td>Product</td>
-									<td>Unit Price</td>
 									<td>Quantity</td>
 									<td>Price</td>
-									<td>Action</td>
+									<td><a >Action</a></td>
 								</tr>
+								<c:forEach items="${cartItems}" var="c">
 								<tr>
-									<td>${product.product_id}</td>
-									<td>${product.unit_price}</td>
-									<td></td>
-									<td></td>
-									<td><a href="#" class="labe label-label-danger"><span
-											class="fa fa-remove-o"></span>Remove</a></td>
+								    <td><img src="${img}/${c.cartItem.product_id}.png"
+						                                                        alt="" style="height:85px;width:85px"></td>
+									<td>${c.productName}</td>
+<%-- 								<td>${c.cartItem.product.unit_price}</td> --%>
+									<td>${c.cartItem.quantity}</td>
+									<td>${c.cartItem.totalPrice} </td>
+									<td><a href="${contextPath}/cart/remove/${c.cartItem.cartItem_id}" class="btn btn-danger  btn-xs" ><span
+									class="fa fa-remove-sign"></span>remove</a></td>
 
 
 								</tr>
@@ -46,14 +55,16 @@
 									<th></th>
 									<th></th>
 									<th>Grand Total</th>
-									<th></th>
+									<th>${grandTotal}</th>
 									<th></th>
 								</tr>
-
+</c:forEach>
 							</table>
+							<a class="btn btn-primary pull-right">CheckOut</a>
 
-
-							<a href="${contaxtPath}/product" class="btn btn-default">Continue
+</c:otherwise>
+	</c:choose>
+							<a href="${contextPath}/product" class="btn btn-default pull-left">Continue
 								Shopping</a>
 						</div>
 
