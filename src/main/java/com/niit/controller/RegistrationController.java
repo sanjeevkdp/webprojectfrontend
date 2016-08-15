@@ -61,12 +61,14 @@ public ModelAndView registrationSuccess(@ModelAttribute("customer") Customer cus
 	customerDao.saveOrUpdate(customer);
 	List<Customer> listCustomer=customerDao.list();
 	model.addAttribute("customer",listCustomer);
-	users.setUsername(customer.getUserName());
+	
+	 users.setUserName(customer.getUserName());
 	users.setPassword(customer.getPassword());
 	users.setEnabled(true);
-	usersDao.saveOrUpdate(users);
-	authorities.setUserName(users.getUsername());
+	
+	authorities.setUserName(customer.getUserName());
 	authorities.setAuthority("ROLE_USER");
+	usersDao.saveOrUpdate(users);
 	authoritiesDao.saveOrUpdate(authorities);
 	
 	mv.addObject("isRegistrationSuccessClicked","true");
