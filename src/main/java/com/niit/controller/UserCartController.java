@@ -5,14 +5,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.niit.dao.CartDao;
@@ -46,7 +43,7 @@ public class UserCartController {
 	private SupplierDao supplierDao;
 	@Autowired
 	private Cart cart;
-	@Autowired
+	
 	private CartItem cartItem;
 	@Autowired
 	private CartDao cartDao;
@@ -70,7 +67,7 @@ public class UserCartController {
 		// 2.Check whether his cart is present in the cart table
 		// If cart is not present then make a cart for him
 
-		if (cartDao.getCartByCustomerId(customerId) == null) {
+		if ((cart = cartDao.getCartByCustomerId(customerId)) == null) {
 			cart = new Cart();
 			cart.setCustomerId(customerId);
 			cartDao.saveOrUpdate(cart);
@@ -78,37 +75,51 @@ public class UserCartController {
 			// cartItem.setCartId(cart.getCartId());
 		}
 
-		// This statement changes the cart if cart is present and due to
-		// unpresence of this there where errors
-		else {
-			cart = cartDao.getCartByCustomerId(customerId);
-		}
 
-		String cart_id = cart.getCart_id();
+		String cartId = cart.getCart_id();
 
 		// 3.get the product price
 
 		product = productDao.get(product_id);
-		
-		
-		if (addCartItem(customerId, product_id,cart_id, model) == null) {
+
+		// If cart is present then go into the cartItem table and search for
+		// product
+		// this customer selected whether it exists or it is a new product.
+		// -------------
+		// passing the customerId and productId to a method name returnCartItem
+		// through a method
+
+		// if we get null means the product is not present
+
+		if (addCartItem(customerId, product_id,cartId, model) == null) {
 			cartItem = new CartItem();
-			cartItem.setCart_id(cart_id);
+			cartItem.setCart_id(cartId);
 			cartItem.setCustomerId(customerId);
 			cartItem.setProduct_id(product.getProduct_id());
 			cartItem.setQuantity(1);
 			cartItem.setTotalPrice(product.getUnit_price());
-			cartItemDao.saveOrUpdate(cartItem);
+			cartItemDao.persist(cartItem);
+			
+			
 			System.out.println("Insertion of cartItem");
-			int noOfProducts = updateCartAgain(cart_id, customerId);
+			
+			
+			
+			int noOfProducts = updateCartAgain(cartId, customerId);
+			
+			
 			model.addAttribute("noOfProducts", noOfProducts);
+			
+			
 		}
 		// Now navigate to the same page
-		return "redirect:/productShow/{product_id}?addToCartSuccessMessage";
+		return "redirect:/productShow/{product_id}";
+		
+		
 	}
 
 	// This function will update the cart
-	public int updateCartAgain(String cart_id, String customerId) {
+	public int updateCartAgain(String cartId, String customerId) {
 
 		List<CartItem> listOfSelectedCartItems;
 		// Now after getting the cartItem change grandTotal and No of Products
@@ -118,10 +129,10 @@ public class UserCartController {
 			grandTotal = grandTotal + item.getTotalPrice();
 		}
 		cart.setGrandTotal(grandTotal);
-		
+
 		int noOfProducts = listOfSelectedCartItems.size();
 
-		cart.setCart_id(cart_id);
+		cart.setCart_id(cartId);
 		cart.setCustomerId(customerId);
 		cart.setNoOfproduct(noOfProducts);
 		cartDao.saveOrUpdate(cart); // This method updates the cart
@@ -133,37 +144,37 @@ public class UserCartController {
 
 	// This is the method which perform all the operations related to addition
 	// of product cartItem
-	public String addCartItem(String customerId, String product_id, String cart_id, Model model) {
+	public String addCartItem(String customerId, String product_id, String cartId, Model model) {
 		List<CartItem> listOfSelectedCartItems = cartItemDao.getCartItemsByCustomerId(customerId);
 		Product product = productDao.get(product_id);
 		for (CartItem item : listOfSelectedCartItems) {
 			String itemProductId = item.getProduct_id();
-			//System.out.println(itemProductId);
+			System.out.println(itemProductId);
 			if (itemProductId.equals(product.getProduct_id())) {
-				//System.out.println(item.getCart_id());
-				item.setCart_id(item.getCart_id());
+				System.out.println(item.getCartItem_id());
+				item.setCartItem_id(item.getCartItem_id());
 
-			//	System.out.println(item.getQuantity());
+				System.out.println(item.getQuantity());
 				item.setQuantity(item.getQuantity() + 1);
 
-
-			//	System.out.println(item.getTotalPrice());
+				System.out.println(item.getTotalPrice());
 				item.setTotalPrice(item.getTotalPrice() + product.getUnit_price());
 
-			//	System.out.println(item.toString());
+				System.out.println(item.toString());
 				cartItemDao.saveOrUpdate(item);
-				int noOfProducts = updateCartAgain(cart_id, customerId);
+				int noOfProducts = updateCartAgain(cartId, customerId);
 				model.addAttribute("noOfProducts", noOfProducts);
-				return "redirect:/productShow/{product_id}?addToCartSuccessMessage";
+				return "redirect:/productShow/{product_id}";
 
 			}
 
 		}
 
 		return null;
-
 	}
-	
+
+	// ===========================================viewcart=====================================================
+
 	@RequestMapping("/cart")
 	public ModelAndView Cart(Model model, Principal userName,
 			@RequestParam(value = "cartItemRemoved", required = false) String cartItemRemoved)
@@ -181,11 +192,14 @@ public class UserCartController {
 		List<CartItemModel> cartItems = null;
 
 		// When there are products in cart
-		if (returnProductName(customerId) != null && !returnProductName(customerId).isEmpty()) {
+		if (returnProductName(customerId).size() > 0) {
 			cartItems = returnProductName(customerId);
 
-			mv.addObject("cartItems", cartItems);
+			
 			double grandTotal = cartDao.getCartByCustomerId(customerId).getGrandTotal();
+			
+			
+			mv.addObject("cartItems", cartItems);
 			mv.addObject("grandTotal", grandTotal);
 
 			mv.addObject("noOfProducts", cartItems.size());
@@ -197,7 +211,7 @@ public class UserCartController {
 
 			mv.addObject("noOfProducts", 0);
 		}
-		//mv.addObject("isCartClicked", true);
+		// mv.addObject("isCartClicked", true);
 		mv.addObject("isCartClicked", "true");
 		mv.addObject("active", "cart");
 
@@ -209,7 +223,7 @@ public class UserCartController {
 
 		List<CartItem> cartItems = cartItemDao.getCartItemsByCustomerId(customerId);
 
-		List<CartItemModel> cartItemModelList = new ArrayList<>();
+		List<CartItemModel> cartItemModelList = new ArrayList<>(cartItems.size());
 
 		CartItemModel cartItemModel = null;
 
@@ -226,6 +240,7 @@ public class UserCartController {
 		}
 		return cartItemModelList;
 	}
+
 	@RequestMapping("/cart/remove/{cartItem_id}")
 	public String removeCarItems(@PathVariable("cartItem_id") String cartItem_id, Model model) {
 		cartItem = cartItemDao.get(cartItem_id);

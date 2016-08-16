@@ -324,26 +324,34 @@ public class ProductController {
 		product = productDao.get(id);
 		model.addAttribute("product", product);
 		
-		String categoryName;
+		String categoryName = null;
+		String supplierName = null; 
+		// check if the product is available or not
+		if (product!=null) {
+			// add category name but first check if category is available 
+			if(product.getCategory_id() != null) {			
+				category = categoryDao.get(product.getCategory_id());
+				categoryName = category.getCategory_name();
+			}
+			else {
+				category.setCategory_name("'Not Available'");
+				categoryName = category.getCategory_name();
+			}
+			
+			// add supplier name but first check if supplier is available
+			if (product.getSupplier_id() !=null) {
+				supplier = supplierDao.get(product.getSupplier_id());
+				supplierName = supplier.getSupplier_name();
+			} else {
+				supplier.setSupplier_name("'Not Available'");
+				supplierName = supplier.getSupplier_name();
+			}
+			
+		} 
 		
-		if (product.getCategory_id() != null && !product.getCategory_id().isEmpty()) {
-			category = categoryDao.get(product.getCategory_id());
-			categoryName = category.getCategory_name();
-		} else {
-			category.setCategory_name("'Not Available'");
-			categoryName = category.getCategory_name();
-		}
-		mv.addObject("categoryName", categoryName);
-		String supplierName;
-		if (product.getSupplier_id() != null && !product.getSupplier_id().isEmpty()) {
-			supplier = supplierDao.get(product.getSupplier_id());
-			supplierName = supplier.getSupplier_name();
-		} else {
-			supplier.setSupplier_name("'Not Available'");
-			supplierName = supplier.getSupplier_name();
-		}
+		
+		mv.addObject("categoryName", categoryName);		
 		mv.addObject("supplierName", supplierName);
-
 		mv.addObject("isProductShowClicked", "true");
 		mv.addObject("active", "productShow");
 		return mv;
