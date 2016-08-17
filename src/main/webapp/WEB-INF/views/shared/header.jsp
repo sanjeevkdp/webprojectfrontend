@@ -9,6 +9,7 @@
 	<spring:url value="/resources/img" var="img"/>
 	
 	<c:set value="${pageContext.request.contextPath}" var="contextPath"></c:set>
+	
 <!-- === BEGIN HEADER === -->
 <!-- === BEGIN HEADER === -->
 <!DOCTYPE html>

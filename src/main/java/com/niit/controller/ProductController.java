@@ -73,7 +73,10 @@ public class ProductController {
 		model.addAttribute("products", products);
 		mv.addObject("isProductClicked", "true");
 		mv.addObject("active", "product");
-
+		//===========list Category in navBar=========//
+				List<Category> listCategory = categoryDao.list();
+				model.addAttribute("categories", listCategory);
+				
 		return mv;
 
 	}
@@ -106,6 +109,10 @@ public class ProductController {
 		model.addAttribute("products", products);
 		mv.addObject("isAdminAddProductClicked", "true");
 		mv.addObject("active", "adminAddProduct");
+		//===========list Category in navBar=========//
+				List<Category> listCategory = categoryDao.list();
+				model.addAttribute("categories", listCategory);
+				
 
 		return mv;
 
@@ -129,6 +136,11 @@ public class ProductController {
 
 		mv.addObject("isAddProductClicked", true);
 		mv.addObject("active", "addProduct");
+		
+		//===========list Category in navBar=========//
+				List<Category> listCategory = categoryDao.list();
+				model.addAttribute("categories", listCategory);
+				
 
 		return mv;
 	}
@@ -151,7 +163,11 @@ public class ProductController {
 			// model.addAttribute("product", product);
 			mv.addObject("isAddProductClicked", true);
 			mv.addObject("active", "addProduct");
-
+			
+			//===========list Category in navBar=========//
+			List<Category> listCategory = categoryDao.list();
+			model.addAttribute("categories", listCategory);
+			
 			return mv;
 
 		}
@@ -194,6 +210,11 @@ public class ProductController {
 
 		mv.addObject("isAdminAddProductClicked", true);
 		mv.addObject("active", "adminAddProduct");
+		
+		//===========list Category in navBar=========//
+				List<Category> listCategory = categoryDao.list();
+				model.addAttribute("categories", listCategory);
+				
 		return mv;
 		// return "redirect:/adminAddProduct";
 	}
@@ -212,6 +233,12 @@ public class ProductController {
 		model.addAttribute(product);
 		mv.addObject("isEditProductClicked", "true");
 		mv.addObject("active", "editProduct");
+		
+		
+		//===========list Category in navBar=========//
+				List<Category> listCategory = categoryDao.list();
+				model.addAttribute("categories", listCategory);
+				
 		return mv;
 	}
 
@@ -231,6 +258,11 @@ public class ProductController {
 			// model.addAttribute("product", product);
 			mv.addObject("isEditProductClicked", "true");
 			mv.addObject("active", "editProduct");
+			
+			//===========list Category in navBar=========//
+			List<Category> listCategory = categoryDao.list();
+			model.addAttribute("categories", listCategory);
+			
 
 			return mv;
 
@@ -271,6 +303,11 @@ public class ProductController {
 
 		mv.addObject("isEditProductClicked", "true");
 		mv.addObject("active", "editProduct");
+		
+		//===========list Category in navBar=========//
+				List<Category> listCategory = categoryDao.list();
+				model.addAttribute("categories", listCategory);
+				
 
 		return mv;
 		// return "redirect:/editProduct";
@@ -312,6 +349,11 @@ public class ProductController {
 		// return "redirect:/adminAddProduct";
 		mv.addObject("isAdminAddProductClicked", true);
 		mv.addObject("active", "AdminAddProduct");
+		
+		//===========list Category in navBar=========//
+				List<Category> listCategory = categoryDao.list();
+				model.addAttribute("categories", listCategory);
+				
 		return mv;
 	}
 
@@ -354,6 +396,10 @@ public class ProductController {
 		mv.addObject("supplierName", supplierName);
 		mv.addObject("isProductShowClicked", "true");
 		mv.addObject("active", "productShow");
+		//===========list Category in navBar=========//
+				List<Category> listCategory = categoryDao.list();
+				model.addAttribute("categories", listCategory);
+				
 		return mv;
 	}
 

@@ -13,10 +13,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.niit.dao.AuthoritiesDao;
+import com.niit.dao.CategoryDao;
 import com.niit.dao.CustomerDao;
 import com.niit.dao.UsersDao;
 import com.niit.model.Authorities;
 import com.niit.model.BillingAddress;
+import com.niit.model.Category;
 import com.niit.model.Customer;
 import com.niit.model.ShippingAddress;
 import com.niit.model.Users;
@@ -39,6 +41,10 @@ private UsersDao usersDao;
 private Authorities authorities;
 @Autowired
 private AuthoritiesDao authoritiesDao;
+@Autowired
+Category category;
+@Autowired
+CategoryDao categoryDao;
 
 
 @RequestMapping("/registration")
@@ -50,6 +56,11 @@ public ModelAndView registration(Model model){
 	model.addAttribute("customer",customer);
 	mv.addObject("isRegistrationClicked","true");
 	mv.addObject("active","registration");
+	
+	//===========list Category in navBar=========//
+			List<Category> listCategory = categoryDao.list();
+			model.addAttribute("categories", listCategory);
+			
 	return mv;
 	
 }
@@ -72,8 +83,12 @@ public ModelAndView registrationSuccess(@ModelAttribute("customer") Customer cus
 	authoritiesDao.saveOrUpdate(authorities);
 	
 	mv.addObject("isRegistrationSuccessClicked","true");
-	mv.addObject("active","registrationSuccess");
-
+	mv.addObject("active","login");
+      
+	//===========list Category in navBar=========//
+			List<Category> listCategory = categoryDao.list();
+			model.addAttribute("categories", listCategory);
+			
 	return mv;
 	
 	

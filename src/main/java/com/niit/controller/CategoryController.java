@@ -80,7 +80,10 @@ public class CategoryController {
 
 		mv.addObject("isAddCategoryClicked", true);
 		mv.addObject("active", "addCategory");
-
+		//===========list Category in navBar=========//
+				List<Category> listCategory = categoryDao.list();
+				model.addAttribute("categories", listCategory);
+				
 		return mv;
 	}
 
@@ -91,6 +94,11 @@ public class CategoryController {
 		if (result.hasErrors()) {
 			mv.addObject("isAddCategoryClicked", true);
 			mv.addObject("active", "addCategory");
+			
+			//===========list Category in navBar=========//
+			List<Category> listCategory = categoryDao.list();
+			model.addAttribute("categories", listCategory);
+			
 			return mv;
 		}
 
@@ -154,6 +162,11 @@ public class CategoryController {
 		model.addAttribute(category);
 		mv.addObject("isEditCategoryClicked", "true");
 		mv.addObject("active", "editCategory");
+		
+		//===========list Category in navBar=========//
+				List<Category> listCategory = categoryDao.list();
+				model.addAttribute("categories", listCategory);
+				
 		return mv;
 	}
 
@@ -164,6 +177,10 @@ public class CategoryController {
 		if (result.hasErrors()) {
 			mv.addObject("isEditCategoryClicked", "true");
 			mv.addObject("active", "editCategory");
+			//===========list Category in navBar=========//
+			List<Category> listCategory = categoryDao.list();
+			model.addAttribute("categories", listCategory);
+			
 			return mv;
 
 		}

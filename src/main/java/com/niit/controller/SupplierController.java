@@ -58,6 +58,10 @@ public class SupplierController {
 		model.addAttribute("suppliers", listSupplier);
 		mv.addObject("isAdminAddSupplierClicked", true);
 		mv.addObject("active", "adminAddSupplier");
+		//===========list Category in navBar=========//
+				List<Category> listCategory = categoryDao.list();
+				model.addAttribute("categories", listCategory);
+				
 
 		return mv;
 	}
@@ -73,6 +77,10 @@ public class SupplierController {
 
 		mv.addObject("isAddSupplierClicked", true);
 		mv.addObject("active", "addSupplier");
+		//===========list Category in navBar=========//
+				List<Category> listCategory = categoryDao.list();
+				model.addAttribute("categories", listCategory);
+				
 
 		return mv;
 	}
@@ -88,6 +96,11 @@ public class SupplierController {
                if(result.hasErrors()){
             	   mv.addObject("isAddSupplierClicked", true);
            		mv.addObject("active", "addSupplier");
+           		
+           	//===========list Category in navBar=========//
+        		List<Category> listCategory = categoryDao.list();
+        		model.addAttribute("categories", listCategory);
+        		
 
            		return mv;  
                }
@@ -122,6 +135,11 @@ public class SupplierController {
 		model.addAttribute("supplier", supplier);
         mv.addObject("isProfileClicked", "true");
 		mv.addObject("active", "profile");
+		
+		//===========list Category in navBar=========//
+				List<Category> listCategory = categoryDao.list();
+				model.addAttribute("categories", listCategory);
+				
 		return mv;
 	}
 	
@@ -152,6 +170,11 @@ public class SupplierController {
 		mv.addObject("supplier",supplier);
 		 mv.addObject("isAdminAddSupplierClicked", true);
 		 mv.addObject("active", "adminAddSupplier");
+		 
+		//===========list Category in navBar=========//
+			List<Category> listCategory = categoryDao.list();
+			model.addAttribute("categories", listCategory);
+			
 		return mv;
 	//return "redirect:/adminAddSupplier";
 	}
@@ -168,6 +191,11 @@ public class SupplierController {
 		model.addAttribute(supplier);
 		 mv.addObject("isEditSupplierClicked", "true");
 		 mv.addObject("active", "editSupplier");
+		 
+		//===========list Category in navBar=========//
+			List<Category> listCategory = categoryDao.list();
+			model.addAttribute("categories", listCategory);
+			
 		return mv;
 	}
 
@@ -178,6 +206,11 @@ public class SupplierController {
 		 if(result.hasErrors()){
 			 mv.addObject("isEditSupplierClicked", "true");
 			 mv.addObject("active", "editSupplier");
+			 
+			//===========list Category in navBar=========//
+				List<Category> listCategory = categoryDao.list();
+				model.addAttribute("categories", listCategory);
+				
 			return mv;
 			 
 		 }
@@ -200,6 +233,10 @@ public class SupplierController {
 
 		 mv.addObject("isEditSupplierClicked", true);
 		 mv.addObject("active", "editSupplier");
+		//===========list Category in navBar=========//
+			List<Category> listCategory = categoryDao.list();
+			model.addAttribute("categories", listCategory);
+			
 		return mv;
 		// "redirect:/editSupplier";
 	}

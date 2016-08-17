@@ -73,6 +73,7 @@
 									<li><a href="${contextPath}/aboutMe">About Me</a></li>
 									<c:if test="${pageContext.request.userPrincipal.name == null }">
 										<li><a id="login" href="${contextPath}/login"> Login</a></li>
+										<li><a href="${contextPath}/registration">Sign-Up</a></li>
 									</c:if>
 									<c:if test="${pageContext.request.userPrincipal.name != null }">
 										<c:url value="/logout" var="logoutUrl" />
@@ -85,11 +86,16 @@
 												href="javascript:document.getElementById('logout').submit()"> Logout</a></li>
 										</c:if>
 									</c:if>
-									<li><a href="${contextPath}/registration">Sign-Up</a></li>
+									
 									<li><a href="${contextPath}/error">404 Error Page</a></li>
 								</ul></li>
 							<li><span id="category" class="fa-th ">Category</span>
+							
 								<ul>
+								<c:forEach items="${categories}" var="category">
+			                                    <li><a href="#">${category.category_name}</a></li>
+		  	                    </c:forEach>
+		  	                                
 									<li><a href="#">Textiles</a></li>
 									<li><a href="#">Woodworks</a></li>
 									<li><a href="#">Clay</a></li>
@@ -123,7 +129,7 @@
 							<li class="pull-right"><a id="user"
 								href="${contextPath}/cart" class="fa-shopping-cart">Cart</a></li>
 								<li class="pull-right"><a id="user"
-								href="${contextPath}/product" class="fa-user">Sanjeev</a></li>
+								href="${contextPath}/product" class="fa-user">hi! ${pageContext.request.userPrincipal.name}</a></li>
                          
                            </sec:authorize>
 

@@ -45,15 +45,24 @@ public class HelloController {
 
 
 	@RequestMapping({ "/", "/index" })
-	public ModelAndView index() {
+	public ModelAndView index(Model model) {
 		ModelAndView mv = new ModelAndView("index");
 		mv.addObject("isHomeClicked", "true");
 		mv.addObject("active", "home");
+		//===========list Category in navBar=========//
+				List<Category> listCategory = categoryDao.list();
+				model.addAttribute("categories", listCategory);
+				
 		return mv;
 	}
 
 	@RequestMapping("/admin")
-	public String Admin() {
+	public String Admin(Model model) {
+		
+		//===========list Category in navBar=========//
+				List<Category> listCategory = categoryDao.list();
+				model.addAttribute("categories", listCategory);
+				
 		return "admin";
 	}
 
@@ -67,37 +76,58 @@ public class HelloController {
 	
 
 	@RequestMapping("/home")
-	public ModelAndView home() {
+	public ModelAndView home(Model model) {
 		ModelAndView mv = new ModelAndView("index");
 		mv.addObject("isHomeClicked", "true");
 		mv.addObject("active", "home");
+		
+		//===========list Category in navBar=========//
+		List<Category> listCategory = categoryDao.list();
+		model.addAttribute("categories", listCategory);
+			
+		
 		return mv;
 	}
 
 
 	@RequestMapping("/productItem")
-	public ModelAndView productSingleItem() {
+	public ModelAndView productSingleItem(Model model) {
 		ModelAndView mv = new ModelAndView("index");
 		mv.addObject("isProductItemClicked", "true");
 		mv.addObject("active", "productItem");
+		
+		//===========list Category in navBar=========//
+		List<Category> listCategory = categoryDao.list();
+		model.addAttribute("categories", listCategory);
+				
 		return mv;
 
 	}
 
 	// pages including
 	@RequestMapping("/about")
-	public ModelAndView About() {
+	public ModelAndView About(Model model) {
 		ModelAndView mv = new ModelAndView("index");
 		mv.addObject("isAboutClicked", "true");
 		mv.addObject("active", "about");
+		
+		//===========list Category in navBar=========//
+				List<Category> listCategory = categoryDao.list();
+				model.addAttribute("categories", listCategory);
+				
 		return mv;
 	}
 
 	@RequestMapping("/service")
-	public ModelAndView Service() {
+	public ModelAndView Service(Model model) {
 		ModelAndView mv = new ModelAndView("index");
 		mv.addObject("isServiceClicked", "true");
 		mv.addObject("active", "service");
+		
+		//===========list Category in navBar=========//
+				List<Category> listCategory = categoryDao.list();
+				model.addAttribute("categories", listCategory);
+				
 		return mv;
 	}
 
@@ -109,43 +139,66 @@ public class HelloController {
 	 //return mv;
 	 //}
 	@RequestMapping("/aboutMe")
-	public ModelAndView AboutMe() {
+	public ModelAndView AboutMe(Model model) {
 		ModelAndView mv = new ModelAndView("index");
 		mv.addObject("isAboutMeClicked", "true");
 		mv.addObject("active", "aboutMe");
+		//===========list Category in navBar=========//
+				List<Category> listCategory = categoryDao.list();
+				model.addAttribute("categories", listCategory);
+				
 		return mv;
 	}
 
 	@RequestMapping("/login")
-	public ModelAndView login() {
+	public ModelAndView login(Model model) {
 		ModelAndView mv = new ModelAndView("index");
 		mv.addObject("isLoginClicked", "true");
 		mv.addObject("active", "login");
+		
+		//===========list Category in navBar=========//
+				List<Category> listCategory = categoryDao.list();
+				model.addAttribute("categories", listCategory);
+				
 		return mv;
 
 	}
 
 	@RequestMapping("/register")
-	public ModelAndView Register() {
+	public ModelAndView Register(Model model) {
 		ModelAndView mv = new ModelAndView("index");
 		mv.addObject("isRegisterClicked", "true");
 		mv.addObject("active", "register");
+		
+		//===========list Category in navBar=========//
+				List<Category> listCategory = categoryDao.list();
+				model.addAttribute("categories", listCategory);
+				
 		return mv;
 	}
 
 	@RequestMapping("/error")
-	public ModelAndView Error() {
+	public ModelAndView Error(Model model) {
 		ModelAndView mv = new ModelAndView("index");
 		mv.addObject("isErrorClicked", "true");
 		mv.addObject("active", "error");
+		//===========list Category in navBar=========//
+				List<Category> listCategory = categoryDao.list();
+				model.addAttribute("categories", listCategory);
+				
 		return mv;
 	}
 
 	@RequestMapping("/contact")
-	public ModelAndView Contactr() {
+	public ModelAndView Contactr(Model model) {
 		ModelAndView mv = new ModelAndView("index");
 		mv.addObject("isContactClicked", "true");
 		mv.addObject("active", "contact");
+		
+		//===========list Category in navBar=========//
+				List<Category> listCategory = categoryDao.list();
+				model.addAttribute("categories", listCategory);
+				
 		return mv;
 	}
 

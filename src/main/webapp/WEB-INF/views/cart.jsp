@@ -46,10 +46,10 @@
 <%-- 								<td>${c.cartItem.product.unit_price}</td> --%>
 									<td>${c.cartItem.quantity}</td>
 									<td>${c.cartItem.totalPrice} </td>
-									<td><a href="${contextPath}/cart/remove/${c.cartItem.cartItem_id}" class="btn btn-danger  btn-xs" ><span
+									<td><a href="${contextPath}/cart/remove/${c.cartItem.cartItemId}" class="btn btn-danger  btn-xs" ><span
 									class="fa fa-remove-sign"></span>remove</a></td>
 
-
+                                  </c:forEach>
 								</tr>
 								<tr>
 									<th></th>
@@ -58,11 +58,11 @@
 									<th>${grandTotal}</th>
 									<th></th>
 								</tr>
-</c:forEach>
+                
 							</table>
 							<a class="btn btn-primary pull-right">CheckOut</a>
 
-</c:otherwise>
+              </c:otherwise>
 	</c:choose>
 							<a href="${contextPath}/product" class="btn btn-default pull-left">Continue
 								Shopping</a>

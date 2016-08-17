@@ -106,7 +106,7 @@
 	<%@include file="./user/registration.jsp"%>
 </c:if>
 <c:if test="${isRegistrationSuccessClicked==true }">
-	<%@include file="./customer/registrationSuccess.jsp"%>
+	<%@include file="login.jsp"%>
 </c:if>
 
 
