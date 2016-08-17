@@ -18,6 +18,10 @@
 
 					</section>
 					<section class="container" >
+					<%
+				int i = 1;
+					int j=0;
+			%>
 						<div>
 						<c:choose>
 	     	<c:when test="${not empty cartEmpty}">
@@ -32,6 +36,16 @@
 							</div>
 							<table class="table table-hover">
 								<tr>
+								<c:forEach items="${cartItems}" var="cartItem">
+							<%
+								j++;
+							%>
+						</c:forEach>
+						
+						<td>Sr.No <span>( <%
+							out.println(j);
+						%> )
+						</span></td>
 									<td>Image</td>
 									<td>Product</td>
 									<td>Quantity</td>
@@ -40,6 +54,11 @@
 								</tr>
 								<c:forEach items="${cartItems}" var="c">
 								<tr>
+								<td>
+							<%
+								out.println(i);
+							%>
+								</td>
 								    <td><img src="${img}/${c.cartItem.product_id}.png"
 						                                                        alt="" style="height:85px;width:85px"></td>
 									<td>${c.productName}</td>
@@ -48,7 +67,10 @@
 									<td>${c.cartItem.totalPrice} </td>
 									<td><a href="${contextPath}/cart/remove/${c.cartItem.cartItemId}" class="btn btn-danger  btn-xs" ><span
 									class="fa fa-remove-sign"></span>remove</a></td>
-
+<%
+						i++;
+					%>
+                  
                                   </c:forEach>
 								</tr>
 								<tr>

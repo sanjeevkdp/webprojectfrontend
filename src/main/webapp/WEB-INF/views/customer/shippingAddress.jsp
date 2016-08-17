@@ -1,12 +1,53 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<div id="content" class="bottom-border-shadow">
+	<div class="container background-white bottom-border">
+		<div class="row margin-vert-30">
+                 <h1>Customer Detals</h1>
+                 <p>fill in the detail</p>
+                 <form:form action="${contextPath}/registration" method="post" commandName="customer" >
+				<div class="form-group">
+					<label for="streetName">StreetName</label>
+					<form:input path="streetName" id="streetName" class="form-control" />
+					<form:errors path="streetName" cssStyle="color:#ff0000;"/>
+				</div>
+			    <div class="form-group">
+					<label for="apartmentNumber">apartmentNumber</label>
+					<form:input path="apartmentNumber" id="apartmentNumber" class="form-control" />
+							<form:errors path="apartmentNumber" cssStyle="color:#ff0000;"/>
+				
+				</div>
+				 <div class="form-group">
+					<label for="city">city</label>
+					<form:input path="city" id="city" class="form-control" />
+							<form:errors path="city" cssStyle="color:#ff0000;"/>
+				
+				</div>
+					 <div class="form-group">
+					<label for="state">state</label>
+					<form:input path="state" id="username" class="form-control" />
+							<form:errors path="state" cssStyle="color:#ff0000;"/>
+				
+				</div>
+				 <div class="form-group">
+					<label for=country>country</label>
+					<form:password path="country" id="country" class="form-control" />
+							<form:errors path="country" cssStyle="color:#ff0000;"/>
+				
+				</div>
+				 <div class="form-group">
+					<label for="password">Password</label>
+					<form:password path="zipCode" id="password" class="form-control" />
+							<form:errors path="zipCode" cssStyle="color:#ff0000;"/>
+				
+				</div>
+				<br>
+				<input type="submit" value="submit" class="btn btn-default" />
+				<a href="${contextPath}/admin/adminAddProduct" class="btn btn-default">Cancel</a>
 
-</body>
-</html>
+			</form:form>
+		</div>
+	</div>
+</div>		
+			

@@ -34,12 +34,9 @@
 						<td><img src="${img}/${category.category_id}.png" alt="" style="height:85px;width:85px"/></td>
 						<td>${category.category_name}</td>
 						<td>${category.description}</td>
-							<td>
-<%-- 							<a href="${contextPath}/CategoryShow/${category.category_id}"> --%>
-<!-- 							<span -->
-<!-- 								class="fa fa-info-circle"> </span></a> -->
-<!-- 								</td> -->
-                                   <span class="fa fa-info-circle"> </span>
+						<td>
+							  <a href="${contextPath}/productviewbyCategory/${category.category_id}">
+						 <span class="fa fa-info-circle"> </span></a>
                                   <a href="${contextPath}/admin/adminAddCategory/${category.category_id}">
                                     <span class="fa fa-trash-o" title="Delete"> </span></a>
                                      <a href="${contextPath}/admin/adminAddCategory/editCategory/${category.category_id}">

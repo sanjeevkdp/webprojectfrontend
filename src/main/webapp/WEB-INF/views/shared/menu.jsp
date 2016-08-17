@@ -41,8 +41,7 @@
 								<button id="rightbar-shopping_cart" href="${contextPath}/cart"
 									class="btn btn-default" type="submit"
 									title="View my shopping cart">
-									<i class="fa-shopping-cart"></i> <span
-										class="ajax_cart_quantity amount_circle  simple_hidden "></span>
+									<i class="fa-shopping-cart"></i>${noOfProducts}
 								</button>
 								</sec:authorize>
 							</div>
@@ -93,13 +92,9 @@
 							
 								<ul>
 								<c:forEach items="${categories}" var="category">
-			                                    <li><a href="#">${category.category_name}</a></li>
+			                                    <li><a href="${contextPath}/productviewbyCategory/${category.category_id}">${category.category_name}</a></li>
 		  	                    </c:forEach>
 		  	                                
-									<li><a href="#">Textiles</a></li>
-									<li><a href="#">Woodworks</a></li>
-									<li><a href="#">Clay</a></li>
-									<li><a href="#">Stone</a></li>
 									<li><a id="category" href="${contextPath}/category">View</a></li>
 								</ul></li>
 							<li><span id="product" class="fa-font ">product</span>
@@ -127,7 +122,7 @@
                            </sec:authorize>
                               <sec:authorize access="hasRole('ROLE_USER')">			
 							<li class="pull-right"><a id="user"
-								href="${contextPath}/cart" class="fa-shopping-cart">Cart</a></li>
+								href="${contextPath}/cart" class="fa-shopping-cart">Cart(${noOfProducts})</a></li>
 								<li class="pull-right"><a id="user"
 								href="${contextPath}/product" class="fa-user">hi! ${pageContext.request.userPrincipal.name}</a></li>
                          

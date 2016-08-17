@@ -3,10 +3,12 @@ package com.niit.controller;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -65,8 +67,21 @@ public ModelAndView registration(Model model){
 	
 }
 @RequestMapping(value="/registration",method=RequestMethod.POST)
-public ModelAndView registrationSuccess(@ModelAttribute("customer") Customer customer, Model model,HttpServletRequest request){
+public ModelAndView registrationSuccess(@Valid @ModelAttribute("customer") Customer customer,BindingResult result, Model model,HttpServletRequest request){
 	ModelAndView mv =new ModelAndView("index");
+	if(result.hasErrors()){
+		customer.setGender("male");
+		customer.setEnabled(true);
+		
+		mv.addObject("isRegistrationClicked","true");
+		mv.addObject("active","registration");
+		//===========list Category in navBar=========//
+		List<Category> listCategory = categoryDao.list();
+		model.addAttribute("categories", listCategory);
+
+		return mv;
+	}
+	
 	customer.setEnabled(true);
 	//customerDao.saveOrUpdate(users);
 	customerDao.saveOrUpdate(customer);

@@ -913,6 +913,7 @@ p.site-slogan {
 /* Dropdown Menu */
 #hornav ul ul {
 	text-align: left;
+	
 	background: #f2f2f2;
 	border-radius: 5px;
 	border: 1px solid #dddddd;
@@ -928,6 +929,7 @@ p.site-slogan {
 	padding: 5px 0 !important;
 	min-width: 200px;
 	z-index: 30;
+	
 }
 
 #hornav ul ul li {
@@ -943,12 +945,12 @@ p.site-slogan {
 	display: block;
 	padding: 6px 15px;
 	color: #555555 !important;
-	text-transform: none;
+	text-transform: uppercase;
 	border-top: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 #hornav ul ul:before {
-	background: transparent url('../img/menu_arrow.png') no-repeat 0 0;
+	background: transparent url('../resources/img/menu_arrow.png') no-repeat 0 0;
 	content: "";
 	display: block;
 	height: 10px;

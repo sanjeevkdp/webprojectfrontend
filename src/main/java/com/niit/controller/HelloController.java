@@ -47,6 +47,9 @@ public class HelloController {
 	@RequestMapping({ "/", "/index" })
 	public ModelAndView index(Model model) {
 		ModelAndView mv = new ModelAndView("index");
+		List<Product> list=productDao.list();
+		mv.addObject("list",list);
+		
 		mv.addObject("isHomeClicked", "true");
 		mv.addObject("active", "home");
 		//===========list Category in navBar=========//
@@ -78,6 +81,10 @@ public class HelloController {
 	@RequestMapping("/home")
 	public ModelAndView home(Model model) {
 		ModelAndView mv = new ModelAndView("index");
+		List<Product> list=productDao.list();
+		mv.addObject("list",list);
+		
+		
 		mv.addObject("isHomeClicked", "true");
 		mv.addObject("active", "home");
 		
@@ -201,5 +208,24 @@ public class HelloController {
 				
 		return mv;
 	}
+   @RequestMapping("/productviewbyCategory/{category_id}")
+   public ModelAndView ViewCategory(@PathVariable("category_id")String category_id,Model model){
+	   ModelAndView mv=new ModelAndView("index");
+	   
+	   List<Product> productList = categoryDao.ProductListByCategory(category_id);
+		if (!productList.isEmpty()) {
+			mv.addObject("productList", productList);
+		} else {
+			mv.addObject("productNotPresent", "true");
+		}
+	   
+	   mv.addObject("isProductByCategory","true");
+//	   mv.addObject("active","productByCategory");
+//	   
+	 //===========list Category in navBar=========//
+		List<Category> listCategory = categoryDao.list();
+		model.addAttribute("categories", listCategory);
 
+	   return mv;
+   }
 }

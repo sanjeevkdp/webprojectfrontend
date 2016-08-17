@@ -61,7 +61,7 @@
 	<%@include file="./admin/addSupplier.jsp"%>
 </c:if>
 <c:if test="${isProfileClicked==true }">
-	<%@include file="supplierProfile.jsp"%>
+	<%@include file="./admin/supplierProfile.jsp"%>
 </c:if>
 <c:if test="${isEditSupplierClicked==true }">
 	<%@include file="./admin/editSupplier.jsp"%>
@@ -101,9 +101,15 @@
 <c:if test="${isCartClicked==true }">
 	<%@include file="cart.jsp"%>
 </c:if>
+
+
 <!--    userRegitration -->
+
 <c:if test="${isRegistrationClicked==true }">
 	<%@include file="./user/registration.jsp"%>
+</c:if>
+<c:if test="${isProductByCategory==true }">
+	<%@include file="./user/productByCategory.jsp"%>
 </c:if>
 <c:if test="${isRegistrationSuccessClicked==true }">
 	<%@include file="login.jsp"%>

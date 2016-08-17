@@ -11,14 +11,19 @@
 				<div class="form-group">
 					<label for="name">Name</label>
 					<form:input path="customer_name" id="name" class="form-control" />
+					<form:errors path="customer_name" cssStyle="color:#ff0000;"/>
 				</div>
 			    <div class="form-group">
 					<label for="email">EmailAddress</label>
 					<form:input path="emailAddress" id="email" class="form-control" />
+							<form:errors path="emailAddress" cssStyle="color:#ff0000;"/>
+				
 				</div>
 				 <div class="form-group">
 					<label for="phone">PhoneNo</label>
 					<form:input path="phoneNo" id="phone" class="form-control" />
+							<form:errors path="phoneNo" cssStyle="color:#ff0000;"/>
+				
 				</div>
 				 <div class="form-group">
 					<label for="gender">Gender</label>
@@ -28,10 +33,14 @@
 				 <div class="form-group">
 					<label for="username">Username</label>
 					<form:input path="userName" id="username" class="form-control" />
+							<form:errors path="customer_name" cssStyle="color:#ff0000;"/>
+				
 				</div>
 				 <div class="form-group">
 					<label for="password">Password</label>
 					<form:password path="password" id="password" class="form-control" />
+							<form:errors path="userName" cssStyle="color:#ff0000;"/>
+				
 				</div>
 				<br>
 				<input type="submit" value="submit" class="btn btn-default" />

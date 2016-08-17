@@ -9,7 +9,7 @@
 				int i = 1;
 			%>
 
-<h1>ADD SUPPLIER</h1>
+         <h1>ADD SUPPLIER</h1>
 			<p>Added by administrator</p>
 			<table class="table table-striped table-hover">
 				<thead>

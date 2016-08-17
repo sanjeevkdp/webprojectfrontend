@@ -39,7 +39,7 @@
 					<p> <sec:authorize access="hasRole('ROLE_USER')">
 							<a href="${contextPath}/product" class="btn btn-default">Back</a>
 							<a href="${contextPath}/cart/addToCart/${product.product_id}" class="btn btn-warning">Order Now</a> 
-							<a href="${contextPath}/cart" class="btn btn-default">View Cart</a>
+							<a href="${contextPath}/cart" class="btn btn-default">View Cart ${noOfProducts}</a>
 						</sec:authorize>
 						</p>
 
