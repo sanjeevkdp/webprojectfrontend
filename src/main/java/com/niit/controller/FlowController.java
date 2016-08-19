@@ -20,7 +20,7 @@ import com.niit.model.Card;
 import com.niit.model.Cart;
 import com.niit.model.CartItem;
 import com.niit.model.Customer;
-import com.niit.model.Order;
+import com.niit.model.OrderD;
 import com.niit.model.OrderItems;
 import com.niit.model.ShippingAddress;
 import com.niit.temp.CheckOutDetails;
@@ -40,7 +40,7 @@ public class FlowController {
 	@Autowired
 	CardDao cardDao;
 	@Autowired
-	Order order;
+	OrderD orderD;
 	@Autowired
 	OrderItems orderItems;
 	@Autowired
@@ -103,8 +103,8 @@ public class FlowController {
 	public String addCard(CheckOutDetails checkoutDetails, Card card) {
 		customer = customerDao.getCustomerByUserName(SecurityContextHolder.getContext().getAuthentication().getName());
 
-		shippingAddressDao.saveOrUpdate(shippingAddress);
-		billingAddressDao.saveOrUpdate(billingAddress);
+		shippingAddressDao.saveOrUpdate(checkoutDetails.getShippingAddress());
+		billingAddressDao.saveOrUpdate(checkoutDetails.getBillingAddress());
 
 		card.setCustomerId(customer.getCustomerId());
 		card.setTotalCost(cartDao.getCartByCustomerId(customer.getCustomerId()).getGrandTotal());

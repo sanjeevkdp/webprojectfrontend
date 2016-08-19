@@ -48,7 +48,7 @@
 	</action-state>
 
 
-	<end-state id="orderConfirm" view="cart/orderConfirmed" />
+	<end-state id="orderConfirm" view="customer/successMessage" />
 	<end-state id="toCartView" view="externalRedirect:contextRelative:/cart/" />
 	<end-state id="toHome" view="externalRedirect:contextRelative:/" />
 

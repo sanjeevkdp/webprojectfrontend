@@ -20,10 +20,10 @@
 		<div class="container">
 			<div class="row">
 				<!-- Logo -->
-				<div class="col-sm-6 padding-vert-5">
+				<div class="col-sm-6 padding-vert">
 					<div class="logo">
 						<a href="index.html" title="handcraft"> <img
-							src="${img}/2.png" alt="Logo" />
+							src="${img}/logo.jpg" alt="Logo" />
 						</a>
 					</div>
 					<!-- End Logo -->
@@ -41,7 +41,7 @@
 								<button id="rightbar-shopping_cart" href="${contextPath}/cart"
 									class="btn btn-default" type="submit"
 									title="View my shopping cart">
-									<i class="fa-shopping-cart"></i>${noOfProducts}
+									<i class="fa-shopping-cart"></i><span class="badge">${noOfProducts}</span>
 								</button>
 								</sec:authorize>
 							</div>
@@ -122,7 +122,7 @@
                            </sec:authorize>
                               <sec:authorize access="hasRole('ROLE_USER')">			
 							<li class="pull-right"><a id="user"
-								href="${contextPath}/cart" class="fa-shopping-cart">Cart(${noOfProducts})</a></li>
+								href="${contextPath}/cart" class="fa-shopping-cart">Cart<span class="badge">${noOfProducts}</span></a></li>
 								<li class="pull-right"><a id="user"
 								href="${contextPath}/product" class="fa-user">hi! ${pageContext.request.userPrincipal.name}</a></li>
                          

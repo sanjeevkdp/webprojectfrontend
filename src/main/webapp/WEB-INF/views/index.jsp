@@ -99,7 +99,7 @@
 </c:if>
 
 <c:if test="${isCartClicked==true }">
-	<%@include file="cart.jsp"%>
+	<%@include file="customer/cart.jsp"%>
 </c:if>
 
 
