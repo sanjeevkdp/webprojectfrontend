@@ -950,7 +950,7 @@ p.site-slogan {
 }
 
 #hornav ul ul:before {
-	background: transparent url('../resources/img/menu_arrow.png') no-repeat 0 0;
+	background: transparent url('../img/menu_arrow.png') no-repeat 0 0;
 	content: "";
 	display: block;
 	height: 10px;

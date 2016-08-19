@@ -4,7 +4,7 @@
 <div id="content" class="bottom-border-shadow">
 	<div class="container background-white bottom-border">
 		<div class="row margin-vert-30">
-                 <h1>Customer Detals</h1>
+                 <h1>Shipping Details</h1>
                  <p>fill in the detail</p>
                  <form:form action="${contextPath}/registration" method="post" commandName="customer" >
 				<div class="form-group">
