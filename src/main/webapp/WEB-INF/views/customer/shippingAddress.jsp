@@ -6,7 +6,7 @@
 		<div class="row margin-vert-30">
                  <h1>Shipping Details</h1>
                  <p>fill in the detail</p>
-                 <form:form action="${contextPath}/registration" method="post" commandName="customer" >
+                 <form:form class=""  commandName="shippingAddress" >
 				<div class="form-group">
 					<label for="streetName">StreetName</label>
 					<form:input path="streetName" id="streetName" class="form-control" />
@@ -43,9 +43,12 @@
 				
 				</div>
 				<br>
-				<input type="submit" value="submit" class="btn btn-default" />
-				<a href="${contextPath}/admin/adminAddProduct" class="btn btn-default">Cancel</a>
-
+				<div class="col-md-offset-3">
+							<input type="submit" name="_eventId_submitShippingAddress"
+								class="btn btn-md btn-success" value="Save"> <input
+								type="submit" name="_eventId_cancel"
+								class="btn btn-md btn-danger" value="Cancel">
+						</div>
 			</form:form>
 		</div>
 	</div>

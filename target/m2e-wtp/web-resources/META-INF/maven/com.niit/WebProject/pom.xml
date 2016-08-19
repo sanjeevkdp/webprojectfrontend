@@ -168,12 +168,24 @@
 </dependency>
 
 <!-- ========================================webFlow Dependency======================================= -->
+<!-- https://mvnrepository.com/artifact/org.springframework.webflow/spring-webflow -->
 <dependency>
     <groupId>org.springframework.webflow</groupId>
     <artifactId>spring-webflow</artifactId>
     <version>2.4.4.RELEASE</version>
 </dependency>
-
+<!-- https://mvnrepository.com/artifact/org.springframework.webflow/spring-binding -->
+<dependency>
+    <groupId>org.springframework.webflow</groupId>
+    <artifactId>spring-binding</artifactId>
+    <version>2.4.4.RELEASE</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/org.springframework.webflow/spring-js -->
+<dependency>
+    <groupId>org.springframework.webflow</groupId>
+    <artifactId>spring-js</artifactId>
+    <version>2.4.4.RELEASE</version>
+</dependency>
 
 
 		<!-- =======================================end dependency=========================================== -->

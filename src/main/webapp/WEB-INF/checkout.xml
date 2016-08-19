@@ -1,60 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <flow xmlns="http://www.springframework.org/schema/webflow"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:aop="http://www.springframework.org/schema/aop"
-    xmlns:context="http://www.springframework.org/schema/context"
-    xmlns:mvc="http://www.springframework.org/schema/mvc"
-    xmlns:web="http://www.springframework.org/schema/web"
-    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/webflow/spring-webflow.xsd
-        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
-        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
-        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
-        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/web/spring-web.xsd">
-       
-       <var name="customer"/>
-       
-       <on-start>
-		<evaluate expression="flowController.initFlow()" result="flowscope.customer" />
-	   </on-start>
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/webflow  http://www.springframework.org/schema/webflow/spring-webflow-2.4.xsd">
 
-	<view-state id="checkout" view="customer/customerDetails" model="flowscope.customer">
-		<transition on="submitCustomer" to="confirmationDetails" />
-	</view-state>
-       <action-state id="confirmationDetails">
-		<evaluate expression="flowController.addCustomerDetails(flowscope.customer)"></evaluate>
-		<transition on="success" to="confirmDetails" />
-		<transition on="failure" to="start"/>
-		</action-state>
-		<!-- Executed when webFlow is triggered -->
+	<var name="shippingAddress" class="com.niit.model.ShippingAddress" />
+	<var name="billingAddress" class="com.niit.model.BillingAddress" />
+	<var name="orderItems" class="com.niit.model.OrderItems" />
+	<var name="order" class="com.niit.model.Order" />
+	<var name="cart" class="com.niit.model.Cart" />
+	<var name="cartItem" class="com.niit.model.CartItem" />
+	<var name="checkoutDetails" class="com.niit.temp.CheckOutDetails"></var>
+
 	<on-start>
-	<!-- demohandler is java class available through annotated Demohandler.java class.here we are calling it’s initFlow() method. -->
-	  <evaluate expression="flowController.initFlow()" result="flowscope.customer"/>
+		<evaluate expression="flowController.initFlow()" result="flowScope.checkoutDetails" />
 	</on-start>
 
-	 <!-- if not specified the first view state is the starting state -->
-	<view-state id="checkout" view="customer/customerDetails" model="flowscope.customer">
-	   <transition on="submit" to="validate"/>
+	<view-state id="checkout" view="customer/shippingAddress"
+		model="shippingAddress">
+		<transition on="submitShippingAddress" to="shippingDetails" />
 	</view-state>
 
-	<action-state id="validate">
-		<evaluate expression="demohandler.validateDetails(userBean,messageContext)"></evaluate>
-		<transition on="success" to="confirmDetails" />
-		<transition on="failure" to="start" />
+	<action-state id="shippingDetails">
+		<evaluate
+			expression="flowController.addShippingAddress(flowScope.checkoutDetails,shippingAddress)"></evaluate>
+		<transition on="success" to="viewBillingDetails" />
 	</action-state>
 
-	<view-state id="confirmDetails" view="confirmDetails" model="flowScope.userBean">
-		<transition on="edit" to="start" />
-		<transition on="submit" to="cart" />
+	<view-state id="viewBillingDetails" view="customer/billingAddress"
+		model="billingAddress">
+		<transition on="submitBillingAddress" to="billingDetails" />
 	</view-state>
 
-	<end-state id="cart" view="cart" />
-	<end-state id="home" view="externalRedirect:contextRelative:index.jsp" />
-	<end-state id="toException" view="externalRedirect:contextRelative:exception.jsp" />
+	<action-state id="billingDetails">
+		<evaluate
+			expression="flowController.addBillingAddress(flowScope.checkoutDetails,billingAddress)"></evaluate>
+		<transition on="success" to="viewCardDetail" />
+	</action-state>
 
-	<!-- these events are available in every state-->
+	<view-state id="viewCardDetail" view="customer/card" model="card">
+		<transition on="confirmCheckout" to="paymentDetails" />
+	</view-state>
+
+	<action-state id="paymentDetails">
+		<evaluate
+			expression="flowController.addCard(flowScope.checkoutDetails,card)"></evaluate>
+		<transition on="success" to="orderConfirm" />
+	</action-state>
+
+
+	<end-state id="orderConfirm" view="cart/orderConfirmed" />
+	<end-state id="toCartView" view="externalRedirect:contextRelative:/cart/" />
+	<end-state id="toHome" view="externalRedirect:contextRelative:/" />
+
 	<global-transitions>
-		<transition on="home" to="home" />
-		<transition on="error" to="toException" />
+		<transition on="cancel" to="toCartView" />
+		<transition on="home" to="toHome" />
 	</global-transitions>
-        </flow>
+</flow>

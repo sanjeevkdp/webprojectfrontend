@@ -82,7 +82,7 @@
 								</tr>
                 
 							</table>
-							<a class="btn btn-primary pull-right">CheckOut</a>
+							<a class="btn btn-primary pull-right" href="${contextPath}/checkout">CheckOut</a>
 
               </c:otherwise>
 	</c:choose>

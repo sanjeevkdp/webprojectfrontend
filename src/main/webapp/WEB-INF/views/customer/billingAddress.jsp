@@ -6,7 +6,7 @@
 		<div class="row margin-vert-30">
                  <h1>Billing Address</h1>
                  <p>fill in the detail</p>
-                 <form:form action="${contextPath}/registration" method="post" commandName="customer" >
+                 <form:form  commandName="billingAddress" >
 				<div class="form-group">
 					<label for="streetName">StreetName</label>
 					<form:input path="streetName" id="streetName" class="form-control" />
@@ -43,9 +43,10 @@
 				
 				</div>
 				<br>
-				<input type="submit" value="submit" class="btn btn-default" />
-				<a href="${contextPath}/cart" class="btn btn-default">Cancel</a>
-
+				<input type="submit" name="_eventId_submitBillingAddress"
+							class="btn btn-md btn-success" value="Save">
+						<input type="submit" name="_eventId_cancel"
+							class="btn btn-md btn-danger" value="Cancel">
 			</form:form>
 		</div>
 	</div>
