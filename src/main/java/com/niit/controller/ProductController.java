@@ -63,10 +63,31 @@ public class ProductController {
 		for (Product p : listProduct) {
 			productModel = new ProductModel();
 			productModel.setProduct(p);
-			category = categoryDao.get(p.getCategory_id());
-			supplier = supplierDao.get(p.getSupplier_id());
-			productModel.setCategoryName(category.getCategory_name());
-			productModel.setSupplierName(supplier.getSupplier_name());
+			
+			if (product!=null) {
+				// add category name but first check if category is available 
+				if(p.getCategory_id() != null) {			
+
+					category = categoryDao.get(p.getCategory_id());
+					productModel.setCategoryName(category.getCategory_name());
+				}
+				else {
+					productModel.setCategoryName("'Not Available'");
+					
+				}
+				
+				// add supplier name but first check if supplier is available
+				if (p.getSupplier_id() !=null) {
+					supplier = supplierDao.get(p.getSupplier_id());
+					
+					productModel.setSupplierName(supplier.getSupplier_name());
+				} else {
+					productModel.setSupplierName("'Not Available'");
+					
+				}
+				
+			}  
+			
 			products.add(productModel);
 
 		}
@@ -99,10 +120,30 @@ public class ProductController {
 		for (Product p : listProduct) {
 			productModel = new ProductModel();
 			productModel.setProduct(p);
-			category = categoryDao.get(p.getCategory_id());
-			supplier = supplierDao.get(p.getSupplier_id());
-			productModel.setCategoryName(category.getCategory_name());
-			productModel.setSupplierName(supplier.getSupplier_name());
+			if (product!=null) {
+				// add category name but first check if category is available 
+				if(p.getCategory_id() != null) {			
+
+					category = categoryDao.get(p.getCategory_id());
+					productModel.setCategoryName(category.getCategory_name());
+				}
+				else {
+					productModel.setCategoryName("'Not Available'");
+					
+				}
+				
+				// add supplier name but first check if supplier is available
+				if (p.getSupplier_id() !=null) {
+					supplier = supplierDao.get(p.getSupplier_id());
+					
+					productModel.setSupplierName(supplier.getSupplier_name());
+				} else {
+					productModel.setSupplierName("'Not Available'");
+					
+				}
+				
+			}  
+			
 			products.add(productModel);
 
 		}
@@ -199,10 +240,30 @@ public class ProductController {
 		for (Product p : listProduct) {
 			productModel = new ProductModel();
 			productModel.setProduct(p);
-			category = categoryDao.get(p.getCategory_id());
-			supplier = supplierDao.get(p.getSupplier_id());
-			productModel.setCategoryName(category.getCategory_name());
-			productModel.setSupplierName(supplier.getSupplier_name());
+			if (product!=null) {
+				// add category name but first check if category is available 
+				if(p.getCategory_id() != null) {			
+
+					category = categoryDao.get(p.getCategory_id());
+					productModel.setCategoryName(category.getCategory_name());
+				}
+				else {
+					productModel.setCategoryName("'Not Available'");
+					
+				}
+				
+				// add supplier name but first check if supplier is available
+				if (p.getSupplier_id() !=null) {
+					supplier = supplierDao.get(p.getSupplier_id());
+					
+					productModel.setSupplierName(supplier.getSupplier_name());
+				} else {
+					productModel.setSupplierName("'Not Available'");
+					
+				}
+				
+			}  
+			
 			products.add(productModel);
 
 		}
@@ -291,10 +352,31 @@ public class ProductController {
 		for (Product p : listProduct) {
 			productModel = new ProductModel();
 			productModel.setProduct(p);
-			category = categoryDao.get(p.getCategory_id());
-			supplier = supplierDao.get(p.getSupplier_id());
-			productModel.setCategoryName(category.getCategory_name());
-			productModel.setSupplierName(supplier.getSupplier_name());
+				if (product!=null) {
+					// add category name but first check if category is available 
+					if(p.getCategory_id() != null) {			
+
+						category = categoryDao.get(p.getCategory_id());
+						productModel.setCategoryName(category.getCategory_name());
+					}
+					else {
+						productModel.setCategoryName("'Not Available'");
+						
+					}
+					
+					// add supplier name but first check if supplier is available
+					if (p.getSupplier_id() !=null) {
+						supplier = supplierDao.get(p.getSupplier_id());
+						
+						productModel.setSupplierName(supplier.getSupplier_name());
+					} else {
+						productModel.setSupplierName("'Not Available'");
+						
+					}
+					
+				} 
+			
+			
 			products.add(productModel);
 
 		}
@@ -337,10 +419,33 @@ public class ProductController {
 		for (Product p : listProduct) {
 			productModel = new ProductModel();
 			productModel.setProduct(p);
-			category = categoryDao.get(p.getCategory_id());
-			supplier = supplierDao.get(p.getSupplier_id());
-			productModel.setCategoryName(category.getCategory_name());
-			productModel.setSupplierName(supplier.getSupplier_name());
+
+
+			// check if the product is available or not
+			if (product!=null) {
+				// add category name but first check if category is available 
+				if(p.getCategory_id() != null) {			
+
+					category = categoryDao.get(p.getCategory_id());
+					productModel.setCategoryName(category.getCategory_name());
+				}
+				else {
+					productModel.setCategoryName("'Not Available'");
+					
+				}
+				
+				// add supplier name but first check if supplier is available
+				if (p.getSupplier_id() !=null) {
+					supplier = supplierDao.get(p.getSupplier_id());
+					
+					productModel.setSupplierName(supplier.getSupplier_name());
+				} else {
+					productModel.setSupplierName("'Not Available'");
+					
+				}
+				
+			} 
+			
 			products.add(productModel);
 
 		}
@@ -402,5 +507,49 @@ public class ProductController {
 				
 		return mv;
 	}
+	//====================================product view for Admin===============================
 
+	@RequestMapping("/admin/adminAddProduct/adminProductView/{product_id}")
+	public ModelAndView AdminProductView(@PathVariable("product_id") String id, Model model) {
+		ModelAndView mv = new ModelAndView("index");
+
+		product = productDao.get(id);
+		model.addAttribute("product", product);
+		
+		String categoryName = null;
+		String supplierName = null; 
+		// check if the product is available or not
+		if (product!=null) {
+			// add category name but first check if category is available 
+			if(product.getCategory_id() != null) {			
+				category = categoryDao.get(product.getCategory_id());
+				categoryName = category.getCategory_name();
+			}
+			else {
+				category.setCategory_name("'Not Available'");
+				categoryName = category.getCategory_name();
+			}
+			
+			// add supplier name but first check if supplier is available
+			if (product.getSupplier_id() !=null) {
+				supplier = supplierDao.get(product.getSupplier_id());
+				supplierName = supplier.getSupplier_name();
+			} else {
+				supplier.setSupplier_name("'Not Available'");
+				supplierName = supplier.getSupplier_name();
+			}
+			
+		} 
+		
+		
+		mv.addObject("categoryName", categoryName);		
+		mv.addObject("supplierName", supplierName);
+		mv.addObject("isAdminProductViewClicked", "true");
+		mv.addObject("active", "AdminProductView");
+		//===========list Category in navBar=========//
+				List<Category> listCategory = categoryDao.list();
+				model.addAttribute("categories", listCategory);
+				
+		return mv;
+	}
 }

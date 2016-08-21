@@ -45,34 +45,7 @@
                 </div>
             </div>
           
-            <div id="content" class="bottom-border-shadow">
-                <div class="container background-white bottom-border">
-                    <div class="row margin-vert-30">
-                        <!-- Main Text -->
-                        <div class="col-md-6">
-                            <h2>Welcome to HandiCarft</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit
-                                lobortis nisl ut aliquip ex ea commodo consequat.</p>
-                            <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit
-                                augue duis dolore te feugait nulla facilisi. Cras non sem sem, at eleifend mi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Curabitur eget nisl
-                                a risus.</p>
-                        </div>
-                        <!-- End Main Text -->
-                        <div class="col-md-6">
-                            <h3 class="padding-vert-10">Key Features</h3>
-                            <p>Duis sit amet orci et lectus dictum auctor a nec enim. Donec suscipit fringilla elementum. Suspendisse nec justo ut felis ornare tincidunt vitae et lectus.</p>
-                            <ul class="tick animate fadeInRight">
-                                <li>Responsive Design</li>
-                                <li>Built with LESS</li>
-                                <li>Font Choosers</li>
-                                <li>Replaceable Background Image</li>
-                                <li>Custom Module Widths</li>
-                                <li>All Module Extensions Included</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
+           
             
             
             <!-- Portfolio -->
@@ -90,7 +63,7 @@
 						         <li class="portfolio-item col-sm-4 col-xs-6 margin-bottom-40">
                                 <a href="${contextPath}/productShow/${product.product_id}">
                                     <figure class="animate fadeIn">
-                                        <img src="${img}/${product.product_id}.png">
+                                        <img src="${img}/${product.product_id}.png" >
                                         <figcaption>
                                             <h3>${product.product_name}</h3>
                                             <span>${product.description}</span>
@@ -185,6 +158,34 @@
 <!--                             </li> -->
                             <!-- //Portfolio Item// -->
                         </ul>
+                    </div>
+                </div>
+            </div>
+             <div id="content" class="bottom-border-shadow">
+                <div class="container background-white bottom-border">
+                    <div class="row margin-vert-30">
+                        <!-- Main Text -->
+                        <div class="col-md-6">
+                            <h2>Welcome to HandiCarft</h2>
+                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit
+                                lobortis nisl ut aliquip ex ea commodo consequat.</p>
+                            <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit
+                                augue duis dolore te feugait nulla facilisi. Cras non sem sem, at eleifend mi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Curabitur eget nisl
+                                a risus.</p>
+                        </div>
+                        <!-- End Main Text -->
+                        <div class="col-md-6">
+                            <h3 class="padding-vert-10">Key Features</h3>
+                            <p>Duis sit amet orci et lectus dictum auctor a nec enim. Donec suscipit fringilla elementum. Suspendisse nec justo ut felis ornare tincidunt vitae et lectus.</p>
+                            <ul class="tick animate fadeInRight">
+                                <li>Responsive Design</li>
+                                <li>Built with LESS</li>
+                                <li>Font Choosers</li>
+                                <li>Replaceable Background Image</li>
+                                <li>Custom Module Widths</li>
+                                <li>All Module Extensions Included</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>

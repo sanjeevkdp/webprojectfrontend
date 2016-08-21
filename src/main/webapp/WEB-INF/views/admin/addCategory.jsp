@@ -24,8 +24,8 @@
    <form:input id="image" path="imgUrl" type="file" class="form:input-large"/>
    </div>
    <br>
-   <input type="submit" value="submit" class="btn btn-default"/>
-   <a href="${contextPath}/admin/adminAddCategory" class="btn btn-default">Cancel</a>
+   <input type="submit" value="submit" class="btn btn-green"/>
+   <a href="${contextPath}/admin/adminAddCategory" class="btn btn-danger">Cancel</a>
    
    </form:form>
   </div>

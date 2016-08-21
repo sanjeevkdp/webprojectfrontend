@@ -1,22 +1,15 @@
 package com.niit.controller;
 
-import java.io.File;
-import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.niit.dao.CategoryDao;
@@ -145,31 +138,21 @@ public class HelloController {
 	 //mv.addObject("active","Admin");
 	 //return mv;
 	 //}
-	@RequestMapping("/aboutMe")
-	public ModelAndView AboutMe(Model model) {
-		ModelAndView mv = new ModelAndView("index");
-		mv.addObject("isAboutMeClicked", "true");
-		mv.addObject("active", "aboutMe");
-		//===========list Category in navBar=========//
-				List<Category> listCategory = categoryDao.list();
-				model.addAttribute("categories", listCategory);
-				
-		return mv;
-	}
 
-	@RequestMapping("/login")
-	public ModelAndView login(Model model) {
-		ModelAndView mv = new ModelAndView("index");
-		mv.addObject("isLoginClicked", "true");
-		mv.addObject("active", "login");
-		
-		//===========list Category in navBar=========//
-				List<Category> listCategory = categoryDao.list();
-				model.addAttribute("categories", listCategory);
-				
-		return mv;
 
-	}
+//	@RequestMapping("/login")
+//	public ModelAndView login(Model model) {
+//		ModelAndView mv = new ModelAndView("index");
+//		mv.addObject("isLoginClicked", "true");
+//		mv.addObject("active", "login");
+//		
+//		//===========list Category in navBar=========//
+//				List<Category> listCategory = categoryDao.list();
+//				model.addAttribute("categories", listCategory);
+//				
+//		return mv;
+//
+//	}
 
 	@RequestMapping("/register")
 	public ModelAndView Register(Model model) {
@@ -184,17 +167,7 @@ public class HelloController {
 		return mv;
 	}
 
-	@RequestMapping("/error")
-	public ModelAndView Error(Model model) {
-		ModelAndView mv = new ModelAndView("index");
-		mv.addObject("isErrorClicked", "true");
-		mv.addObject("active", "error");
-		//===========list Category in navBar=========//
-				List<Category> listCategory = categoryDao.list();
-				model.addAttribute("categories", listCategory);
-				
-		return mv;
-	}
+
 
 	@RequestMapping("/contact")
 	public ModelAndView Contactr(Model model) {
@@ -227,5 +200,26 @@ public class HelloController {
 		model.addAttribute("categories", listCategory);
 
 	   return mv;
+   }
+   @RequestMapping(value="/productItems/",method=RequestMethod.GET)
+   public ModelAndView productItems(@RequestParam("keyword") String keyword,Model model){
+	   ModelAndView mv =new ModelAndView("index");
+	   List<Product> listOfProduct=productDao.productItems(keyword);
+	   if(!listOfProduct.isEmpty()){
+		   mv.addObject("products",listOfProduct);		   
+	   }
+	   else{
+		   model.addAttribute("noProductFound","Sorry! ............"+keyword);
+	   }
+	   
+	   //===========list Category in navBar=========//
+		List<Category> listCategory = categoryDao.list();
+		model.addAttribute("categories", listCategory);
+	   
+	   
+	   mv.addObject("isProductItemClicked",true);
+	   return mv;
+	   
+	  
    }
 }

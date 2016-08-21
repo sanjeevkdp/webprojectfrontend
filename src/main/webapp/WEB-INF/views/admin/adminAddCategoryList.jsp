@@ -52,7 +52,7 @@
 
 			</table>
 			<br><br>
-			<a href="${contextPath}/admin/adminAddCategory/addCategory"    class="btn btn-primary">Add Category</a>
+			<a href="${contextPath}/admin/adminAddCategory/addCategory"    class="btn btn-green btn-lg">Add Category</a>
 		</div>
 		</div>
 		</div>

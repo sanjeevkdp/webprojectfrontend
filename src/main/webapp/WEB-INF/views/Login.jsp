@@ -7,25 +7,45 @@
 	
 	<c:if test="${not empty message}"><div>${message}</div></c:if>
 	 <div class="col-md-6 col-md-offset-3 col-sm-offset-3">
-				<div class="panel panel-primary">
+				<div class="panel panel-default">
 					<div class="panel-heading">
 						<b>Login</b>
 					</div>
 					<div class="panel-body">
 						<form role="login" action="${contextPath}/j_spring_security_check" method="post">
 						
-							<label for="username">Username:</label><c:if test="${not empty error}"><div>${error}</div></c:if>
-							 <input type="username"
+<!-- 							<label for="username">Username:</label> -->
+							<c:if test="${not empty error}"><div>${error}</div></c:if>
+							<div class="input-group margin-bottom-20">
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-user"></i>
+                                        </span>
+                                        <input type="username"
 								class="form-control" name="username" id="username"
-								placeholder="Enter username" > <label for="password">Password:</label>
-							<input type="password" class="form-control" name="password"
+								placeholder="Enter username" >
+                                    </div>
+							
+								
+								
+								
+								
+<!-- 								 <label for="password">Password:</label> -->
+
+<div class="input-group margin-bottom-20">
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-lock"></i>
+                                        </span>
+                                       <input type="password" class="form-control" name="password"
 								id="password" placeholder="Enter password" >
+                                    </div>
+							
 								<br>
 <!-- 							<div class="checkbox"> -->
 <!-- 								<label><input type="checkbox"> Remember me</label> -->
 <!-- 							</div> -->
 
-							<button type="submit" class="btn btn-primary">Submit</button>
+							<button type="submit" class="btn btn-green">Submit</button>
+							<p>please <a href="${contextPath}/registration"><span style='color:red;text-decoration:underline'>Click</span></a> to register</p>
 							<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 						</form>
 					</div>

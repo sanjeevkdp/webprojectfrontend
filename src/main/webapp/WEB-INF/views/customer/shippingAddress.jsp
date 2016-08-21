@@ -37,23 +37,23 @@
 				</div>
 				 <div class="form-group">
 					<label for=country>country</label>
-					<form:password path="country" id="country" class="form-control" />
+					<form:input path="country" id="country" class="form-control" />
 							<form:errors path="country" cssStyle="color:#ff0000;"/>
 				
 				</div>
 				 <div class="form-group">
-					<label for="password">Password</label>
-					<form:password path="zipCode" id="password" class="form-control" />
+					<label for="zipCode">zipCode</label>
+					<form:input path="zipCode" id="zipCode" class="form-control" />
 							<form:errors path="zipCode" cssStyle="color:#ff0000;"/>
 				
 				</div>
 				<br>
-				<div class="col-md-offset-3">
+				
 							<input type="submit" name="_eventId_submitShippingAddress"
 								class="btn btn-md btn-success" value="Save"> <input
 								type="submit" name="_eventId_cancel"
 								class="btn btn-md btn-danger" value="Cancel">
-						</div>
+						
 			</form:form>
 		</div>
 	</div>

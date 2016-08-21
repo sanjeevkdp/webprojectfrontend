@@ -175,6 +175,8 @@ public class CategoryController {
 			Model model, HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView("index");
 		if (result.hasErrors()) {
+			
+			mv.addObject("category",category);
 			mv.addObject("isEditCategoryClicked", "true");
 			mv.addObject("active", "editCategory");
 			//===========list Category in navBar=========//

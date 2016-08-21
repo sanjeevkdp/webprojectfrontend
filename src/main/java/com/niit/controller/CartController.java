@@ -60,7 +60,7 @@ public class CartController {
 	HttpSession httpSession;
 
 
-	@RequestMapping("/cart")
+	@RequestMapping("/customer/cart")
 	public ModelAndView viewCart(Model model, Principal userName,
 			@RequestParam(value = "cartItemRemoved", required = false) String cartItemRemoved)
 
@@ -91,10 +91,17 @@ public class CartController {
 		else {
 			model.addAttribute("cartEmpty", "No items present in the cart");
 
+			//===========list Category in navBar=========//
+			List<Category> listCategory = categoryDao.list();
+			model.addAttribute("categories", listCategory);
+			
 			mv.addObject("noOfProducts", 0);
 		}
 
-		
+		//===========list Category in navBar=========//
+				List<Category> listCategory = categoryDao.list();
+				model.addAttribute("categories", listCategory);
+						
 		mv.addObject("isCartClicked", "true");
      	mv.addObject("active", "cart");
 
@@ -124,7 +131,7 @@ public class CartController {
 		return cartItemModelList;
 	}
 
-	@RequestMapping("/cart/addToCart/{product_id}")
+	@RequestMapping("/customer/cart/addToCart/{product_id}")
 	public String addToCart(@PathVariable("product_id") String productId, Model model, Principal userName) {
 
 		// System.out.println(name);
@@ -238,7 +245,7 @@ public class CartController {
 		return null;
 	}
 
-	@RequestMapping("/cart/remove/{cartItemId}")
+	@RequestMapping("/customer/cart/remove/{cartItemId}")
 	public String removeCartItems(@PathVariable("cartItemId") String cartItemId, Model model,Principal username) {
 		cartItem = cartItemDao.getCartItem(cartItemId);
 		String customerId = cartItem.getCustomerId();
@@ -247,7 +254,7 @@ public class CartController {
 		int noOfProducts = updateCartAgain(cartId, customerId);
 		model.addAttribute("noOfProducts", noOfProducts);
 		httpSession.setAttribute("noOfProducts",returnNoOfProducts(username));
-		return "redirect:/cart/";
+		return "redirect:/customer/cart/";
 	}
 
 	public int returnNoOfProducts(Principal username){

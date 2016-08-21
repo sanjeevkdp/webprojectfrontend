@@ -55,7 +55,7 @@
                                     <p>Lorem ipsum dolor sit amet, no cetero voluptatum est, audire sensibus maiestatis vis et. Vitae audire prodesset an his. Nulla ubique omnesque in sit.</p>
                                     <ul class="list-unstyled">
                                         <li>
-                                            <i class="fa-phone color-primary"></i>+353-44-55-66</li>
+                                            <i class="fa-phone color-primary"></i>+919191991911</li>
                                         <li>
                                             <i class="fa-envelope color-primary"></i>info@example.com</li>
                                         <li>
@@ -95,9 +95,8 @@
                         <!-- Disclaimer -->
                         <div class="col-md-4">
                             <h3 class="class margin-bottom-10">Disclaimer</h3>
-                            <p>All stock images on this template demo are for presentation purposes only, intended to represent a live site and are not included with the template or in any of the Joomla51 club membership plans.</p>
-                            <p>Most of the images used here are available from
-                                <a href="http://www.shutterstock.com/" target="_blank">shutterstock.com</a>. Links are provided if you wish to purchase them from their copyright owners.</p>
+                          <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab accusantium quaerat, facere odio vero libero ducimus eligendi eaque cum ullam aperiam, molestias id. Ipsa nisi, dolores odio blanditiis assumenda minus?</p>  <p>Most of the images used here are available from
+                                 Links are provided if you wish to purchase them from their copyright owners.</p>
                         </div>
                         <!-- End Disclaimer -->
                         <!-- Contact Details -->
@@ -109,13 +108,13 @@
                                 <span class="fa-envelope">Email:</span>
                                 <a href="mailto:info@example.com">info@example.com</a>
                                 <br>
-                                <span class="fa-link">Website:</span>
+                                <span class="fa-link">Ecommmerce Website:</span>
                                 <a href="http://www.example.com">www.example.com</a>
                             </p>
-                            <p>The Dunes, Top Road,
-                                <br>Strandhill,
-                                <br>Co. Sligo,
-                                <br>Ireland</p>
+                            <p>Gahtkopar, Station Road,
+                                <br>Appartment,
+                                <br>Mumbai,
+                                <br>India</p>
                         </div>
                         <!-- End Contact Details -->
                         <!-- Sample Menu -->

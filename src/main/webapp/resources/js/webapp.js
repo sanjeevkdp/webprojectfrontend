@@ -23,8 +23,8 @@ $(function() {
  			case 'service':
  		 		$('#pages').addClass('active')
  		 		break;
- 		 	case 'error':
- 		 		$('#pages').addClass('active')
+ 		 	case 'AdminProductView':
+ 		 		$('#admin').addClass('active')
  		 		break;
  		 	case 'aboutMe':
  		 		$('#pages').addClass('active')

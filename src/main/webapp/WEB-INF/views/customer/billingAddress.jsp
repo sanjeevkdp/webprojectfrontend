@@ -39,21 +39,21 @@
 				</div>
 				 <div class="form-group">
 					<label for=country>country</label>
-					<form:password path="country" id="country" class="form-control" />
+					<form:input path="country" id="country" class="form-control" />
 							<form:errors path="country" cssStyle="color:#ff0000;"/>
 				
 				</div>
 				 <div class="form-group">
-					<label for="password">Password</label>
-					<form:password path="zipCode" id="password" class="form-control" />
+					<label for="zipCode">zipCode</label>
+					<form:input path="zipCode" id="zipCode" class="form-control" />
 							<form:errors path="zipCode" cssStyle="color:#ff0000;"/>
 				
 				</div>
 				<br>
 				<input type="submit" name="_eventId_submitBillingAddress"
-							class="btn btn-md btn-success" value="Save">
+							class="btn btn-lg btn-success" value="Save">
 						<input type="submit" name="_eventId_cancel"
-							class="btn btn-md btn-danger" value="Cancel">
+							class="btn btn-lg btn-danger" value="Cancel">
 			</form:form>
 		</div>
 	</div>

@@ -37,7 +37,7 @@
 						         <li class="portfolio-item col-sm-4 col-xs-6 margin-bottom-40">
                                 <a href="${contextPath}/productShow/${product.product_id}">
                                     <figure class="animate fadeIn">
-                                        <img alt="image5" src="${img}/${product.product_id}.png">
+                                        <img alt="image5" src="${img}/${product.product_id}.png" style="height: 220px; width: 100%">
                                         <figcaption>
                                             <h3>${product.product_name}</h3>
                                             <span>${product.description}</span>

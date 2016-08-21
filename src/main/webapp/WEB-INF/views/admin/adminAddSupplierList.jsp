@@ -53,7 +53,7 @@
 
 			</table>
 			<br><br>
-			<a href="${contextPath}/admin/adminAddSupplier/addSupplier"    class="btn btn-primary">Add Supplier</a>
+			<a href="${contextPath}/admin/adminAddSupplier/addSupplier"    class="btn btn-green btn-lg">Add Supplier</a>
 		</div>
 		</div>
 		</div>

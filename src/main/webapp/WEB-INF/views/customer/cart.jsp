@@ -29,11 +29,11 @@
 	       	</c:when>
 	            	<c:otherwise>
 	
-							<div>
-								<a class="btn btn-danger pull-left" ><span
-									class="fa fa-remove-sign"></span>Clear Cart</a>
+<!-- 							<div> -->
+<!-- 								<a class="btn btn-danger pull-left" ><span -->
+<!-- 									class="fa fa-remove-sign"></span>Clear Cart</a> -->
 
-							</div>
+<!-- 							</div> -->
 							<table class="table table-hover">
 								<tr>
 								<c:forEach items="${cartItems}" var="cartItem">
@@ -65,7 +65,7 @@
 <%-- 								<td>${c.cartItem.product.unit_price}</td> --%>
 									<td>${c.cartItem.quantity}</td>
 									<td>${c.cartItem.totalPrice} </td>
-									<td><a href="${contextPath}/cart/remove/${c.cartItem.cartItemId}" class="btn btn-danger  btn-xs" ><span
+									<td><a href="${contextPath}/customer/cart/remove/${c.cartItem.cartItemId}" class="btn btn-danger  btn-xs" ><span
 									class="fa fa-remove-sign"></span>remove</a></td>
 <%
 						i++;
@@ -82,11 +82,11 @@
 								</tr>
                 
 							</table>
-							<a class="btn btn-primary pull-right" href="${contextPath}/checkout">CheckOut</a>
+							<a class="btn btn-green pull-right" href="${contextPath}/checkout">CheckOut</a>
 
               </c:otherwise>
 	</c:choose>
-							<a href="${contextPath}/product" class="btn btn-default pull-left">Continue
+							<a href="${contextPath}/product" class="btn btn-blue pull-left">Continue
 								Shopping</a>
 						</div>
 

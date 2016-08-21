@@ -6,7 +6,7 @@
 	<var name="shippingAddress" class="com.niit.model.ShippingAddress" />
 	<var name="billingAddress" class="com.niit.model.BillingAddress" />
 	<var name="orderItems" class="com.niit.model.OrderItems" />
-	<var name="order" class="com.niit.model.Order" />
+	<var name="orderD" class="com.niit.model.OrderD" />
 	<var name="cart" class="com.niit.model.Cart" />
 	<var name="cartItem" class="com.niit.model.CartItem" />
 	<var name="checkoutDetails" class="com.niit.temp.CheckOutDetails"></var>
@@ -18,6 +18,7 @@
 	<view-state id="checkout" view="customer/shippingAddress"
 		model="shippingAddress">
 		<transition on="submitShippingAddress" to="shippingDetails" />
+<!-- 		<transition on="cancel" to="toCartView" /> -->
 	</view-state>
 
 	<action-state id="shippingDetails">
@@ -49,7 +50,7 @@
 
 
 	<end-state id="orderConfirm" view="customer/successMessage" />
-	<end-state id="toCartView" view="externalRedirect:contextRelative:/cart/" />
+	<end-state id="toCartView" view="externalRedirect:contextRelative:/customer/cart/" />
 	<end-state id="toHome" view="externalRedirect:contextRelative:/" />
 
 	<global-transitions>

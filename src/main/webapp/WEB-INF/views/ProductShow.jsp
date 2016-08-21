@@ -7,7 +7,8 @@
 <div id="content" class="bottom-border-shadow">
 	<div class="container background-white bottom-border">
 		<div class="row margin-vert-30">
-
+<h1>Product View</h1>
+<p>Information about Product</p>
 			<div class="container" >
 				<div class="row">
 					<div class="col-md-5">
@@ -36,9 +37,12 @@
 							<strong>Supplier</strong>:${supplierName}
 						</p>
 						<br>
+						<c:if test="${pageContext.request.userPrincipal.name == null }">
+						<p>Please !<a href="${contextPath}/login" >  <span style='color:red;text-decoration:underline'>  Login Here? </span></a>  to buy the product</p>
+						</c:if>
+						<a href="${contextPath}/product" class="btn btn-default">Back</a>
 					<p> <sec:authorize access="hasRole('ROLE_USER')">
-							<a href="${contextPath}/product" class="btn btn-default">Back</a>
-							<a href="${contextPath}/cart/addToCart/${product.product_id}" class="btn btn-warning">Order Now</a> 
+							<a href="${contextPath}/customer/cart/addToCart/${product.product_id}" class="btn btn-warning">Order Now</a> 
 							<a href="${contextPath}/cart" class="btn btn-default">View Cart ${noOfProducts}</a>
 						</sec:authorize>
 						</p>

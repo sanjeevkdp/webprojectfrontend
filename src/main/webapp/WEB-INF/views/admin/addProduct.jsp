@@ -5,7 +5,8 @@
 <div id="content" class="bottom-border-shadow">
 	<div class="container background-white bottom-border">
 		<div class="row margin-vert-30">
-
+ <h3>Add Product</h3>
+   <p>You can add product</p>
 			<form:form action="${contextPath}/admin/adminAddProduct?${_csrf.parameterName}=${_csrf.token}" method="post" commandName="product" enctype="multipart/form-data" >
 				<div class="form-group">
 					<label for="name">Name</label>
@@ -37,11 +38,11 @@
 					<form:input path="unit_price" id="price" class="form-control" />
 					<form:errors path="unit_price" cssStyle="color:#ff0000;"/>
 				</div>
-				<div class="form-group">
-					<label for="outOfStock">Out Of Stock</label>
-					<form:input path="out_of_stock" id="outOfStock"
-						class="form-control" />
-				</div>
+<!-- 				<div class="form-group"> -->
+<!-- 					<label for="outOfStock">Out Of Stock</label> -->
+<%-- 					<form:input path="out_of_stock" id="outOfStock" --%>
+<%-- 						class="form-control" /> --%>
+<!-- 				</div> -->
 				<div class="form-group">
 					<label for="description">Description</label>
 					<form:textarea path="description" id="description"
@@ -54,8 +55,8 @@
 						class="form:input-large" />
 				</div>
 				<br>
-				<input type="submit" value="submit" class="btn btn-default" />
-				<a href="${contextPath}/admin/adminAddProduct" class="btn btn-default">Cancel</a>
+				<input type="submit" value="submit" class="btn btn-green" />
+				<a href="${contextPath}/admin/adminAddProduct" class="btn btn-danger">Cancel</a>
 
 
 			</form:form>

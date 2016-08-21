@@ -86,7 +86,9 @@
 <c:if test="${isRegisterClicked==true }">
 	<%@include file="register.jsp"%>
 </c:if>
-
+<c:if test="${isAdminProductViewClicked==true }">
+	<%@include file="adminProductView.jsp"%>
+</c:if>
 
 
 

@@ -18,14 +18,14 @@
 					<form:errors path="cardNumber" cssStyle="color:#ff0000;"/>
 				</div>
 			    <div class="form-group">
-					<label for="expiryMonth">expiryMonth</label>
-					<form:input path="expiryMonth" id="expiryMonth" class="form-control" />
+					<label for="date">Generated Date</label>
+					<form:input path="expiryMonth" type="date" class="form-control" />
 							<form:errors path="expiryMonth" cssStyle="color:#ff0000;"/>
 				
 				</div>
 				 <div class="form-group">
-					<label for="expiryYear">expiryYear</label>
-					<form:input path="expiryYear" id="expiryYear" class="form-control" />
+					<label for="date">expiryYear</label>
+					<form:input path="expiryYear" type="date" class="form-control" />
 							<form:errors path="expiryYear" cssStyle="color:#ff0000;"/>
 				
 				</div>
@@ -37,18 +37,18 @@
 				</div>
 				 <div class="form-group">
 					<label for=cvNumber>cvNumber</label>
-					<form:password path="cvNumber" id="cvNumber" class="form-control" />
+					<form:input path="cvNumber" id="cvNumber" class="form-control" />
 							<form:errors path="cvNumber" cssStyle="color:#ff0000;"/>
 				
 				</div>
 				 
 				<br>
-				<div class="col-md-offset-3">
+				
 							<input type="submit" value="Checkout"
-								name="_eventId_confirmCheckout" class="btn btn-md btn-success">
+								name="_eventId_confirmCheckout" class="btn btn-lg btn-success">
 							<input type="submit" value="Cancel" name="_eventId_cancel"
-								class="btn btn-md btn-danger">
-						</div>
+								class="btn btn-lg btn-danger">
+					
 			</form:form>
 		</div>
 	</div>

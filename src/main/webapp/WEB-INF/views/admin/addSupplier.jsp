@@ -5,7 +5,8 @@
    <div id="content" class="bottom-border-shadow">
 	<div class="container background-white bottom-border">
 		<div class="row margin-vert-30">
-   
+    <h3>Add Supplier</h3>
+   <p>You can add Supplier</p>
    <form:form action="${contextPath}/admin/adminAddSupplier?${_csrf.parameterName}=${_csrf.token}" method="post" commandName="supplier" enctype="multipart/form-data">
    <div class="form-group">
    <label for="name" >Name</label>
@@ -36,8 +37,8 @@
    <form:input id="image" path="imgUrl" type="file" class="form:input-large"/>
    </div>
    <br>
-   <input type="submit" value="submit" class="btn btn-default"/>
-   <a href="${contextPath}/admin/adminAddSupplier" class="btn btn-default">Cancel</a>
+   <input type="submit" value="submit" class="btn btn-green"/>
+   <a href="${contextPath}/admin/adminAddSupplier" class="btn btn-danger">Cancel</a>
    
    
    </form:form>

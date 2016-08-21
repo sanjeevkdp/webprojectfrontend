@@ -68,6 +68,7 @@ public ModelAndView registration(Model model){
 }
 @RequestMapping(value="/registration",method=RequestMethod.POST)
 public ModelAndView registrationSuccess(@Valid @ModelAttribute("customer") Customer customer,BindingResult result, Model model,HttpServletRequest request){
+	
 	ModelAndView mv =new ModelAndView("index");
 	if(result.hasErrors()){
 		customer.setGender("male");
@@ -85,16 +86,20 @@ public ModelAndView registrationSuccess(@Valid @ModelAttribute("customer") Custo
 	customer.setEnabled(true);
 	//customerDao.saveOrUpdate(users);
 	customerDao.saveOrUpdate(customer);
-	List<Customer> listCustomer=customerDao.list();
-	model.addAttribute("customer",listCustomer);
 	
-	 users.setUserName(customer.getUserName());
+	
+//	List<Customer> listCustomer=customerDao.list();
+//	model.addAttribute("customer",listCustomer);
+    users.setCustomerId(customer.getCustomerId());	
+	users.setUserName(customer.getUserName());
 	users.setPassword(customer.getPassword());
 	users.setEnabled(true);
-	
-	authorities.setUserName(customer.getUserName());
-	authorities.setAuthority("ROLE_USER");
 	usersDao.saveOrUpdate(users);
+	
+	authorities.setCustomerId(customer.getCustomerId());
+	authorities.setUserName(users.getUserName());
+	authorities.setAuthority("ROLE_USER");
+	
 	authoritiesDao.saveOrUpdate(authorities);
 	
 	mv.addObject("isRegistrationSuccessClicked","true");

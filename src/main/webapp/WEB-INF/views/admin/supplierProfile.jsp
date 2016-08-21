@@ -3,7 +3,8 @@
 <div id="content" class="bottom-border-shadow">
 	<div class="container background-white bottom-border">
 		<div class="row margin-vert-30">
-
+<h1>Supplier Profile</h1>
+<p>view supplier</p>
 			<div class="container">
 				<div class="row">
 					<div class="col-md-5">
