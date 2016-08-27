@@ -13,7 +13,7 @@
 			<p>Edit by administrator</p>
 			<table class="table table-striped table-hover">
 				<thead>
-					<tr class="bg-success">
+					<tr class="bg-primary">
 
 						<th>serial</th>
 						<th>Image</th>

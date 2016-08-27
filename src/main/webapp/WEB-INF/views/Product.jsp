@@ -12,7 +12,7 @@
                             <div class="input-group col-md-12">
                                 <input type="text" class="  search-query form-control" ng-model="search" placeholder="Search" />
                                 <span class="input-group-btn">
-                                    <button class="btn btn-green" type="button">
+                                    <button class="btn btn-blue" type="button">
                                         <span class="fa fa-search"></span>
                                     </button>
                                 </span>
@@ -22,7 +22,7 @@
 			 <br>
 			<table class="table table-striped table-hover" ng-controller="allProductsCtrl as ctrl">
 				<thead>
-					<tr class="bg-success">
+					<tr class="bg-primary">
 						<th>Image</th>
 						<th>Name</th>
 						<th>Category</th>
@@ -36,7 +36,7 @@
 						<td>{{p.product.product_name}}</td>
 						<td>{{p.categoryName}}</td>
 						<td>{{p.product.description}}</td>
-						<td>{{p.product.unit_price}}</td>
+						<td><span class="fa fa-inr"></span>{{p.product.unit_price}}</td>
 						
 						
 						<td><a

@@ -55,7 +55,7 @@ public ModelAndView registration(Model model){
 	customer.setGender("male");
 	customer.setEnabled(true);
 	
-	model.addAttribute("customer",customer);
+	model.addAttribute("customer",new Customer());
 	mv.addObject("isRegistrationClicked","true");
 	mv.addObject("active","registration");
 	
@@ -90,14 +90,15 @@ public ModelAndView registrationSuccess(@Valid @ModelAttribute("customer") Custo
 	
 //	List<Customer> listCustomer=customerDao.list();
 //	model.addAttribute("customer",listCustomer);
-    users.setCustomerId(customer.getCustomerId());	
+   users=new Users();
+	users.setCustomerId(customer.getCustomerId());	
 	users.setUserName(customer.getUserName());
 	users.setPassword(customer.getPassword());
 	users.setEnabled(true);
 	usersDao.saveOrUpdate(users);
-	
+	authorities=new Authorities();
 	authorities.setCustomerId(customer.getCustomerId());
-	authorities.setUserName(users.getUserName());
+	authorities.setUserName(customer.getUserName());
 	authorities.setAuthority("ROLE_USER");
 	
 	authoritiesDao.saveOrUpdate(authorities);

@@ -22,7 +22,7 @@
 			<table class="table table-striped table-hover" ng-controller="allProductsCtrl as ctrl">
 			
 				<thead>
-					<tr class="bg-success">
+					<tr class="bg-primary">
 
 						
 						<th>Image</th>
@@ -41,7 +41,7 @@
 						<td>{{p.product.product_name}}</td>
 						<td>{{p.categoryName}}</td>
 						<td>{{p.product.description}}</td>
-						<td>{{p.product.unit_price}}</td>
+						<td><span class="fa fa-inr"></span>{{p.product.unit_price}}</td>
 								
 						<td><a
 							href="${contextPath}/admin/adminAddProduct/adminProductView/{{p.product.product_id}}"><span

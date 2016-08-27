@@ -7,7 +7,7 @@
     var
     // default settings object.
         defaults = {
-            label: 'MENU',
+            label: 'HANDICRAFT',
             duplicate: true,
             duration: 200,
             easingOpen: 'swing',

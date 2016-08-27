@@ -51,9 +51,9 @@
 				</div>
 				<br>
 				<input type="submit" name="_eventId_submitBillingAddress"
-							class="btn btn-lg btn-success" value="Save">
+							class="btn btn-md btn-success" value="Save">
 						<input type="submit" name="_eventId_cancel"
-							class="btn btn-lg btn-danger" value="Cancel">
+							class="btn btn-md btn-danger" value="Cancel">
 			</form:form>
 		</div>
 	</div>

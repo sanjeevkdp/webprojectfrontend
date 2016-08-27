@@ -23,7 +23,7 @@
 
 
 						<p>
-							<strong> price</strong>:${product.unit_price}
+							<strong> price</strong>:<span class="fa fa-inr"></span>${product.unit_price}
 						</p>
 
 						<p>

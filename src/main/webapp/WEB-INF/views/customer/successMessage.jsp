@@ -24,7 +24,7 @@
 					</section>
 					<section class="container">
 				</div>
-				<a href="_eventId_home" class="btn btn-lg btn-info">Home</a>
+				<a type="submit" href="${contextPath}/home" class="btn btn-lg btn-info" value="home">Home</a>
 
 			</div>
 

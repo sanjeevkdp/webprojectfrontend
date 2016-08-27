@@ -16,14 +16,14 @@
 							style="height: 300px; width: 100%" />
 					</div>
 					<div class="col-md-5">
-						<h2>name:${product.product_name}</h2>
+						<h2>Name:${product.product_name}</h2>
 						<p>
 							<strong> ID</strong>:${product.product_id}
 						</p>
 
 
 						<p>
-							<strong> price</strong>:${product.unit_price}
+							<strong> price</strong>:<span class="fa fa-inr"></span>${product.unit_price}
 						</p>
 
 						<p>
@@ -40,10 +40,10 @@
 						<c:if test="${pageContext.request.userPrincipal.name == null }">
 						<p>Please !<a href="${contextPath}/login" >  <span style='color:red;text-decoration:underline'>  Login Here? </span></a>  to buy the product</p>
 						</c:if>
-						<a href="${contextPath}/product" class="btn btn-default">Back</a>
-					<p> <sec:authorize access="hasRole('ROLE_USER')">
+						<p><a href="${contextPath}/product" class="btn btn-default">Back</a>
+					 <sec:authorize access="hasRole('ROLE_USER')">
 							<a href="${contextPath}/customer/cart/addToCart/${product.product_id}" class="btn btn-warning">Order Now</a> 
-							<a href="${contextPath}/cart" class="btn btn-default">View Cart ${noOfProducts}</a>
+							<a href="${contextPath}/customer/cart" class="btn btn-default">View Cart ${noOfProducts}</a>
 						</sec:authorize>
 						</p>
 

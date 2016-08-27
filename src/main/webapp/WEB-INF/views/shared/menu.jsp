@@ -7,11 +7,11 @@
 	<div id="header">
 		<div class="container">
 			<div class="row">
-				<div class="col-sm-6 ">
+				<div class="col-sm-6">
 					<!-- Logo -->
-					<div class="logo ">
+					<div class="logo">
 						<a href="index.html" title="handcraft"> <img
-							src="${img}/2.png" alt="Logo"  />
+							src="${img}/logo.png" alt="Logo"  />
 						</a>
 					</div>
 				</div>
@@ -89,8 +89,8 @@
 								<li><a id="product" href="${contextPath}/product">PRODUCTS</a></li>
 
 							</ul></li>
-						<li><a id="contact" href="${contextPath}/contact"
-							class="fa-comment ">Contact</a></li>
+						<%-- <li><a id="contact" href="${contextPath}/contact"
+							class="fa-comment ">Contact</a></li>--%>
 
 
 

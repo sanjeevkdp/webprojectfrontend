@@ -41,6 +41,7 @@
                                         <figcaption>
                                             <h3>${product.product_name}</h3>
                                             <span>${product.description}</span>
+                                            <h1>Rs. ${product.unit_price}</h1>
                                         </figcaption>
                                     </figure>
                                 </a>

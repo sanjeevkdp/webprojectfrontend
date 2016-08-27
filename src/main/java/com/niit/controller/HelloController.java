@@ -209,7 +209,7 @@ public class HelloController {
 		   mv.addObject("products",listOfProduct);		   
 	   }
 	   else{
-		   model.addAttribute("noProductFound","Sorry! ............"+keyword);
+		   model.addAttribute("noProductFound","Sorry! ............"+keyword +"is not found");
 	   }
 	   
 	   //===========list Category in navBar=========//

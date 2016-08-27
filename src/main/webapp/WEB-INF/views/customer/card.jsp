@@ -45,9 +45,9 @@
 				<br>
 				
 							<input type="submit" value="Checkout"
-								name="_eventId_confirmCheckout" class="btn btn-lg btn-success">
+								name="_eventId_confirmCheckout" class="btn btn-md btn-success">
 							<input type="submit" value="Cancel" name="_eventId_cancel"
-								class="btn btn-lg btn-danger">
+								class="btn btn-md btn-danger">
 					
 			</form:form>
 		</div>

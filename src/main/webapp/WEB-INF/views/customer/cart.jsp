@@ -64,7 +64,7 @@
 									<td>${c.productName}</td>
 <%-- 								<td>${c.cartItem.product.unit_price}</td> --%>
 									<td>${c.cartItem.quantity}</td>
-									<td>${c.cartItem.totalPrice} </td>
+									<td><span class="fa fa-inr"></span>${c.cartItem.totalPrice} </td>
 									<td><a href="${contextPath}/customer/cart/remove/${c.cartItem.cartItemId}" class="btn btn-danger  btn-xs" ><span
 									class="fa fa-remove-sign"></span>remove</a></td>
 <%
@@ -77,7 +77,7 @@
 									<th></th>
 									<th></th>
 									<th>Grand Total</th>
-									<th>${grandTotal}</th>
+									<th><span class="fa fa-inr"></span>${grandTotal}</th>
 									<th></th>
 								</tr>
                 
